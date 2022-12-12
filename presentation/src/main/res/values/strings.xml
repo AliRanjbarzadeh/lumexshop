@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">لومکس شاپ</string>
+
+	<!--Fonts-->
+	<string name="font_regular">fonts/font_regular.ttf</string>
+	<string name="font_bold">fonts/font_bold.ttf</string>
+	<string name="font_extra_bold">fonts/font_extra_bold.ttf</string>
+	<string name="font_semi_bold">fonts/font_semi_bold.ttf</string>
+	<string name="font_black">fonts/font_black.ttf</string>
+	<string name="font_light">fonts/font_light.ttf</string>
+	<string name="font_extra_light">fonts/font_extra_light.ttf</string>
+	<string name="font_medium">fonts/font_medium.ttf</string>
+	<string name="font_thin">fonts/font_thin.ttf</string>
+
+	<!--Intro-->
+	<string name="turn_page">ورق بزن</string>
+	<string name="skip">رد کن</string>
+	<string name="enter_shop">ورود به فروشگاه</string>
+
+	<!--Titles-->
+	<string name="sale_page_title">حراج کـــــــــــــــــــــــــــــــــــــده</string>
+	<string name="sale_product_top_title">حـــــــــــــــــراج کده</string>
+	<string name="point_label">مجموع امتیازات جمع آوری شده با این خرید:</string>
+
+	<!--Bottom Menu-->
+	<string name="home">خانه</string>
+	<string name="category">دسته بندی</string>
+	<string name="shop_cart">سبد خرید</string>
+	<string name="profile">پروفایل</string>
+	<string name="search_in_lumex_shop">جستجو در لومکس شاپ</string>
+	<string name="wrong_item">مورد اشتباه</string>
+	<string name="show_all">مشاهده همه</string>
+	<string name="see_all">مشاهده همه</string>
+
+	<string name="point_value">%s امتیاز</string>
+	<string name="price_label_value">قیمت کالاها (%s):</string>
+	<string name="toman">تومان</string>
+	<string name="total_discount_label">مجموع تخفیفات:</string>
+	<string name="total_shopcart">جمع سبد خرید</string>
+	<string name="continue_shop">ادامه فرایند خرید</string>
+	<string name="maximum_label">حداکثر</string>
+	<string name="sure_delete_item">آیا از حذف این ایتم اطمینان دارید؟</string>
+	<string name="keep_it">نه، نگهش دار</string>
+	<string name="delete_it">بله، حذف کن</string>
+	<string name="total_payable">مبلغ قابل پرداخت</string>
+	<string name="edit_change_address">تغییر یا ویرایش آدرس</string>
+	<string name="delivery_price_to_address">هزینه ارسال به این آدرس:</string>
+	<string name="send_to_label">ارسال به</string>
+	<string name="select_address_and_receiver">انتخاب آدرس و گیرنده</string>
+	<string name="receiver_information">اطلاعات گیرنده</string>
+	<string name="i_am_receiver">گیرنده سفارش خودم هستم</string>
+	<string name="receiver_first_name">نام گیرنده</string>
+	<string name="first_name_example">مثال: پیتر</string>
+	<string name="receiver_last_name">نام خانوادگی گیرنده</string>
+	<string name="last_name_example">مثال: ماوریک</string>
+	<string name="mobile">شماره موبایل</string>
+	<string name="mobile_example">مثال: 09123456789</string>
+	<string name="personal_code">کد ملی</string>
+	<string name="personal_code_example">مثال: 2281495682</string>
+	<string name="select_from_old_receivers">انتخاب از لیست گیرنده های قدیمی</string>
+	<string name="delete_from_list">حذف از لیست</string>
+	<string name="pay">پرداخت</string>
+	<string name="use_wallet">استفاده از کیف پول</string>
+	<string name="set_discount_code">اعمال کد</string>
+	<string name="hint_discount_code">کد تخفیف دارید؟</string>
+	<string name="order_detail">جزئیات سفارش</string>
+	<string name="delivery_price_label">هزینه ارسال:</string>
+	<string name="login_register">ورود/ثبت نام</string>
+	<string name="supply_your_needs">تامین تمام نیازهای دیجیتال شما</string>
+	<string name="send_login_code">ارسال رمز یکبار مصرف</string>
+	<string name="mobile_verify">شماره موبایل (%s)</string>
+	<string name="enter_verify_code">رمز ارسال شده را وارد نمایید</string>
+	<string name="verify_code">رمز یکبار مصرف</string>
+	<string name="edit_mobile">ویرایش شماره</string>
+	<string name="send_again_timer">ارسال مجدد (%s ثانیه)</string>
+	<string name="send_again">ارسال مجدد</string>
+	<string name="login_to_shop">ورود به شاپ</string>
+	<string name="please_enter_mobile">لطفا شماره موبایل را وارد کنید</string>
+	<string name="wrong_mobile">شماره موبایل وارد شده معتبر نمی باشد</string>
+	<string name="wait_until_timer_finish">لطفا تا پایان زمان ارسال مجدد کد منتظر بمانید</string>
+	<string name="please_enter_verify_code">لطفا رمز یکبار مصرف را وارد کنید</string>
+	<string name="wrong_verify_code">کد تایید وارد شده معتبر نمی باشد</string>
+	<string name="manage_wallet">مدیریت کیف پول</string>
+	<string name="view_points">مشاهده امتیازات</string>
+	<string name="point">امتیاز</string>
+	<string name="my_orders">سفارش های من</string>
+	<string name="user_information">اطلاعات کاربری</string>
+	<string name="edit_user_information">ویرایش اطلاعات کاربری</string>
+	<string name="confirmed">تایید شده</string>
+	<string name="account">حساب کاربری</string>
+	<string name="first_name">نام</string>
+	<string name="last_name">نام خانوادگی</string>
+	<string name="extra_info">اطلاعات بیشتر</string>
+	<string name="birthdate">تاریخ تولد</string>
+	<string name="_7_dash">-------</string>
+	<string name="email">ایمیل</string>
+	<string name="not_confirmed">تایید نشده</string>
+	<string name="bank_info">اطلاعات بانکی</string>
+	<string name="add_bank_account">افزودن حساب بانکی</string>
+	<string name="no_bank_account">شما هنوز هیچ حسابی ثبت نکرده اید</string>
+	<string name="shaba_number">شماره شبا</string>
+	<string name="select_picture">انتخاب عکس</string>
+	<string name="from_gallery">از گالری</string>
+	<string name="from_camera">از دوربین</string>
+	<string name="close">بستن</string>
+	<string name="update">ثبت تغییرات</string>
+	<string name="email_activation_title">یک لینک حاوی تایید ایمیل برای شما ارسال شده است</string>
+	<string name="email_activation_description">درصورت پیدا نکردن پوشه Spam یا Junk را چک بفرمایید.</string>
+	<string name="_ir">IR</string>
+	<string name="shaba_part1">25</string>
+	<string name="shaba_part2">0120</string>
+	<string name="shaba_part3">0200</string>
+	<string name="shaba_part4">0000</string>
+	<string name="shaba_part5">00</string>
+	<string name="very_important">"خیلی مهم: "</string>
+	<string name="shaba_number_alert">فقط شماره شبایی که به نام خودتان باشد امکان ثبت دارد</string>
+</resources>

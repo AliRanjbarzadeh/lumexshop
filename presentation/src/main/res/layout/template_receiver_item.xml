@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<import type="android.view.View" />
+
+		<variable
+			name="item"
+			type="com.zarinfanavaran.domain.models.Receiver" />
+	</data>
+
+	<com.google.android.material.card.MaterialCardView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:cardBackgroundColor="@color/colorF1"
+		app:cardCornerRadius="0dp"
+		app:cardElevation="0dp">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/_12sdp">
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/txtFullName"
+				style="@style/Widget.MaterialComponents.Button.TextButton"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:clickable="false"
+				android:enabled="false"
+				android:gravity="start|center_vertical"
+				android:insetTop="0dp"
+				android:insetBottom="0dp"
+				android:padding="0dp"
+				android:text="@{item.fullName, default=`@string/sample_full_name`}"
+				android:textColor="@color/color22"
+				android:textSize="@dimen/_9ssp"
+				app:icon="@drawable/ic_contact_stroke"
+				app:iconGravity="textStart"
+				app:iconPadding="@dimen/_6sdp"
+				app:iconSize="@dimen/_14sdp"
+				app:iconTint="@color/color22"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/txtPersonalCode"
+				style="@style/Widget.MaterialComponents.Button.TextButton"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:clickable="false"
+				android:enabled="false"
+				android:gravity="start|center_vertical"
+				android:insetTop="0dp"
+				android:insetBottom="0dp"
+				android:padding="0dp"
+				android:text="@{item.personalCode, default=`@string/sample_personal_code`}"
+				android:textColor="@color/color22"
+				android:textSize="@dimen/_9ssp"
+				app:icon="@drawable/ic_identification_stroke"
+				app:iconGravity="textStart"
+				app:iconPadding="@dimen/_6sdp"
+				app:iconSize="@dimen/_14sdp"
+				app:iconTint="@color/color22"
+				app:layout_constraintEnd_toStartOf="@id/txtMobile"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/txtFullName" />
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/txtMobile"
+				style="@style/Widget.MaterialComponents.Button.TextButton"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:clickable="false"
+				android:enabled="false"
+				android:gravity="end|center_vertical"
+				android:insetTop="0dp"
+				android:insetBottom="0dp"
+				android:padding="0dp"
+				android:text="@string/sample_mobile"
+				android:textColor="@color/color22"
+				android:textSize="@dimen/_9ssp"
+				app:icon="@drawable/ic_phone_stroke"
+				app:iconGravity="textStart"
+				app:iconPadding="@dimen/_6sdp"
+				app:iconSize="@dimen/_14sdp"
+				app:iconTint="@color/color22"
+				app:layout_constraintBottom_toBottomOf="@id/txtPersonalCode"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toEndOf="@id/txtPersonalCode"
+				app:layout_constraintTop_toTopOf="@id/txtPersonalCode" />
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/btnDelete"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/_8sdp"
+				android:insetTop="0dp"
+				android:insetBottom="0dp"
+				android:padding="@dimen/_6sdp"
+				android:text="@string/delete_from_list"
+				android:textAppearance="@style/TextAppearance.FontMedium"
+				android:textColor="@color/colorD6"
+				android:textSize="@dimen/_9ssp"
+				app:backgroundTint="@color/colorD9"
+				app:icon="@drawable/ic_trash_stroke"
+				app:iconGravity="textStart"
+				app:iconPadding="@dimen/_8sdp"
+				app:iconSize="@dimen/_14sdp"
+				app:iconTint="@color/colorD6"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/txtPersonalCode" />
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</com.google.android.material.card.MaterialCardView>
+</layout>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<variable
+			name="item"
+			type="com.zarinfanavaran.domain.models.BankAccount" />
+	</data>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/cvMainDialog"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/white">
+
+		<androidx.constraintlayout.widget.Guideline
+			android:id="@+id/glDialog"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			app:guidelineUseRtl="true"
+			app:layout_constraintGuide_percent="0.43" />
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/txtTitle"
+			style="@style/Widget.MaterialComponents.Button.TextButton"
+			android:layout_width="0dp"
+			android:layout_height="@dimen/_18sdp"
+			android:layout_marginStart="@dimen/_8sdp"
+			android:layout_marginTop="@dimen/_9sdp"
+			android:layout_marginEnd="@dimen/_8sdp"
+			android:gravity="start|center_vertical"
+			android:insetTop="0dp"
+			android:insetBottom="0dp"
+			android:padding="0dp"
+			android:text="@string/shaba_number"
+			android:textAlignment="viewStart"
+			android:textAppearance="@style/TextAppearance.FontSemiBold"
+			android:textColor="@color/color18"
+			android:textSize="@dimen/_10ssp"
+			app:icon="@drawable/ic_bank_account_stroke"
+			app:iconPadding="@dimen/_4sdp"
+			app:iconSize="@dimen/_18sdp"
+			app:iconTint="@color/color18"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<androidx.appcompat.widget.LinearLayoutCompat
+			android:id="@+id/llInputs"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/_16sdp"
+			android:orientation="vertical"
+			app:layout_constraintEnd_toEndOf="@id/txtTitle"
+			app:layout_constraintStart_toStartOf="@id/txtTitle"
+			app:layout_constraintTop_toBottomOf="@id/txtTitle">
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layoutDirection="ltr"
+				android:orientation="horizontal">
+
+				<FrameLayout
+					android:layout_width="@dimen/_42sdp"
+					android:layout_height="@dimen/_34sdp"
+					android:background="@color/colorEF">
+
+					<androidx.appcompat.widget.AppCompatImageView
+						android:id="@+id/imgBankLogo"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_marginStart="@dimen/_12sdp"
+						android:layout_marginTop="@dimen/_8sdp"
+						android:layout_marginEnd="@dimen/_12sdp"
+						android:layout_marginBottom="@dimen/_8sdp"
+						android:alpha="0.1"
+						android:scaleType="fitCenter"
+						android:src="@drawable/temp_img_bank" />
+				</FrameLayout>
+
+				<com.google.android.material.textview.MaterialTextView
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_marginStart="@dimen/_9sdp"
+					android:gravity="center_vertical"
+					android:text="@string/_ir"
+					android:textAllCaps="true"
+					android:textAppearance="@style/TextAppearance.FontSemiBold"
+					android:textColor="@color/color18"
+					android:textSize="@dimen/_12ssp" />
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/clInputs"
+				android:layout_width="match_parent"
+				android:layout_height="@dimen/_34sdp"
+				android:layout_marginTop="@dimen/_25sdp"
+				android:textDirection="ltr">
+
+				<androidx.appcompat.widget.AppCompatEditText
+					android:id="@+id/etFirstPart"
+					android:layout_width="@dimen/_21sdp"
+					android:layout_height="0dp"
+					android:layout_marginStart="@dimen/_1sdp"
+					android:background="@color/colorEF"
+					android:gravity="center"
+					android:hint="@string/shaba_part1"
+					android:imeOptions="actionNext"
+					android:inputType="number"
+					android:maxLength="2"
+					android:nextFocusForward="@id/etSecondPart"
+					android:text="@{item.shabaParted[0]}"
+					android:textAppearance="@style/TextAppearance.FontSemiBold"
+					android:textColor="@color/color18"
+					android:textColorHint="@color/colorA3T60"
+					android:textSize="@dimen/_8ssp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toEndOf="@id/etSecondPart"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<androidx.appcompat.widget.AppCompatEditText
+					android:id="@+id/etSecondPart"
+					android:layout_width="@dimen/_30sdp"
+					android:layout_height="0dp"
+					android:layout_marginStart="@dimen/_1sdp"
+					android:layout_marginEnd="@dimen/_1sdp"
+					android:background="@color/colorEF"
+					android:gravity="center"
+					android:hint="@string/shaba_part2"
+					android:imeOptions="actionNext"
+					android:inputType="number"
+					android:maxLength="4"
+					android:nextFocusForward="@id/etThirdPart"
+					android:text="@{item.shabaParted[1]}"
+					android:textAppearance="@style/TextAppearance.FontSemiBold"
+					android:textColor="@color/color18"
+					android:textColorHint="@color/colorA3T60"
+					android:textSize="@dimen/_8ssp"
+					app:layout_constraintBottom_toBottomOf="@id/etFirstPart"
+					app:layout_constraintEnd_toStartOf="@id/etFirstPart"
+					app:layout_constraintStart_toEndOf="@id/etThirdPart"
+					app:layout_constraintTop_toTopOf="@id/etFirstPart" />
+
+				<androidx.appcompat.widget.AppCompatEditText
+					android:id="@+id/etThirdPart"
+					android:layout_width="@dimen/_30sdp"
+					android:layout_height="0dp"
+					android:layout_marginStart="@dimen/_1sdp"
+					android:layout_marginEnd="@dimen/_1sdp"
+					android:background="@color/colorEF"
+					android:gravity="center"
+					android:hint="@string/shaba_part3"
+					android:imeOptions="actionNext"
+					android:inputType="number"
+					android:maxLength="4"
+					android:nextFocusForward="@id/etFourthPart"
+					android:text="@{item.shabaParted[2]}"
+					android:textAppearance="@style/TextAppearance.FontSemiBold"
+					android:textColor="@color/color18"
+					android:textColorHint="@color/colorA3T60"
+					android:textSize="@dimen/_8ssp"
+					app:layout_constraintBottom_toBottomOf="@id/etFirstPart"
+					app:layout_constraintEnd_toStartOf="@id/etSecondPart"
+					app:layout_constraintStart_toEndOf="@id/etFourthPart"
+					app:layout_constraintTop_toTopOf="@id/etFirstPart" />
+
+				<androidx.appcompat.widget.AppCompatEditText
+					android:id="@+id/etFourthPart"
+					android:layout_width="@dimen/_30sdp"
+					android:layout_height="0dp"
+					android:layout_marginStart="@dimen/_1sdp"
+					android:layout_marginEnd="@dimen/_1sdp"
+					android:background="@color/colorEF"
+					android:gravity="center"
+					android:hint="@string/shaba_part4"
+					android:imeOptions="actionNext"
+					android:inputType="number"
+					android:maxLength="4"
+					android:nextFocusForward="@id/etFifthPart"
+					android:text="@{item.shabaParted[3]}"
+					android:textAppearance="@style/TextAppearance.FontSemiBold"
+					android:textColor="@color/color18"
+					android:textColorHint="@color/colorA3T60"
+					android:textSize="@dimen/_8ssp"
+					app:layout_constraintBottom_toBottomOf="@id/etFirstPart"
+					app:layout_constraintEnd_toStartOf="@id/etThirdPart"
+					app:layout_constraintStart_toEndOf="@id/etFifthPart"
+					app:layout_constraintTop_toTopOf="@id/etFirstPart" />
+
+				<androidx.appcompat.widget.AppCompatEditText
+					android:id="@+id/etFifthPart"
+					android:layout_width="@dimen/_30sdp"
+					android:layout_height="0dp"
+					android:layout_marginStart="@dimen/_1sdp"
+					android:layout_marginEnd="@dimen/_1sdp"
+					android:background="@color/colorEF"
+					android:gravity="center"
+					android:hint="@string/shaba_part4"
+					android:imeOptions="actionNext"
+					android:inputType="number"
+					android:maxLength="4"
+					android:nextFocusForward="@id/etSixthPart"
+					android:text="@{item.shabaParted[4]}"
+					android:textAppearance="@style/TextAppearance.FontSemiBold"
+					android:textColor="@color/color18"
+					android:textColorHint="@color/colorA3T60"
+					android:textSize="@dimen/_8ssp"
+					app:layout_constraintBottom_toBottomOf="@id/etFirstPart"
+					app:layout_constraintEnd_toStartOf="@id/etFourthPart"
+					app:layout_constraintStart_toEndOf="@id/etSixthPart"
+					app:layout_constraintTop_toTopOf="@id/etFirstPart" />
+
+				<androidx.appcompat.widget.AppCompatEditText
+					android:id="@+id/etSixthPart"
+					android:layout_width="@dimen/_30sdp"
+					android:layout_height="0dp"
+					android:layout_marginStart="@dimen/_1sdp"
+					android:layout_marginEnd="@dimen/_1sdp"
+					android:background="@color/colorEF"
+					android:gravity="center"
+					android:hint="@string/shaba_part4"
+					android:imeOptions="actionNext"
+					android:inputType="number"
+					android:maxLength="4"
+					android:nextFocusForward="@id/etSeventhPart"
+					android:text="@{item.shabaParted[5]}"
+					android:textAppearance="@style/TextAppearance.FontSemiBold"
+					android:textColor="@color/color18"
+					android:textColorHint="@color/colorA3T60"
+					android:textSize="@dimen/_8ssp"
+					app:layout_constraintBottom_toBottomOf="@id/etFirstPart"
+					app:layout_constraintEnd_toStartOf="@id/etFifthPart"
+					app:layout_constraintStart_toEndOf="@id/etSeventhPart"
+					app:layout_constraintTop_toTopOf="@id/etFirstPart" />
+
+				<androidx.appcompat.widget.AppCompatEditText
+					android:id="@+id/etSeventhPart"
+					android:layout_width="@dimen/_21sdp"
+					android:layout_height="0dp"
+					android:layout_marginEnd="@dimen/_1sdp"
+					android:background="@color/colorEF"
+					android:gravity="center"
+					android:hint="@string/shaba_part5"
+					android:imeOptions="actionDone"
+					android:inputType="number"
+					android:maxLength="2"
+					android:text="@{item.shabaParted[6]}"
+					android:textAppearance="@style/TextAppearance.FontSemiBold"
+					android:textColor="@color/color18"
+					android:textColorHint="@color/colorA3T60"
+					android:textSize="@dimen/_8ssp"
+					app:layout_constraintBottom_toBottomOf="@id/etFirstPart"
+					app:layout_constraintEnd_toStartOf="@id/etSixthPart"
+					app:layout_constraintHorizontal_chainStyle="spread_inside"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="@id/etFirstPart" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/txtAlert"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/_8sdp"
+				android:gravity="center_vertical"
+				android:textSize="@dimen/_8ssp" />
+
+		</androidx.appcompat.widget.LinearLayoutCompat>
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/btnClose"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:insetTop="0dp"
+			android:insetBottom="0dp"
+			android:text="@string/close"
+			android:textColor="@color/color18"
+			android:textSize="@dimen/_9ssp"
+			app:backgroundTint="@color/colorD9"
+			app:cornerRadius="0dp"
+			app:layout_constraintBottom_toBottomOf="@id/btnAction"
+			app:layout_constraintEnd_toStartOf="@id/glDialog"
+			app:layout_constraintStart_toStartOf="@id/txtTitle"
+			app:layout_constraintTop_toTopOf="@id/btnAction" />
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/btnAction"
+			android:layout_width="0dp"
+			android:layout_height="@dimen/_34sdp"
+			android:layout_marginStart="@dimen/_8sdp"
+			android:layout_marginTop="@dimen/_16sdp"
+			android:layout_marginBottom="@dimen/_16sdp"
+			android:insetTop="0dp"
+			android:insetBottom="0dp"
+			android:text="@string/update"
+			android:textAppearance="@style/TextAppearance.FontMedium"
+			android:textColor="@color/colorF1"
+			android:textSize="@dimen/_9ssp"
+			app:cornerRadius="0dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="@id/txtTitle"
+			app:layout_constraintStart_toEndOf="@id/glDialog"
+			app:layout_constraintTop_toBottomOf="@id/llInputs" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="@color/colorEF"
+	android:orientation="vertical">
+
+	<com.google.android.material.textview.MaterialTextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="@dimen/_16sdp"
+		android:layout_marginTop="@dimen/_16sdp"
+		android:layout_marginEnd="@dimen/_16sdp"
+		android:text="@string/select_picture"
+		android:textAppearance="@style/TextAppearance.FontMedium"
+		android:textColor="@color/colorA3"
+		android:textSize="@dimen/_11ssp" />
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/_2sdp"
+		android:layout_marginStart="@dimen/_16sdp"
+		android:layout_marginTop="@dimen/_8sdp"
+		android:layout_marginEnd="@dimen/_16sdp"
+		android:background="@color/white" />
+
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/btnGallery"
+		style="@style/Widget.MaterialComponents.Button.TextButton"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/_18sdp"
+		android:layout_marginStart="@dimen/_16sdp"
+		android:layout_marginTop="@dimen/_16sdp"
+		android:layout_marginEnd="@dimen/_16sdp"
+		android:gravity="start|center_vertical"
+		android:insetTop="0dp"
+		android:insetBottom="0dp"
+		android:padding="0dp"
+		android:text="@string/from_gallery"
+		android:textAppearance="@style/TextAppearance.FontMedium"
+		android:textColor="@color/color18"
+		android:textSize="@dimen/_11ssp"
+		app:cornerRadius="0dp"
+		app:icon="@drawable/ic_gallery_stroke"
+		app:iconPadding="@dimen/_8sdp"
+		app:iconTint="@color/color18"
+		app:rippleColor="@color/transparent" />
+
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/btnCamera"
+		style="@style/Widget.MaterialComponents.Button.TextButton"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/_18sdp"
+		android:layout_marginStart="@dimen/_16sdp"
+		android:layout_marginTop="@dimen/_16sdp"
+		android:layout_marginEnd="@dimen/_16sdp"
+		android:layout_marginBottom="@dimen/_23sdp"
+		android:gravity="start|center_vertical"
+		android:insetTop="0dp"
+		android:insetBottom="0dp"
+		android:padding="0dp"
+		android:text="@string/from_camera"
+		android:textAppearance="@style/TextAppearance.FontMedium"
+		android:textColor="@color/color18"
+		android:textSize="@dimen/_11ssp"
+		app:cornerRadius="0dp"
+		app:icon="@drawable/ic_camera_stroke"
+		app:iconPadding="@dimen/_8sdp"
+		app:iconTint="@color/color18"
+		app:rippleColor="@color/transparent" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

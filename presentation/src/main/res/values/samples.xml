@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!--Samples-->
+	<string name="sample_product_title">گوشی موبایل S22 ultra حافظه 512 و رم 12 گیگ</string>
+	<string name="sample_timer_time">22:12:18</string>
+	<string name="sample_point">50 امتیاز</string>
+	<string name="sample_price_label">قیمت کالاها (4):</string>
+	<string name="sample_price">13,900,000</string>
+	<string name="sample_discount">900,000</string>
+	<string name="sample_delivery_price_description">شما با خرید این محصول 30 امتیاز دیافت میکنید</string>
+	<string name="sample_shopcart_total">160,000,000 تومان</string>
+	<string name="sample_color">مشکی</string>
+	<string name="sample_warranty">گارانتی: زرین فناوران فارس</string>
+	<string name="sample_price_shopcart">13,900,000 تومان</string>
+	<string name="sample_price_wallet">150,000 تومان</string>
+	<string name="sample_discount_shopcart">900,000 تومان تخفیف</string>
+	<string name="sample_delivery_price">30,000 تومان</string>
+	<string name="sample_address">خ. ملاصدرا، کوچه ۹ ، ساختمان پویا ، طبقه ۳ ، واحد ۴</string>
+	<string name="sample_city">شیراز</string>
+	<string name="sample_postal">7134636621</string>
+	<string name="sample_first_name">شرلوک</string>
+	<string name="sample_last_name">هولمز</string>
+	<string name="sample_full_name">شرلوک هولمز</string>
+	<string name="sample_personal_code">2281325489</string>
+	<string name="sample_mobile">09305301595</string>
+	<string name="sample_mobile_profile">(09305301595)</string>
+	<string name="sample_mobile_edit">شماره موبایل: (09305301595)</string>
+	<string name="sample_wallet">موجودی: 30,000 تومان</string>
+	<string name="sample_badge_count">2</string>
+	<string name="sample_order_type">در مسیر شما</string>
+	<string name="sample_email">Pete.Gustave@gmail.com</string>
+	<string name="sample_shaba_number">IR25-0120-0200-0000-9281-9131-29</string>
+	<string name="sample_title_product_detail">بازگشت به مدرسه</string>
+	<string name="sample_ads_timer">22:10:46</string>
+</resources>

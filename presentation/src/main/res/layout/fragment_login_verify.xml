@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<androidx.core.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:fillViewport="true">
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:layout_marginStart="@dimen/_16sdp"
+				android:layout_marginEnd="@dimen/_16sdp"
+				android:background="@color/white"
+				android:orientation="vertical"
+				android:paddingStart="@dimen/_16sdp"
+				android:paddingTop="@dimen/_23sdp"
+				android:paddingEnd="@dimen/_16sdp"
+				android:paddingBottom="@dimen/_23sdp">
+
+				<androidx.appcompat.widget.AppCompatImageView
+					android:layout_width="match_parent"
+					android:layout_height="@dimen/_64sdp"
+					android:scaleType="fitCenter"
+					android:src="@drawable/temp_logo_shop" />
+
+				<com.google.android.material.textview.MaterialTextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/_16sdp"
+					android:text="@string/login_register"
+					android:textAppearance="@style/TextAppearance.FontMedium"
+					android:textColor="@color/color18"
+					android:textSize="@dimen/_12ssp" />
+
+				<com.google.android.material.textview.MaterialTextView
+					android:id="@+id/txtMobile"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/_4sdp"
+					android:text="@string/mobile_verify"
+					android:textColor="@color/colorA3"
+					android:textSize="@dimen/_9ssp" />
+
+
+				<com.google.android.material.textfield.TextInputLayout
+					style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/_16sdp"
+					android:hint="@string/verify_code"
+					android:textColorHint="@color/color18"
+					app:boxCornerRadiusBottomEnd="0dp"
+					app:boxCornerRadiusBottomStart="0dp"
+					app:boxCornerRadiusTopEnd="0dp"
+					app:boxCornerRadiusTopStart="0dp"
+					app:boxStrokeColor="@color/text_input_layout_stroke_color"
+					app:expandedHintEnabled="false"
+					app:hintTextAppearance="@style/HintLabel"
+					app:hintTextColor="@color/text_input_layout_stroke_color">
+
+					<com.google.android.material.textfield.TextInputEditText
+						android:id="@+id/etVerifyCode"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:digits="1234567890"
+						android:gravity="start"
+						android:hint="@string/enter_verify_code"
+						android:imeOptions="actionDone"
+						android:inputType="number"
+						android:maxLength="5"
+						android:maxLines="1"
+						android:textAlignment="viewStart"
+						android:textColor="@color/color18"
+						android:textColorHint="@color/colorA3"
+						android:textSize="@dimen/_8ssp" />
+				</com.google.android.material.textfield.TextInputLayout>
+
+				<FrameLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal">
+
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/btnEditMobile"
+						style="@style/Widget.MaterialComponents.Button.TextButton"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="start"
+						android:insetTop="0dp"
+						android:insetBottom="0dp"
+						android:padding="0dp"
+						android:text="@string/edit_mobile"
+						android:textColor="@color/color72"
+						android:textSize="@dimen/_9ssp"
+						app:rippleColor="@color/color72A4" />
+
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/btnSendAgain"
+						style="@style/Widget.MaterialComponents.Button.TextButton"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="end"
+						android:gravity="center_vertical|end"
+						android:insetTop="0dp"
+						android:insetBottom="0dp"
+						android:padding="0dp"
+						android:text="@string/send_again_timer"
+						android:textAlignment="viewEnd"
+						android:textColor="@color/color72"
+						android:textSize="@dimen/_8ssp"
+						app:rippleColor="@color/color72A4" />
+
+				</FrameLayout>
+
+				<com.google.android.material.button.MaterialButton
+					android:id="@+id/btnNext"
+					android:layout_width="match_parent"
+					android:layout_height="@dimen/_33sdp"
+					android:layout_marginTop="@dimen/_8sdp"
+					android:insetTop="0dp"
+					android:insetBottom="0dp"
+					android:padding="0dp"
+					android:text="@string/login_to_shop"
+					android:textAppearance="@style/TextAppearance.FontMedium"
+					android:textColor="@color/white"
+					android:textSize="@dimen/_11ssp"
+					app:cornerRadius="0dp" />
+
+				<com.google.android.material.textview.MaterialTextView
+					android:id="@+id/txtLaw"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/_24sdp"
+					android:textColor="@color/color18"
+					android:textSize="@dimen/_9ssp" />
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+		</FrameLayout>
+	</androidx.core.widget.NestedScrollView>
+</layout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/profile_nav"
+	app:startDestination="@id/loginMobileFragment">
+
+	<fragment
+		android:id="@+id/loginMobileFragment"
+		android:name="com.zarinfanavaran.presentation.login.LoginMobileFragment"
+		android:label="LoginMobileFragment"
+		tools:layout="@layout/fragment_login_mobile">
+
+		<action
+			android:id="@+id/login_to_verify"
+			app:destination="@id/loginVerifyFragment" />
+
+	</fragment>
+
+	<fragment
+		android:id="@+id/loginVerifyFragment"
+		android:name="com.zarinfanavaran.presentation.login.LoginVerifyFragment"
+		android:label="LoginVerifyFragment"
+		tools:layout="@layout/fragment_login_verify">
+		<argument
+			android:name="mobile"
+			app:argType="string" />
+		<action
+			android:id="@+id/verify_to_profile"
+			app:destination="@id/profileFragment"
+			app:popUpTo="@id/loginMobileFragment"
+			app:popUpToInclusive="true" />
+	</fragment>
+
+	<fragment
+		android:id="@+id/profileFragment"
+		android:name="com.zarinfanavaran.presentation.profile.ProfileFragment"
+		android:label="ProfileFragment"
+		tools:layout="@layout/fragment_profile" />
+
+	<fragment
+		android:id="@+id/editInfoFragment"
+		android:name="com.zarinfanavaran.presentation.profile.info.EditInfoFragment"
+		android:label="EditInfoFragment"
+		tools:layout="@layout/fragment_edit_info" />
+
+</navigation>

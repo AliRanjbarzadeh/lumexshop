@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<data>
+
+		<variable
+			name="item"
+			type="com.zarinfanavaran.domain.models.ProductColor" />
+	</data>
+
+	<com.google.android.material.imageview.ShapeableImageView
+		android:id="@+id/imgProductTool"
+		android:layout_width="@dimen/_22sdp"
+		android:layout_height="@dimen/_22sdp"
+		android:background="@{item.colorValue}"
+		android:src="@{item.checked ? @drawable/ic_selected_color : @drawable/ic_unselected_color, default=`@drawable/ic_selected_color`}" />
+</layout>

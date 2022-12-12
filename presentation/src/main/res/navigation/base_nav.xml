@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/base_nav"
+	app:startDestination="@+id/home_nav">
+
+	<include app:graph="@navigation/home_nav" />
+	<include app:graph="@navigation/categories_nav" />
+	<include app:graph="@navigation/sale_nav" />
+	<include app:graph="@navigation/shopcart_nav" />
+	<include app:graph="@navigation/profile_nav" />
+
+	<fragment
+		android:id="@+id/homeDetailFragment"
+		android:name="com.zarinfanavaran.presentation.home.HomeDetailFragment"
+		android:label="HomeDetailFragment"
+		tools:layout="@layout/fragment_home_detail" />
+
+	<fragment
+		android:id="@+id/homeDetail2Fragment"
+		android:name="com.zarinfanavaran.presentation.home.HomeDetail2Fragment"
+		android:label="HomeDetail2Fragment"
+		tools:layout="@layout/fragment_home_detail2" />
+</navigation>

@@ -1,0 +1,201 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+	<!-- Base application theme. -->
+	<style name="Theme.Shop" parent="Theme.MaterialComponents.Light.NoActionBar">
+		<!-- Primary brand color. -->
+		<item name="colorPrimary">@color/color42</item>
+		<item name="colorPrimaryVariant">@color/color42Varient</item>
+		<item name="colorOnPrimary">@color/colorF1</item>
+		<!-- Secondary brand color. -->
+		<item name="colorSecondary">@color/teal_200</item>
+		<item name="colorSecondaryVariant">@color/teal_700</item>
+		<item name="colorOnSecondary">@color/color18</item>
+		<!-- Status bar color. -->
+		<item name="android:statusBarColor">@color/white</item>
+		<!-- Customize your theme here. -->
+
+		<!-- Full Screen -->
+		<!--		<item name="android:windowFullscreen">true</item>-->
+
+		<!-- Customize your theme here. -->
+		<!--		<item name="windowNoTitle">true</item>-->
+		<!--		<item name="android:windowNoTitle">true</item>-->
+		<item name="android:textAllCaps">false</item>
+		<item name="android:windowBackground">@color/colorEF</item>
+		<item name="android:windowTranslucentStatus">false</item>
+		<item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+
+		<!--Disable DarkMode-->
+		<item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+
+		<!--Custom Styles-->
+		<item name="toolbarStyle">@style/ToolbarStyle</item>
+		<item name="appBarLayoutStyle">@style/AppBarStyle</item>
+
+		<!--Material Dialog-->
+		<item name="md_corner_radius">0dp</item>
+		<item name="md_background_color">@color/white</item>
+		<item name="md_color_button_text">@color/color18</item>
+		<item name="md_color_title">@color/black</item>
+	</style>
+
+	<!--Fonts-->
+	<style name="TextAppearance.FontRegular" parent="android:TextAppearance">
+		<item name="fontPath">@string/font_regular</item>
+	</style>
+
+	<style name="TextAppearance.FontLight" parent="android:TextAppearance">
+		<item name="fontPath">@string/font_light</item>
+	</style>
+
+	<style name="TextAppearance.FontExtraLight" parent="android:TextAppearance">
+		<item name="fontPath">@string/font_extra_light</item>
+	</style>
+
+	<style name="TextAppearance.FontMedium" parent="android:TextAppearance">
+		<item name="fontPath">@string/font_medium</item>
+	</style>
+
+	<style name="TextAppearance.FontBold" parent="android:TextAppearance">
+		<item name="fontPath">@string/font_bold</item>
+	</style>
+
+	<style name="TextAppearance.FontSemiBold" parent="android:TextAppearance">
+		<item name="fontPath">@string/font_semi_bold</item>
+	</style>
+
+	<style name="TextAppearance.FontExtraBold" parent="android:TextAppearance">
+		<item name="fontPath">@string/font_extra_bold</item>
+	</style>
+
+	<style name="TextAppearance.FontBlack" parent="android:TextAppearance">
+		<item name="fontPath">@string/font_black</item>
+	</style>
+
+	<style name="TextAppearance.FontThin" parent="android:TextAppearance">
+		<item name="fontPath">@string/font_thin</item>
+	</style>
+
+	<!--Custom Corners-->
+	<style name="IntroSkipButton">
+		<item name="cornerFamily">rounded</item>
+		<item name="cornerSizeTopLeft">@dimen/_minus10sdp</item>
+		<item name="cornerSizeTopRight">@dimen/_minus20sdp</item>
+		<item name="cornerSizeBottomLeft">0dp</item>
+		<item name="cornerSizeBottomRight">0dp</item>
+	</style>
+
+	<style name="FabBottomMenu">
+		<item name="cornerFamily">rounded</item>
+		<item name="cornerSize">@dimen/_28sdp</item>
+	</style>
+
+	<style name="FabBottomMenu2">
+		<item name="cornerFamily">rounded</item>
+		<item name="cornerSize">@dimen/_24sdp</item>
+	</style>
+
+	<style name="ProfileTopBar">
+		<item name="cornerFamily">rounded</item>
+		<item name="cornerSizeBottomLeft">@dimen/_138sdp</item>
+		<item name="cornerSizeBottomRight">@dimen/_138sdp</item>
+		<item name="cornerSizeTopRight">0dp</item>
+		<item name="cornerSizeTopLeft">0dp</item>
+	</style>
+
+	<style name="ProfileImage">
+		<item name="cornerFamily">rounded</item>
+		<item name="cornerSizeBottomLeft">@dimen/_31sdp</item>
+		<item name="cornerSizeBottomRight">@dimen/_31sdp</item>
+		<item name="cornerSizeTopRight">@dimen/_31sdp</item>
+		<item name="cornerSizeTopLeft">@dimen/_31sdp</item>
+	</style>
+
+	<style name="ProfileImageEdit">
+		<item name="cornerFamily">rounded</item>
+		<item name="cornerSizeBottomLeft">@dimen/_50sdp</item>
+		<item name="cornerSizeBottomRight">@dimen/_50sdp</item>
+		<item name="cornerSizeTopRight">@dimen/_50sdp</item>
+		<item name="cornerSizeTopLeft">@dimen/_50sdp</item>
+	</style>
+
+	<style name="EditCircle">
+		<item name="cornerFamily">rounded</item>
+		<item name="cornerSizeBottomLeft">@dimen/_14sdp</item>
+		<item name="cornerSizeBottomRight">@dimen/_14sdp</item>
+		<item name="cornerSizeTopRight">@dimen/_14sdp</item>
+		<item name="cornerSizeTopLeft">@dimen/_14sdp</item>
+	</style>
+
+	<!--BottomNavigationView-->
+	<style name="BottomMenuTextAppearanceActive">
+		<item name="android:textSize">@dimen/_10ssp</item>
+		<item name="android:textColor">@color/color42</item>
+	</style>
+
+	<style name="BottomMenuTextAppearance">
+		<item name="android:textSize">@dimen/_10ssp</item>
+		<item name="android:textColor">@color/color18</item>
+	</style>
+
+	<!--Custom Styles-->
+	<style name="ToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
+		<item name="contentInsetStart">0dp</item>
+		<item name="contentInsetEnd">0dp</item>
+		<item name="contentInsetRight">0dp</item>
+		<item name="contentInsetLeft">0dp</item>
+		<item name="android:contentInsetStart">0dp</item>
+		<item name="android:contentInsetEnd">0dp</item>
+		<item name="android:contentInsetRight">0dp</item>
+		<item name="android:contentInsetLeft">0dp</item>
+		<item name="android:background">@drawable/toolbar_bg_color</item>
+	</style>
+
+	<style name="ToolbarStyle.Image">
+		<item name="android:layout_marginTop">@dimen/_16sdp</item>
+		<item name="android:layout_marginStart">@dimen/_16sdp</item>
+		<item name="android:layout_marginBottom">@dimen/_8sdp</item>
+
+		<item name="android:paddingEnd">@dimen/_16sdp</item>
+		<item name="android:paddingStart">@dimen/_16sdp</item>
+		<item name="android:paddingBottom">@dimen/_8sdp</item>
+		<item name="android:paddingTop">@dimen/_8sdp</item>
+
+		<item name="android:background">@color/color42</item>
+		<item name="tint">@color/colorF1</item>
+	</style>
+
+	<style name="ToolbarStyle.ImageLeft">
+		<item name="android:layout_marginTop">@dimen/_16sdp</item>
+		<item name="android:layout_marginEnd">@dimen/_16sdp</item>
+		<item name="android:layout_marginBottom">@dimen/_16sdp</item>
+
+		<item name="android:paddingEnd">@dimen/_16sdp</item>
+		<item name="android:paddingStart">@dimen/_16sdp</item>
+		<item name="android:paddingBottom">@dimen/_8sdp</item>
+		<item name="android:paddingTop">@dimen/_8sdp</item>
+
+		<item name="android:background">@color/color42</item>
+		<item name="tint">@color/colorF1</item>
+	</style>
+
+	<style name="ToolbarStyle.Text">
+		<item name="android:layout_marginEnd">@dimen/_16sdp</item>
+
+		<item name="android:paddingEnd">@dimen/_16sdp</item>
+		<item name="android:paddingStart">@dimen/_16sdp</item>
+
+		<item name="android:background">@color/white</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:textSize">@dimen/_11ssp</item>
+		<item name="android:textAppearance">@style/TextAppearance.FontMedium</item>
+		<item name="android:textColor">@color/color18</item>
+	</style>
+
+	<style name="AppBarStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
+		<item name="android:background">@color/transparent</item>
+	</style>
+
+	<style name="HintLabel" parent="TextAppearance.Design.Hint">
+		<item name="android:textSize">@dimen/_12ssp</item>
+	</style>
+</resources>

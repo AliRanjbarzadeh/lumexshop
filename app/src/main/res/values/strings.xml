@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!--Fonts-->
+	<string name="font_regular">fonts/font_regular.ttf</string>
+	<string name="font_bold">fonts/font_bold.ttf</string>
+	<string name="font_extra_bold">fonts/font_extra_bold.ttf</string>
+	<string name="font_semi_bold">fonts/font_semi_bold.ttf</string>
+	<string name="font_black">fonts/font_black.ttf</string>
+	<string name="font_light">fonts/font_light.ttf</string>
+	<string name="font_extra_light">fonts/font_extra_light.ttf</string>
+	<string name="font_medium">fonts/font_medium.ttf</string>
+	<string name="font_thin">fonts/font_thin.ttf</string>
+</resources>

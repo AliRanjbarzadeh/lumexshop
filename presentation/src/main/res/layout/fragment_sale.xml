@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<androidx.coordinatorlayout.widget.CoordinatorLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<com.google.android.material.appbar.AppBarLayout
+			android:id="@+id/appbarId"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<com.google.android.material.appbar.MaterialToolbar
+				android:id="@+id/toolbarId"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@color/color42">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+					<androidx.appcompat.widget.AppCompatImageView
+						android:id="@+id/imgSearch"
+						android:layout_width="wrap_content"
+						android:layout_height="@dimen/_34sdp"
+						style="@style/ToolbarStyle.ImageLeft"
+						android:src="@drawable/ic_search_stroke"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintTop_toTopOf="parent"
+						app:tint="@color/colorF1" />
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/txtSearch"
+						android:layout_width="0dp"
+						android:layout_height="0dp"
+						android:layout_marginStart="@dimen/_16sdp"
+						android:background="@color/white"
+						android:ellipsize="end"
+						android:gravity="start|center_vertical"
+						android:maxLines="1"
+						android:paddingStart="@dimen/_16sdp"
+						android:paddingEnd="@dimen/_16sdp"
+						android:text="@string/sale_page_title"
+						android:textAlignment="viewStart"
+						android:textAppearance="@style/TextAppearance.FontBold"
+						android:textColor="@color/color42"
+						android:textSize="@dimen/_12ssp"
+						app:layout_constraintBottom_toBottomOf="@id/imgSearch"
+						app:layout_constraintEnd_toStartOf="@id/imgSearch"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="@id/imgSearch" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+
+			</com.google.android.material.appbar.MaterialToolbar>
+
+		</com.google.android.material.appbar.AppBarLayout>
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/rvSale"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:clipToPadding="false"
+				android:paddingStart="@dimen/_15sdp"
+				android:paddingTop="@dimen/_15sdp"
+				android:paddingEnd="@dimen/_15sdp"
+				android:paddingBottom="@dimen/_20sdp"
+				app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:spanCount="2"
+				tools:itemCount="6"
+				tools:listitem="@layout/template_product_item_sale" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

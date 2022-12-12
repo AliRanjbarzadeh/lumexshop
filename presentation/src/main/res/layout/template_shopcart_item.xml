@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<import type="android.view.View" />
+
+		<variable
+			name="item"
+			type="com.zarinfanavaran.domain.models.ProductShopCart" />
+	</data>
+
+	<com.google.android.material.card.MaterialCardView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/_4sdp"
+		android:layout_marginBottom="@dimen/_4sdp"
+		app:cardBackgroundColor="@color/white"
+		app:cardCornerRadius="0dp"
+		app:cardElevation="0dp">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/_8sdp">
+
+			<androidx.appcompat.widget.AppCompatImageView
+				android:id="@+id/imgProduct"
+				android:layout_width="@dimen/_70sdp"
+				android:layout_height="0dp"
+				android:scaleType="fitCenter"
+				android:src="@drawable/temp_product1"
+				app:layout_constraintDimensionRatio="1:1"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/txtTitle"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/_4sdp"
+				android:ellipsize="end"
+				android:maxLines="2"
+				android:minLines="2"
+				android:text="@{item.title, default=`@string/sample_product_title`}"
+				android:textColor="@color/color18"
+				android:textSize="@dimen/_9ssp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toEndOf="@id/imgProduct"
+				app:layout_constraintTop_toTopOf="@id/imgProduct" />
+
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/txtDiscount"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:gravity="start"
+				android:text="@{item.formatDiscount, default=`@string/sample_discount_shopcart`}"
+				android:textAlignment="viewStart"
+				android:textColor="@color/color42"
+				android:textSize="@dimen/_8ssp"
+				app:layout_constraintBottom_toTopOf="@id/txtPrice"
+				app:layout_constraintEnd_toEndOf="@id/txtTitle"
+				app:layout_constraintStart_toStartOf="@id/txtTitle"
+				app:layout_constraintTop_toBottomOf="@id/txtTitle"
+				app:layout_constraintVertical_chainStyle="packed" />
+
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/txtPrice"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/_1sdp"
+				android:gravity="start"
+				android:text="@{item.formatPrice, default=`@string/sample_price_shopcart`}"
+				android:textAlignment="viewStart"
+				android:textAppearance="@style/TextAppearance.FontMedium"
+				android:textColor="@color/color18"
+				android:textSize="@dimen/_9ssp"
+				app:layout_constraintBottom_toBottomOf="@id/imgProduct"
+				app:layout_constraintEnd_toEndOf="@id/txtTitle"
+				app:layout_constraintStart_toStartOf="@id/txtTitle"
+				app:layout_constraintTop_toBottomOf="@id/txtDiscount" />
+
+			<com.google.android.material.card.MaterialCardView
+				android:id="@+id/cvButtons"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/_4sdp"
+				app:cardBackgroundColor="@color/colorEF"
+				app:cardCornerRadius="0dp"
+				app:cardElevation="0dp"
+				app:layout_constraintEnd_toEndOf="@id/txtTitle"
+				app:layout_constraintTop_toBottomOf="@id/imgProduct">
+
+				<androidx.appcompat.widget.LinearLayoutCompat
+					android:layout_width="wrap_content"
+					android:layout_height="@dimen/_36sdp"
+					android:gravity="center"
+					android:orientation="horizontal">
+
+					<androidx.appcompat.widget.AppCompatImageView
+						android:id="@+id/btnIncrease"
+						android:layout_width="@dimen/_26sdp"
+						android:layout_height="match_parent"
+						android:alpha="@{item.count == item.maxCount ? 0.3f : 1.0f}"
+						android:scaleType="centerInside"
+						android:src="@drawable/ic_add_stroke" />
+
+					<androidx.appcompat.widget.LinearLayoutCompat
+						android:layout_width="@dimen/_26sdp"
+						android:layout_height="wrap_content"
+						android:gravity="center"
+						android:orientation="vertical">
+
+						<com.google.android.material.textview.MaterialTextView
+							android:id="@+id/txtCount"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:gravity="center"
+							android:text="@{item.countString, default=`1`}"
+							android:textAppearance="@style/TextAppearance.FontMedium"
+							android:textSize="@dimen/_12ssp" />
+
+						<com.google.android.material.textview.MaterialTextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:gravity="center"
+							android:text="@string/maximum_label"
+							android:textAppearance="@style/TextAppearance.FontLight"
+							android:textColor="@color/colorA3"
+							android:textSize="@dimen/_6ssp"
+							android:visibility="@{item.count == item.maxCount ? View.VISIBLE : View.GONE}" />
+
+					</androidx.appcompat.widget.LinearLayoutCompat>
+
+					<androidx.appcompat.widget.AppCompatImageView
+						android:id="@+id/btnDecrease"
+						android:layout_width="@dimen/_26sdp"
+						android:layout_height="match_parent"
+						android:scaleType="centerInside"
+						android:src="@{item.count == 1 ? @drawable/ic_trash : @drawable/ic_minus_stroke, default=`@drawable/ic_trash`}" />
+
+				</androidx.appcompat.widget.LinearLayoutCompat>
+
+			</com.google.android.material.card.MaterialCardView>
+
+			<com.google.android.material.imageview.ShapeableImageView
+				android:id="@+id/imgColor"
+				android:layout_width="@dimen/_9sdp"
+				android:layout_height="@dimen/_9sdp"
+				android:layout_marginBottom="@dimen/_4sdp"
+				android:src="@color/black"
+				app:layout_constraintBottom_toTopOf="@id/imgWarranty"
+				app:layout_constraintStart_toStartOf="@id/imgProduct"
+				app:layout_constraintTop_toTopOf="@id/cvButtons"
+				app:layout_constraintVertical_chainStyle="packed"
+				app:strokeColor="@color/colorEF"
+				app:strokeWidth="@dimen/_1sdp" />
+
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/txtColor"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/_2sdp"
+				android:layout_marginEnd="@dimen/_8sdp"
+				android:gravity="center_vertical"
+				android:text="@{item.colorName, default=`@string/sample_color`}"
+				android:textColor="@color/colorA3"
+				android:textSize="@dimen/_6ssp"
+				app:layout_constraintBottom_toBottomOf="@id/imgColor"
+				app:layout_constraintEnd_toStartOf="@id/cvButtons"
+				app:layout_constraintStart_toEndOf="@id/imgColor"
+				app:layout_constraintTop_toTopOf="@id/imgColor" />
+
+			<com.google.android.material.imageview.ShapeableImageView
+				android:id="@+id/imgWarranty"
+				android:layout_width="@dimen/_9sdp"
+				android:layout_height="@dimen/_9sdp"
+				android:scaleType="fitCenter"
+				android:src="@drawable/ic_protect_stroke"
+				app:layout_constraintBottom_toBottomOf="@id/cvButtons"
+				app:layout_constraintStart_toStartOf="@id/imgProduct"
+				app:layout_constraintTop_toBottomOf="@id/imgColor"
+				app:strokeColor="@color/colorEF"
+				app:strokeWidth="@dimen/_1sdp" />
+
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/txtWarranty"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/_2sdp"
+				android:layout_marginEnd="@dimen/_8sdp"
+				android:gravity="center_vertical"
+				android:text="@{item.warranty, default=`@string/sample_warranty`}"
+				android:textColor="@color/colorA3"
+				android:textSize="@dimen/_6ssp"
+				app:layout_constraintBottom_toBottomOf="@id/imgWarranty"
+				app:layout_constraintEnd_toStartOf="@id/cvButtons"
+				app:layout_constraintStart_toEndOf="@id/imgWarranty"
+				app:layout_constraintTop_toTopOf="@id/imgWarranty" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</com.google.android.material.card.MaterialCardView>
+</layout>

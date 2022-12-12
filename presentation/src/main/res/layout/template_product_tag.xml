@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<variable
+			name="item"
+			type="com.zarinfanavaran.domain.models.ListTitle" />
+	</data>
+
+	<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/btnTag"
+		android:layout_width="wrap_content"
+		android:layout_height="@dimen/_18sdp"
+		android:layout_marginTop="@dimen/_8sdp"
+		android:layout_marginBottom="@dimen/_8sdp"
+		android:clickable="false"
+		android:gravity="center"
+		android:insetTop="0dp"
+		android:insetBottom="0dp"
+		android:paddingStart="@dimen/_6sdp"
+		android:paddingEnd="@dimen/_6sdp"
+		android:text="@{item.title, default=`@string/wrong_item`}"
+		android:textColor="@color/color18"
+		android:textSize="@dimen/_8ssp"
+		app:backgroundTint="@color/colorEF"
+		app:cornerRadius="0dp"
+		app:elevation="0dp"
+		app:icon="@drawable/ic_arrow_stroke"
+		app:iconGravity="textEnd"
+		app:iconPadding="@dimen/_4sdp"
+		app:iconSize="@dimen/_8sdp"
+		app:iconTint="@color/color18" />
+</layout>

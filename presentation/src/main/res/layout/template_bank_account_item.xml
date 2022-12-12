@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<data>
+
+		<variable
+			name="item"
+			type="com.zarinfanavaran.domain.models.BankAccount" />
+	</data>
+
+	<androidx.appcompat.widget.LinearLayoutCompat
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/_8sdp"
+		android:background="@color/colorEF"
+		android:orientation="vertical"
+		android:padding="@dimen/_8sdp">
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/_19sdp">
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent">
+
+				<com.google.android.material.textview.MaterialTextView
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:gravity="center_vertical"
+					android:text="@{item.title, default=`@string/shaba_number`}"
+					android:textColor="@color/color18"
+					android:textSize="@dimen/_11ssp" />
+
+				<com.google.android.material.textview.MaterialTextView
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_marginStart="@dimen/_8sdp"
+					android:background="@{item.confirmed ? @color/color42 : @color/colorD6, default=`@color/colorD6`}"
+					android:gravity="center_vertical"
+					android:paddingStart="@dimen/_8sdp"
+					android:paddingEnd="@dimen/_8sdp"
+					android:text="@{item.confirmed ? @string/confirmed : @string/not_confirmed, default=`@string/not_confirmed`}"
+					android:textColor="@color/colorF1"
+					android:textSize="@dimen/_8ssp" />
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+
+			<androidx.appcompat.widget.AppCompatImageView
+				android:id="@+id/btnEdit"
+				android:layout_width="@dimen/_19sdp"
+				android:layout_height="@dimen/_19sdp"
+				android:layout_gravity="end|center_vertical"
+				android:scaleType="fitCenter"
+				android:src="@drawable/ic_edit_stroke" />
+
+		</FrameLayout>
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/_2sdp"
+			android:layout_marginTop="@dimen/_8sdp"
+			android:layout_marginBottom="@dimen/_8sdp"
+			android:background="@color/white" />
+
+		<com.google.android.material.textview.MaterialTextView
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/_19sdp"
+			android:gravity="center_vertical|end"
+			android:text="@{item.shabaFormat, default=`@string/sample_shaba_number`}"
+			android:textAlignment="viewEnd"
+			android:textColor="@color/color42"
+			android:textSize="@dimen/_11ssp" />
+
+	</androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

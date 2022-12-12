@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:context=".product.ProductActivity">
+
+	<androidx.coordinatorlayout.widget.CoordinatorLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layoutDirection="locale">
+
+		<com.google.android.material.appbar.AppBarLayout
+			android:id="@+id/appbarId"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<com.google.android.material.appbar.MaterialToolbar
+				android:id="@+id/toolbarId"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+					<androidx.appcompat.widget.AppCompatImageView
+						android:id="@+id/imgToolbarIcon"
+						style="@style/ToolbarStyle.Image"
+						android:layout_width="wrap_content"
+						android:layout_height="@dimen/_34sdp"
+						android:src="@drawable/ic_arrow_right"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/txtToolbarTitle"
+						style="@style/ToolbarStyle.Text"
+						android:layout_width="0dp"
+						android:layout_height="0dp"
+						android:text="@string/search_in_lumex_shop"
+						app:layout_constraintBottom_toBottomOf="@id/imgToolbarIcon"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toEndOf="@id/imgToolbarIcon"
+						app:layout_constraintTop_toTopOf="@id/imgToolbarIcon" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+
+			</com.google.android.material.appbar.MaterialToolbar>
+
+		</com.google.android.material.appbar.AppBarLayout>
+
+		<androidx.core.widget.NestedScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:fillViewport="true"
+			app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical">
+
+				<androidx.appcompat.widget.LinearLayoutCompat
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@color/white"
+					android:orientation="vertical">
+
+					<androidx.recyclerview.widget.RecyclerView
+						android:id="@+id/rvTags"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:clipToPadding="false"
+						android:orientation="horizontal"
+						android:paddingStart="@dimen/_16sdp"
+						android:paddingEnd="@dimen/_16sdp"
+						app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+						tools:listitem="@layout/template_product_tag" />
+
+					<androidx.constraintlayout.widget.ConstraintLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="@dimen/_16sdp"
+						android:layout_marginTop="@dimen/_8sdp"
+						android:layout_marginEnd="@dimen/_16sdp">
+
+						<com.google.android.material.textview.MaterialTextView
+							android:id="@+id/txtAdsTitle"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:text="@string/sample_title_product_detail"
+							android:textAppearance="@style/TextAppearance.FontMedium"
+							android:textColor="@color/color42"
+							android:textSize="@dimen/_9ssp"
+							app:layout_constraintEnd_toStartOf="@id/txtAdsTime"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toTopOf="parent" />
+
+						<com.google.android.material.textview.MaterialTextView
+							android:id="@+id/txtAdsTime"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="@string/sample_ads_timer"
+							android:textAppearance="@style/TextAppearance.FontMedium"
+							android:textColor="@color/color42"
+							android:textSize="@dimen/_9ssp"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintTop_toTopOf="@id/txtAdsTitle" />
+
+						<View
+							android:layout_width="0dp"
+							android:layout_height="@dimen/_2sdp"
+							android:layout_marginTop="@dimen/_4sdp"
+							android:background="@color/color42"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toBottomOf="@id/txtAdsTitle" />
+
+					</androidx.constraintlayout.widget.ConstraintLayout>
+
+					<androidx.constraintlayout.widget.ConstraintLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="@dimen/_16sdp"
+						android:layout_marginTop="@dimen/_16sdp"
+						android:layout_marginEnd="@dimen/_16sdp">
+
+						<androidx.appcompat.widget.AppCompatImageView
+							android:id="@+id/imgProduct"
+							android:layout_width="0dp"
+							android:layout_height="0dp"
+							android:layout_marginStart="@dimen/_45sdp"
+							android:layout_marginTop="@dimen/_10sdp"
+							android:layout_marginEnd="@dimen/_45sdp"
+							android:scaleType="fitCenter"
+							android:src="@drawable/temp_product_detail"
+							app:layout_constraintDimensionRatio="151:180"
+							app:layout_constraintEnd_toStartOf="@id/rvTools"
+							app:layout_constraintStart_toEndOf="@id/rvColors"
+							app:layout_constraintTop_toTopOf="parent" />
+
+						<androidx.recyclerview.widget.RecyclerView
+							android:id="@+id/rvColors"
+							android:layout_width="@dimen/_22sdp"
+							android:layout_height="0dp"
+							app:layout_constraintBottom_toBottomOf="@id/imgProduct"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toTopOf="parent" />
+
+						<androidx.appcompat.widget.AppCompatImageView
+							android:layout_width="0dp"
+							android:layout_height="@dimen/_6sdp"
+							android:scaleType="fitXY"
+							android:src="@drawable/gradient_bottom_white"
+							app:layout_constraintBottom_toBottomOf="@id/rvColors"
+							app:layout_constraintEnd_toEndOf="@id/rvColors"
+							app:layout_constraintStart_toStartOf="@id/rvColors" />
+
+						<androidx.recyclerview.widget.RecyclerView
+							android:id="@+id/rvTools"
+							android:layout_width="wrap_content"
+							android:layout_height="0dp"
+							android:paddingStart="@dimen/_3sdp"
+							android:paddingEnd="@dimen/_3sdp"
+							app:layout_constraintBottom_toBottomOf="@id/imgProduct"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintTop_toTopOf="parent"
+							tools:itemCount="1"
+							tools:listitem="@layout/template_product_tool" />
+
+						<androidx.recyclerview.widget.RecyclerView
+							android:id="@+id/rvImages"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/_16sdp"
+							android:orientation="horizontal"
+							app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toBottomOf="@id/imgProduct" />
+
+						<androidx.appcompat.widget.AppCompatImageView
+							android:layout_width="@dimen/_6sdp"
+							android:layout_height="0dp"
+							android:scaleType="fitXY"
+							android:src="@drawable/gradient_right_white"
+							app:layout_constraintBottom_toBottomOf="@id/rvImages"
+							app:layout_constraintStart_toStartOf="@id/rvImages"
+							app:layout_constraintTop_toTopOf="@id/rvImages" />
+
+						<androidx.appcompat.widget.AppCompatImageView
+							android:layout_width="@dimen/_6sdp"
+							android:layout_height="0dp"
+							android:rotation="180"
+							android:scaleType="fitXY"
+							android:src="@drawable/gradient_right_white"
+							app:layout_constraintBottom_toBottomOf="@id/rvImages"
+							app:layout_constraintEnd_toEndOf="@id/rvImages"
+							app:layout_constraintTop_toTopOf="@id/rvImages" />
+
+					</androidx.constraintlayout.widget.ConstraintLayout>
+
+				</androidx.appcompat.widget.LinearLayoutCompat>
+
+
+			</androidx.appcompat.widget.LinearLayoutCompat>
+		</androidx.core.widget.NestedScrollView>
+
+	</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

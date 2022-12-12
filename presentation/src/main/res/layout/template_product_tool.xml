@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<variable
+			name="item"
+			type="com.zarinfanavaran.domain.models.ProductTool" />
+	</data>
+
+	<androidx.appcompat.widget.AppCompatImageView
+		android:id="@+id/imgProductTool"
+		android:layout_width="@dimen/_19sdp"
+		android:layout_height="@dimen/_19sdp"
+		android:scaleType="center"
+		android:src="@drawable/ic_share_filled"
+		app:imageResource="@{item.image}"
+		app:tint="@color/color18" />
+</layout>

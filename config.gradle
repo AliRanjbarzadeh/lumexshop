@@ -1,0 +1,256 @@
+ext {
+    fields = [
+            'BaseUrl'         : '"https://google.com"',
+            'DevUrl'          : '"https://google.com"',
+            'MediaUrl'        : '""',
+            'Authorization'   : '"Authorization"',
+            'TokenPrefix'     : '"Bearer "',
+            'DefaultToken'    : '"Ov9ugfPxDb9rRY2S1qY4Cs4PpcIkBlj4"',
+            'SessionLogin'    : '"is.login"',
+            'SessionToken'    : '"dynamic.token"',
+            'RegisterToken'   : '"register.token"',
+            'SessionPushToken': '"PushToken"',
+            'User'            : '"user"',
+            'DefaultLanguage' : '"fa"',
+            'SessionLanguage' : '"current.language"',
+            'DefaultTheme'    : '"light"',
+            'SessionTheme'    : '"current.theme"',
+            'AppName'         : '"Shop"',
+            'DatabaseName'    : '"ShopDB"',
+            'AppVersion'      : '"1"',
+            'UserAgent'       : '"Shop-Android"',
+            'Environment'     : '"development"',
+    ]
+
+    versions = [
+            'appVersion'      : 1,
+            'minSdk'          : 21,
+            'compileSdk'      : 33,
+            'JavaVersion'     : JavaVersion.VERSION_1_8,
+
+            //Common
+            'multidex'        : '2.0.1',
+            'coreKtx'         : '1.9.0',
+            'coroutines'      : '1.3.9',
+            'appCompat'       : '1.5.1',
+            'constraintLayout': '2.1.4',
+            'viewpager2'      : '1.0.0',
+            'recyclerView'    : '1.2.1',
+
+            //Google
+            'material'        : '1.6.1',
+            'hilt'            : '2.44',
+
+            //Navigation
+            'navigation'      : '2.5.2',
+
+            //Network
+            'retrofit'        : '2.9.0',
+            'retrofitAdapter' : '0.9.2',
+            'okhttp'          : '4.10.0',
+            'stetho'          : '1.6.0',
+
+            //Database
+            'room'            : '2.4.3',
+
+            //RX
+            'rxJava'          : '2.2.21',
+            'rxAndroid'       : '2.1.1',
+
+            //Additional
+            'hawk'            : '2.0.1',
+            'indicator'       : '1.2.1',
+            'calligraphy3'    : '3.1.1',
+            'viewpump'        : '2.0.3',
+            'sdp'             : '1.1.0',
+            'ssp'             : '1.1.0',
+            'keyboard'        : '1.0.1',
+            'glide'           : '4.14.1',
+            'cardSlider'      : '1.0.1',
+            'complexView'     : '1.1',
+            'materialDialog'  : '3.3.0',
+            'ucrop'           : '2.2.8',
+    ]
+
+    libs = [
+            //Common
+            'multidex'                 : "androidx.multidex:multidex:${versions.multidex}",
+            'coreKtx'                  : "androidx.core:core-ktx:${versions.coreKtx}",
+            'coroutinesCore'           : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutines}",
+            'coroutines'               : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}",
+            'appCompat'                : "androidx.appcompat:appcompat:${versions.appCompat}",
+            'constraintLayout'         : "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
+            'viewpager2'               : "androidx.viewpager2:viewpager2:${versions.viewpager2}",
+            'recyclerView'             : "androidx.recyclerview:recyclerview:${versions.recyclerView}",
+
+            //Google
+            'material'                 : "com.google.android.material:material:${versions.material}",
+            'hilt'                     : "com.google.dagger:hilt-android:${versions.hilt}",
+            'hiltCompiler'             : "com.google.dagger:hilt-compiler:${versions.hilt}",
+
+            //Navigation
+            'navigationFragmentKtx'    : "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
+            'navigationUiKtx'          : "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+
+            //Network
+            'retrofit'                 : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+            'retrofitAdapter'          : "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${versions.retrofitAdapter}",
+            'retrofitGson'             : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+            'okhttp'                   : "com.squareup.okhttp3:okhttp:${versions.okhttp}",
+            'stetho'                   : "com.facebook.stetho:stetho:${versions.stetho}",
+            'stethoOkhttp3'            : "com.facebook.stetho:stetho-okhttp3:${versions.stetho}",
+
+            //Database
+            'roomRuntime'              : "androidx.room:room-runtime:${versions.room}",
+            'roomCompiler'             : "androidx.room:room-compiler:${versions.room}",
+            'roomRx'                   : "androidx.room:room-rxjava2:${versions.room}",
+
+            //Rx
+            'rxJava'                   : "io.reactivex.rxjava2:rxjava:${versions.rxJava}",
+            'rxAndroid'                : "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}",
+
+            //Additional
+            'hawk'                     : "com.orhanobut:hawk:${versions.hawk}",
+            'indicator'                : "com.github.zhpanvip:viewpagerindicator:${versions.indicator}",
+            'calligraphy3'             : "io.github.inflationx:calligraphy3:${versions.calligraphy3}",
+            'viewpump'                 : "io.github.inflationx:viewpump:${versions.viewpump}",
+            'sdp'                      : "com.intuit.sdp:sdp-android:${versions.sdp}",
+            'ssp'                      : "com.intuit.ssp:ssp-android:${versions.ssp}",
+            'keyboard'                 : "io.github.ParkSangGwon:tedkeyboardobserver:${versions.keyboard}",
+            'glide'                    : "com.github.bumptech.glide:glide:${versions.glide}",
+            'glideCompiler'            : "com.github.bumptech.glide:compiler:${versions.glide}",
+            'cardSlider'               : "com.github.IslamKhSh:CardSlider:${versions.cardSlider}",
+            'complexView'              : "com.github.BluRe-CN:ComplexView:${versions.complexView}",
+            'materialDialog'           : "com.afollestad.material-dialogs:core:${versions.materialDialog}",
+            'materialDialogBottomSheet': "com.afollestad.material-dialogs:bottomsheets:${versions.materialDialog}",
+            'ucrop'                    : "com.github.yalantis:ucrop:${versions.ucrop}",
+    ]
+
+    def plugins = [
+            KotlinAndroid  : 'kotlin-android',
+            KotlinParcelize: 'kotlin-parcelize',
+            KotlinKapt     : 'kotlin-kapt',
+            Hilt           : 'dagger.hilt.android.plugin',
+            SafeArgs       : 'androidx.navigation.safeargs.kotlin',
+    ]
+
+    def modules = [
+            app         : ':app',
+            data        : ':data',
+            domain      : ':domain',
+            presentation: ':presentation',
+    ]
+
+    //Data Module
+    data = [
+            'libs'   : [
+                    //Modules
+                    [configuration: "implementation", dependency: project(modules.domain)],
+
+                    //Google
+                    [configuration: "implementation", dependency: libs.hilt],
+                    [configuration: "kapt", dependency: libs.hiltCompiler],
+
+                    //Database
+                    [configuration: "kapt", dependency: libs.roomCompiler],
+            ],
+
+            'plugins': []
+    ]
+
+    //Domain Module
+    domain = [
+            'libs'   : [
+                    //Common
+                    [configuration: "api", dependency: libs.multidex],
+                    [configuration: "api", dependency: libs.coreKtx],
+                    [configuration: "api", dependency: libs.coroutinesCore],
+                    [configuration: "api", dependency: libs.coroutines],
+                    [configuration: "api", dependency: libs.appCompat],
+                    [configuration: "api", dependency: libs.constraintLayout],
+                    [configuration: "api", dependency: libs.recyclerView],
+                    [configuration: "api", dependency: libs.viewpager2],
+
+                    //Google
+                    [configuration: "api", dependency: libs.material],
+                    [configuration: "implementation", dependency: libs.hilt],
+                    [configuration: "kapt", dependency: libs.hiltCompiler],
+
+                    //Navigation
+                    [configuration: "api", dependency: libs.navigationFragmentKtx],
+                    [configuration: "api", dependency: libs.navigationUiKtx],
+
+                    //Network
+                    [configuration: "api", dependency: libs.retrofit],
+                    [configuration: "api", dependency: libs.retrofitAdapter],
+                    [configuration: "api", dependency: libs.retrofitGson],
+                    [configuration: "api", dependency: libs.okhttp],
+                    [configuration: "api", dependency: libs.stetho],
+                    [configuration: "api", dependency: libs.stethoOkhttp3],
+
+                    //Database
+                    [configuration: "api", dependency: libs.roomRuntime],
+                    [configuration: "kapt", dependency: libs.roomCompiler],
+                    [configuration: "api", dependency: libs.roomRx],
+
+                    //RX
+                    [configuration: "api", dependency: libs.rxJava],
+                    [configuration: "api", dependency: libs.rxAndroid],
+
+                    //Additional
+                    [configuration: "api", dependency: libs.hawk],
+                    [configuration: "api", dependency: libs.calligraphy3],
+                    [configuration: "api", dependency: libs.viewpump],
+                    [configuration: "api", dependency: libs.sdp],
+                    [configuration: "api", dependency: libs.ssp],
+                    [configuration: "api", dependency: libs.keyboard],
+                    [configuration: "api", dependency: libs.glide],
+            ],
+
+            'plugins': [plugins.KotlinAndroid, plugins.KotlinParcelize, plugins.KotlinKapt, plugins.SafeArgs, plugins.Hilt]
+    ]
+
+    //Presentation Module
+    presentation = [
+            'libs'   : [
+                    //Modules
+                    [configuration: "implementation", dependency: project(modules.domain)],
+
+                    //Google
+                    [configuration: "implementation", dependency: libs.hilt],
+                    [configuration: "kapt", dependency: libs.hiltCompiler],
+
+                    //Database
+                    [configuration: "kapt", dependency: libs.roomCompiler],
+
+                    //Additional
+                    [configuration: "implementation", dependency: libs.indicator],
+                    [configuration: "implementation", dependency: libs.cardSlider],
+                    [configuration: "implementation", dependency: libs.complexView],
+                    [configuration: "implementation", dependency: libs.materialDialog],
+                    [configuration: "implementation", dependency: libs.materialDialogBottomSheet],
+                    [configuration: "implementation", dependency: libs.ucrop],
+            ],
+
+            'plugins': []
+    ]
+
+    //App Module
+    app = [
+            'libs'   : [
+                    //Modules
+                    [configuration: "implementation", dependency: project(modules.domain)],
+                    [configuration: "implementation", dependency: project(modules.data)],
+                    [configuration: "implementation", dependency: project(modules.presentation)],
+
+                    //Google
+                    [configuration: "implementation", dependency: libs.hilt],
+                    [configuration: "kapt", dependency: libs.hiltCompiler],
+
+                    //Database
+                    [configuration: "kapt", dependency: libs.roomCompiler],
+            ],
+
+            'plugins': []
+    ]
+}

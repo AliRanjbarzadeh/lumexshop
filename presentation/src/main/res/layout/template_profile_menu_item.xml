@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<import type="android.view.View" />
+
+		<variable
+			name="item"
+			type="com.zarinfanavaran.domain.models.ProfileMenuItem" />
+	</data>
+
+	<com.google.android.material.card.MaterialCardView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/_8sdp"
+		app:cardBackgroundColor="@color/white"
+		app:cardCornerRadius="0dp"
+		app:cardElevation="0dp">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/_35sdp">
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/btnTitle"
+				style="@style/Widget.MaterialComponents.Button.TextButton"
+				android:layout_width="wrap_content"
+				android:layout_height="0dp"
+				android:layout_marginStart="@dimen/_8sdp"
+				android:clickable="false"
+				android:enabled="false"
+				android:gravity="center_vertical|start"
+				android:insetTop="0dp"
+				android:insetBottom="0dp"
+				android:padding="0dp"
+				android:text="@{item.title, default=`@string/user_information`}"
+				android:textColor="@color/color18"
+				android:textSize="@dimen/_11ssp"
+				app:icon="@drawable/ic_contact_stroke"
+				app:iconGravity="textStart"
+				app:iconPadding="@dimen/_4sdp"
+				app:iconSize="@dimen/_18sdp"
+				app:iconTint="@color/color18"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<androidx.appcompat.widget.AppCompatImageView
+				android:layout_width="@dimen/_16sdp"
+				android:layout_height="@dimen/_16sdp"
+				android:layout_marginEnd="@dimen/_8sdp"
+				android:scaleType="fitCenter"
+				android:src="@drawable/ic_arrow_stroke"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:tint="@color/color18" />
+
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/txtMenuItemBadge"
+				android:layout_width="@dimen/_5sdp"
+				android:layout_height="@dimen/_5sdp"
+				android:layout_marginStart="@dimen/_1sdp"
+				android:layout_marginBottom="@dimen/_10sdp"
+				android:background="@drawable/bg_badge_profile"
+				android:gravity="center"
+				android:padding="0dp"
+				android:textAppearance="@style/TextAppearance.FontSemiBold"
+				android:textColor="@color/colorF1"
+				android:textSize="@dimen/_5ssp"
+				android:visibility="@{item.badgeCount > 0 ? View.VISIBLE : View.INVISIBLE}"
+				app:layout_constraintBottom_toBottomOf="@id/btnTitle"
+				app:layout_constraintStart_toStartOf="@id/btnTitle" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</com.google.android.material.card.MaterialCardView>
+</layout>

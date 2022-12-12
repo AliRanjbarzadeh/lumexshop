@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/shopcart_nav"
+	app:startDestination="@id/shopCartFragment">
+
+	<fragment
+		android:id="@+id/shopCartFragment"
+		android:name="com.zarinfanavaran.presentation.shopcart.ShopCartFragment"
+		android:label="ShopCartFragment"
+		tools:layout="@layout/fragment_shopcart" >
+		<action
+			android:id="@+id/action_shopCartFragment_to_shopCartAddressFragment"
+			app:destination="@id/shopCartAddressFragment" />
+	</fragment>
+
+	<fragment
+		android:id="@+id/shopCartAddressFragment"
+		android:name="com.zarinfanavaran.presentation.shopcart.address.ShopCartAddressFragment"
+		android:label="ShopCartAddressFragment"
+		tools:layout="@layout/fragment_shopcart_address" >
+		<action
+			android:id="@+id/action_shopCartAddressFragment_to_shopCartPaymentFragment"
+			app:destination="@id/shopCartPaymentFragment" />
+	</fragment>
+
+	<fragment
+		android:id="@+id/shopCartPaymentFragment"
+		android:name="com.zarinfanavaran.presentation.shopcart.payment.ShopCartPaymentFragment"
+		android:label="ShopCartPaymentFragment"
+		tools:layout="@layout/fragment_shopcart_payment" />
+</navigation>

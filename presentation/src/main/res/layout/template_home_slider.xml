@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<com.github.islamkhsh.CardSliderViewPager
+		android:id="@+id/vpSlider"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/_16sdp"
+		android:layout_marginBottom="@dimen/_16sdp"
+		app:cardSlider_otherPagesWidth="@dimen/_23sdp"
+		app:cardSlider_pageMargin="@dimen/_16sdp"
+		app:cardSlider_smallScaleFactor="0.9" />
+
+</layout>

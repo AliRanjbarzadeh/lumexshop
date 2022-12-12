@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="item"
+			type="com.zarinfanavaran.domain.models.ProductsBox" />
+	</data>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/imgBackground"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:scaleType="centerCrop"
+			android:src="@drawable/temp_box"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/clTitle"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/_16sdp"
+			android:layout_marginEnd="@dimen/_16sdp"
+			android:background="@color/colorEF"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<androidx.appcompat.widget.AppCompatImageView
+				android:id="@+id/imgIcon"
+				android:layout_width="@dimen/_18sdp"
+				android:layout_height="@dimen/_18sdp"
+				android:layout_marginStart="@dimen/_8sdp"
+				android:layout_marginTop="@dimen/_4sdp"
+				android:layout_marginBottom="@dimen/_4sdp"
+				android:scaleType="fitCenter"
+				android:src="@drawable/temp_icon_fire"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/txtTitle"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:ellipsize="end"
+				android:maxLines="1"
+				android:paddingStart="@dimen/_4sdp"
+				android:paddingEnd="@dimen/_4sdp"
+				android:text="@{item.title, default=`@string/profile`}"
+				android:textAppearance="@style/TextAppearance.FontMedium"
+				android:textColor="@color/color18"
+				android:textSize="@dimen/_11ssp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@id/btnShowAll"
+				app:layout_constraintStart_toEndOf="@id/imgIcon"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/btnShowAll"
+				style="@style/Widget.MaterialComponents.Button.TextButton"
+				android:layout_width="wrap_content"
+				android:layout_height="0dp"
+				android:gravity="end|center_vertical"
+				android:insetTop="0dp"
+				android:insetBottom="0dp"
+				android:minWidth="@dimen/_55sdp"
+				android:paddingStart="@dimen/_8sdp"
+				android:paddingTop="0dp"
+				android:paddingEnd="@dimen/_8sdp"
+				android:paddingBottom="0dp"
+				android:text="@string/show_all"
+				android:textSize="@dimen/_8ssp"
+				app:icon="@drawable/ic_arrow_stroke"
+				app:iconGravity="textEnd"
+				app:iconSize="@dimen/_8sdp"
+				app:iconPadding="@dimen/_2sdp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/rvItems"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:clipToPadding="false"
+			android:orientation="horizontal"
+			android:paddingStart="@dimen/_12sdp"
+			android:paddingTop="@dimen/_8sdp"
+			android:paddingEnd="@dimen/_12sdp"
+			android:paddingBottom="@dimen/_8sdp"
+			app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/clTitle"
+			tools:itemCount="3"
+			tools:listitem="@layout/template_product_item" />
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

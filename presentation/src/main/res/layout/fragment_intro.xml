@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/btnSkip"
+			android:layout_width="0dp"
+			android:layout_height="@dimen/_50sdp"
+			android:elevation="0dp"
+			android:gravity="bottom|center"
+			android:insetTop="0dp"
+			android:insetBottom="0dp"
+			android:paddingTop="@dimen/_10sdp"
+			android:text="@string/skip"
+			android:textAlignment="center"
+			android:textSize="@dimen/_8sdp"
+			app:backgroundTint="@color/color18"
+			app:elevation="0dp"
+			app:icon="@drawable/ic_arrow_up"
+			app:iconGravity="textTop"
+			app:iconPadding="0dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent" />
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/bg_intro"
+			android:elevation="2dp" />
+
+		<View
+			android:id="@+id/viewSkip"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:elevation="3dp"
+			app:layout_constraintBottom_toBottomOf="@id/btnSkip"
+			app:layout_constraintEnd_toEndOf="@id/btnSkip"
+			app:layout_constraintStart_toStartOf="@id/btnSkip"
+			app:layout_constraintTop_toTopOf="@id/btnSkip" />
+
+		<androidx.constraintlayout.widget.Guideline
+			android:id="@+id/glIntro2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			app:layout_constraintGuide_percent="0.79" />
+
+		<androidx.viewpager2.widget.ViewPager2
+			android:id="@+id/introSlider"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:elevation="2dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<View
+			android:id="@+id/vSeparator"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:layout_marginStart="@dimen/_24sdp"
+			android:layout_marginEnd="@dimen/_24sdp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<com.zhpan.indicator.IndicatorView
+			android:id="@+id/ivDots"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:elevation="2dp"
+			app:layout_constraintBottom_toBottomOf="@id/btnNext"
+			app:layout_constraintEnd_toStartOf="@id/btnNext"
+			app:layout_constraintHorizontal_chainStyle="spread_inside"
+			app:layout_constraintStart_toStartOf="@id/vSeparator"
+			app:layout_constraintTop_toTopOf="@id/btnNext"
+			app:vpi_orientation="rtl"
+			app:vpi_slide_mode="smooth"
+			app:vpi_slider_checked_color="@color/color42"
+			app:vpi_slider_normal_color="@color/color7C"
+			app:vpi_slider_radius="@dimen/_1sdp"
+			app:vpi_style="round_rect" />
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/btnNext"
+			android:layout_width="wrap_content"
+			android:layout_height="@dimen/_37sdp"
+			android:layout_marginTop="@dimen/_6sdp"
+			android:insetTop="0dp"
+			android:insetBottom="0dp"
+			android:paddingStart="@dimen/_24sdp"
+			android:paddingEnd="@dimen/_24sdp"
+			android:text="@string/turn_page"
+			android:textColor="@color/color18"
+			android:textSize="@dimen/_11ssp"
+			app:backgroundTint="@color/color42"
+			app:cornerRadius="0dp"
+			app:icon="@drawable/ic_arrow_left"
+			app:iconGravity="textEnd"
+			app:iconTint="@color/color18"
+			app:layout_constraintEnd_toEndOf="@id/vSeparator"
+			app:layout_constraintStart_toEndOf="@id/ivDots"
+			app:layout_constraintTop_toTopOf="@id/glIntro2" />
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
