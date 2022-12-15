@@ -128,13 +128,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 		}
 
 		//add more
-		products.add(
-			Category(
-				title = "",
-				image = R.drawable.temp_icon_camera,
-				icon = R.drawable.temp_icon_mobile2,
-			)
-		)
+//		products.add(
+//			Category(
+//				name = "",
+//				image = R.drawable.temp_icon_camera,
+//				icon = R.drawable.temp_icon_mobile2,
+//			)
+//		)
 
 		val productsBox = ProductsBox(
 			icon = icon,

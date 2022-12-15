@@ -53,5 +53,5 @@ object AppModule {
 
 	@Provides
 	@Singleton
-	fun providesGlide(@ApplicationContext application: Application): RequestManager = Glide.with(application)
+	fun providesGlide(application: Application): RequestManager = Glide.with(application)
 }

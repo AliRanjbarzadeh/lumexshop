@@ -46,7 +46,7 @@
 				android:maxLines="1"
 				android:paddingStart="@dimen/_4sdp"
 				android:paddingEnd="@dimen/_4sdp"
-				android:text="@{item.title, default=`@string/profile`}"
+				android:text="@{item.name, default=`@string/profile`}"
 				android:textAppearance="@style/TextAppearance.FontMedium"
 				android:textColor="@color/color18"
 				android:textSize="@dimen/_11ssp"

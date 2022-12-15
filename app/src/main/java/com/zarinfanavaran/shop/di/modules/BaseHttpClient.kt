@@ -11,7 +11,7 @@ import javax.inject.Inject
 /**
  * Created by Ali Ranjbarzadeh on 9/29/2022 AD.
  */
-class BaseHttpClient @Inject constructor(cache: Cache, modifyHeadersInterceptor: ModifyHeadersInterceptor) {
+class BaseHttpClient @Inject constructor(modifyHeadersInterceptor: ModifyHeadersInterceptor) {
 	val okHttpClient = OkHttpClient()
 		.newBuilder()
 		.connectTimeout(30, TimeUnit.SECONDS)
@@ -20,7 +20,6 @@ class BaseHttpClient @Inject constructor(cache: Cache, modifyHeadersInterceptor:
 		.apply {
 			if (DEBUG) {
 				addNetworkInterceptor(StethoInterceptor())
-				this.cache(cache)
 			}
 		}
 		.addNetworkInterceptor(modifyHeadersInterceptor)

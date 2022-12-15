@@ -2,6 +2,7 @@ package com.zarinfanavaran.presentation.categories
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.bumptech.glide.RequestManager
 import com.zarinfanavaran.domain.models.Category
 import com.zarinfanavaran.domain.util.RecyclerViewTools
 import com.zarinfanavaran.presentation.R
@@ -15,6 +16,8 @@ import com.zarinfanavaran.presentation.databinding.TemplateWarningBinding
  * Created by Ali Ranjbarzadeh on 10/16/2022 AD.
  */
 class CategoryAdapter(private val recyclerViewTools: RecyclerViewTools) : BaseAdapter<Category>() {
+
+	lateinit var glide: RequestManager
 
 	override fun getItemViewType(position: Int): Int {
 		val category = mItems[position];
@@ -50,7 +53,10 @@ class CategoryAdapter(private val recyclerViewTools: RecyclerViewTools) : BaseAd
 				binding.item = category
 
 				//set image
-				binding.imgCategory.setImageResource(category.image)
+				category.media?.main?.also {
+					glide.load(it.file).into(binding.imgCategory)
+				}
+//				binding.imgCategory.setImageResource(category.image)
 
 				//handle click
 				binding.root.setOnClickListener { recyclerViewTools.onItemClick(bindingAdapterPosition, it, category) }

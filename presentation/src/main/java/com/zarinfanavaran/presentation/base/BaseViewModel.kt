@@ -12,6 +12,8 @@ import kotlin.coroutines.CoroutineContext
  * Created by Ali Ranjbarzadeh on 9/30/2022 AD.
  */
 abstract class BaseViewModel(private val dispatchers: DispatchersProvider) : ViewModel(), CoroutineScope {
+	protected val TAG = this::class.java.simpleName + "Log"
+
 	override val coroutineContext: CoroutineContext
 		get() = dispatchers.getMain() + SupervisorJob()
 

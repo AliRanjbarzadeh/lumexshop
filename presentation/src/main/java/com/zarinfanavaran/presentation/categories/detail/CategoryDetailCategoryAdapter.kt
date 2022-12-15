@@ -21,7 +21,7 @@ class CategoryDetailCategoryAdapter(private val recyclerViewTools: RecyclerViewT
 				binding.item = item
 
 				//set image
-				binding.imgCategory.setImageResource(item.image)
+//				binding.imgCategory.setImageResource(item.image)
 
 				//handle click
 				binding.root.setOnClickListener { recyclerViewTools.onItemClick(bindingAdapterPosition, it, item) }

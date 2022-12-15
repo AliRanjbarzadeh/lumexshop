@@ -1,7 +1,7 @@
 ext {
     fields = [
-            'BaseUrl'         : '"https://google.com"',
-            'DevUrl'          : '"https://google.com"',
+            'BaseUrl'         : '"https://zarinkala.com/api/v1/"',
+            'DevUrl'          : '"https://zarinkala.com/api/v1/"',
             'MediaUrl'        : '""',
             'Authorization'   : '"Authorization"',
             'TokenPrefix'     : '"Bearer "',
@@ -19,7 +19,7 @@ ext {
             'DatabaseName'    : '"ShopDB"',
             'AppVersion'      : '"1"',
             'UserAgent'       : '"Shop-Android"',
-            'Environment'     : '"development"',
+            'Environment'     : '"production"',
     ]
 
     versions = [

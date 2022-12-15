@@ -1,6 +1,7 @@
 package com.zarinfanavaran.shop.application
 
 import androidx.multidex.MultiDexApplication
+import com.facebook.stetho.Stetho
 import com.orhanobut.hawk.Hawk
 import com.zarinfanavaran.domain.BuildConfig
 import com.zarinfanavaran.domain.extensions.loadFromSp
@@ -15,9 +16,14 @@ import io.github.inflationx.viewpump.ViewPump
 class App : MultiDexApplication() {
 	override fun onCreate() {
 		super.onCreate()
+		initStetho()
 		initHawk()
 		initLanguage()
 		initFont()
+	}
+
+	private fun initStetho() {
+		Stetho.initializeWithDefaults(this)
 	}
 
 	private fun initHawk() {

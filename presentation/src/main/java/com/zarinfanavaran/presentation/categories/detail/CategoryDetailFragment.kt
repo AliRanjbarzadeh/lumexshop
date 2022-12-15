@@ -81,20 +81,20 @@ class CategoryDetailFragment : BaseFragment<FragmentCategoryDetailBinding>(R.lay
 
 	private fun categoriesBox() {
 		val categoriesBox = CategoriesBox(categories = mutableListOf())
-		categoriesBox.categories.add(
-			Category(
-				title = "لپ تاپ",
-				icon = R.drawable.temp_icon_mobile,
-				image = R.drawable.temp_category2
-			)
-		)
-		categoriesBox.categories.add(
-			Category(
-				title = "لوازم جانبی",
-				icon = R.drawable.temp_icon_mobile,
-				image = R.drawable.temp_category4
-			)
-		)
+//		categoriesBox.categories.add(
+//			Category(
+//				name = "لپ تاپ",
+//				icon = R.drawable.temp_icon_mobile,
+//				image = R.drawable.temp_category2
+//			)
+//		)
+//		categoriesBox.categories.add(
+//			Category(
+//				name = "لوازم جانبی",
+//				icon = R.drawable.temp_icon_mobile,
+//				image = R.drawable.temp_category4
+//			)
+//		)
 
 		categoryDetailAdapter.mItems.add(categoriesBox)
 	}
@@ -121,13 +121,13 @@ class CategoryDetailFragment : BaseFragment<FragmentCategoryDetailBinding>(R.lay
 		)
 
 		//more
-		brands.add(
-			Category(
-				title = "",
-				icon = R.drawable.temp_icon_mobile2,
-				image = R.drawable.temp_category2
-			)
-		)
+//		brands.add(
+//			Category(
+//				name = "",
+//				icon = R.drawable.temp_icon_mobile2,
+//				image = R.drawable.temp_category2
+//			)
+//		)
 
 		categoryDetailAdapter.mItems.add(
 			BrandsBox(
@@ -166,13 +166,13 @@ class CategoryDetailFragment : BaseFragment<FragmentCategoryDetailBinding>(R.lay
 		}
 
 		//add more
-		products.add(
-			Category(
-				title = "",
-				image = R.drawable.temp_icon_camera,
-				icon = R.drawable.temp_icon_mobile2,
-			)
-		)
+//		products.add(
+//			Category(
+//				name = "",
+//				image = R.drawable.temp_icon_camera,
+//				icon = R.drawable.temp_icon_mobile2,
+//			)
+//		)
 
 		val productsBox = ProductsBox(
 			icon = icon,

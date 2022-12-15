@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.RequestManager
 import com.zarinfanavaran.domain.models.Category
 import com.zarinfanavaran.domain.util.RecyclerViewTools
 import com.zarinfanavaran.presentation.R
@@ -16,8 +17,11 @@ import com.zarinfanavaran.presentation.databinding.TemplateCategoriesBinding
 /**
  * Created by Ali Ranjbarzadeh on 10/16/2022 AD.
  */
-class CategoriesAdapter(private val recyclerViewTools: RecyclerViewTools) : BaseAdapter<Category>() {
 
+class CategoriesAdapter : BaseAdapter<Category>() {
+
+	lateinit var recyclerViewTools: RecyclerViewTools
+	lateinit var glide: RequestManager
 	private var viewPool: RecyclerView.RecycledViewPool = RecyclerView.RecycledViewPool()
 	private val mAdapters = SparseArray<CategoryAdapter>()
 	private val scrollStates = SparseArray<Parcelable?>()
@@ -37,7 +41,9 @@ class CategoriesAdapter(private val recyclerViewTools: RecyclerViewTools) : Base
 				binding.item = item
 
 				//set icon
-				binding.imgIcon.setImageResource(item.icon)
+				item.media?.icon?.also {
+					glide.load(it.file).into(binding.imgIcon)
+				}
 
 				//handle sub categories recyclerview
 				handleCategories(item)
@@ -50,8 +56,12 @@ class CategoriesAdapter(private val recyclerViewTools: RecyclerViewTools) : Base
 
 			private fun handleCategories(category: Category) {
 				if (mAdapters[bindingAdapterPosition] == null) {
-					val categoryAdapter = CategoryAdapter(recyclerViewTools)
-					categoryAdapter.mItems = category.subItems
+					val categoryAdapter = CategoryAdapter(recyclerViewTools).apply {
+						glide = this@CategoriesAdapter.glide
+					}
+					category.children?.also {
+						categoryAdapter.mItems = it.toMutableList()
+					}
 					mAdapters.append(bindingAdapterPosition, categoryAdapter)
 
 					binding.rvSubCategories.setRecycledViewPool(viewPool)
