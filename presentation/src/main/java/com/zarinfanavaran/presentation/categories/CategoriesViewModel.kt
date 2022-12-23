@@ -1,6 +1,5 @@
 package com.zarinfanavaran.presentation.categories
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.zarinfanavaran.domain.models.Category
 import com.zarinfanavaran.domain.usecase.GetCategoriesUseCase
@@ -14,25 +13,24 @@ import javax.inject.Inject
 class CategoriesViewModel @Inject constructor(
 	private val dispatchers: DispatchersProvider, private val getCategoriesUseCase: GetCategoriesUseCase
 ) : BaseViewModel(dispatchers) {
+	private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
 	private val _categories: MutableLiveData<NetworkResult<List<Category>>> = MutableLiveData()
 
 	init {
-		fetchCategories()
+		_isLoading.postValue(false)
 	}
 
 	fun fetchCategories() {
 		execute {
-			_categories.postValue(NetworkResult.Loading(true))
+			_isLoading.postValue(true)
 			val result = getCategoriesUseCase()
-			when (result) {
-				is NetworkResult.Success -> _categories.postValue(result)
-
-				is NetworkResult.Error -> _categories.postValue(result)
-
-				else -> {}
+			_categories.postValue(result)
+			if ((result is NetworkResult.Success) || (result is NetworkResult.Error)) {
+				_isLoading.postValue(false)
 			}
 		}
 	}
 
 	fun getCategories(): MutableLiveData<NetworkResult<List<Category>>> = _categories
+	fun isLoading(): MutableLiveData<Boolean> = _isLoading
 }

@@ -56,7 +56,6 @@ class CategoryAdapter(private val recyclerViewTools: RecyclerViewTools) : BaseAd
 				category.media?.main?.also {
 					glide.load(it.file).into(binding.imgCategory)
 				}
-//				binding.imgCategory.setImageResource(category.image)
 
 				//handle click
 				binding.root.setOnClickListener { recyclerViewTools.onItemClick(bindingAdapterPosition, it, category) }

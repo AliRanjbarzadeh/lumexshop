@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zarinfanavaran.domain.models.*
 import com.zarinfanavaran.domain.util.RecyclerViewTools
@@ -19,10 +20,18 @@ import com.zarinfanavaran.presentation.databinding.FragmentCategoryDetailBinding
  */
 class CategoryDetailFragment : BaseFragment<FragmentCategoryDetailBinding>(R.layout.fragment_category_detail) {
 
+	private val args: CategoryDetailFragmentArgs by navArgs()
+
 	private lateinit var categoryDetailAdapter: CategoryDetailAdapter
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setupObservers()
+	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
+		setupUI()
 
 		binding.txtToolbarTitle.text = getToolbarSearchText()
 
@@ -46,6 +55,10 @@ class CategoryDetailFragment : BaseFragment<FragmentCategoryDetailBinding>(R.lay
 
 		setAdapter()
 	}
+
+	private fun setupUI() {}
+
+	private fun setupObservers() {}
 
 	private val categoryDetailRecyclerViewTools = object : RecyclerViewTools {}
 
@@ -103,19 +116,19 @@ class CategoryDetailFragment : BaseFragment<FragmentCategoryDetailBinding>(R.lay
 		val brands = mutableListOf<Any>()
 		brands.add(
 			Brand(
-				title = "اِیسوس",
+				nameFa = "اِیسوس",
 				image = R.drawable.temp_brand
 			)
 		)
 		brands.add(
 			Brand(
-				title = "کانُن",
+				nameFa = "کانُن",
 				image = R.drawable.temp_brand2
 			)
 		)
 		brands.add(
 			Brand(
-				title = "سامسونگ",
+				nameFa = "سامسونگ",
 				image = R.drawable.temp_brand3
 			)
 		)

@@ -5,11 +5,13 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableString
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.FrameLayout
 import androidx.annotation.LayoutRes
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
@@ -77,6 +79,16 @@ abstract class BaseFragment<VDB : ViewDataBinding>(
 
 	fun back() {
 		findNavController().popBackStack()
+	}
+
+	protected fun setProgressView(viewGroup: ViewGroup, isLoading: Boolean) {
+		if (isLoading) {
+			val progressView = layoutInflater.inflate(R.layout.loading, viewGroup, false)
+			viewGroup.addView(progressView)
+		} else {
+			Log.d(TAG, "setProgressView: ${viewGroup.findViewById<FrameLayout>(R.id.flLoading)}")
+			viewGroup.removeView(viewGroup.findViewById<FrameLayout>(R.id.flLoading))
+		}
 	}
 
 	protected fun getToolbarSearchText(): SpannableString {

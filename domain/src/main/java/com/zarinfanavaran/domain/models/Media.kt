@@ -1,15 +1,11 @@
 package com.zarinfanavaran.domain.models
 
 data class Media(
-	val main: Main?,
-	val icon: Icon?,
+	val main: MediaChild?,
+	val icon: MediaChild?,
+	val logo: MediaChild?,
 ) {
-	data class Main(
-		val id: Int,
-		val file: String
-	)
-
-	data class Icon(
+	data class MediaChild(
 		val id: Int,
 		val file: String
 	)

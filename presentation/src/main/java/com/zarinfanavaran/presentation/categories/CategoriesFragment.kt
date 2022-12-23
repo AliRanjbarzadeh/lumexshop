@@ -1,13 +1,11 @@
 package com.zarinfanavaran.presentation.categories
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.zarinfanavaran.domain.models.Category
 import com.zarinfanavaran.domain.util.NetworkResult
@@ -45,8 +43,17 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>(R.layout.frag
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
+		setupUI()
+	}
 
+	fun setupUI() {
 		binding.txtToolbarTitle.text = getToolbarSearchText()
+
+		//get categories
+		viewModel.fetchCategories()
+
+		if (categoriesAdapter.mItems.isNotEmpty())
+			setAdapter()
 	}
 
 	override fun <T> onItemClick(position: Int, view: View, item: T) {
@@ -64,7 +71,8 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>(R.layout.frag
 					}
 
 					false -> {
-						findNavController().navigate(R.id.categoryDetailFragment)
+						val action = CategoriesFragmentDirections.actionCategoriesFragmentToCategoryDetailFragment(item.id)
+						findNavController().navigate(action)
 					}
 				}
 			}
@@ -73,27 +81,28 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>(R.layout.frag
 
 	private fun setupObservers() {
 		viewModel.run {
+			observe(isLoading(), ::initLoading)
 			observe(getCategories(), ::initCategories)
 		}
 	}
 
+	private fun initLoading(isLoading: Boolean) {
+		setProgressView(binding.clMain, isLoading)
+	}
+
 	private fun initCategories(result: NetworkResult<List<Category>>) {
 		if (result is NetworkResult.Success) {
-			setAdapter(result.data)
+			if (categoriesAdapter.mItems.isEmpty()) {
+				categoriesAdapter.mItems = result.data.toMutableList()
+			}
+			setAdapter()
 		} else if (result is NetworkResult.Error) {
 			//TODO: try again
 			Toast.makeText(requireContext(), "${result.error.message}", Toast.LENGTH_SHORT).show()
 		}
 	}
 
-	private fun setAdapter(categories: List<Category>) {
-		Log.d(TAG, "setAdapter: ${categories}")
-		if (categoriesAdapter.mItems.isEmpty()) {
-			categoriesAdapter.mItems = categories.toMutableList()
-		}
-
-		Log.d(TAG, "setAdapter: ${categoriesAdapter.mItems}")
-
+	private fun setAdapter() {
 		binding.rvCategories.setHasFixedSize(true)
 		binding.rvCategories.layoutManager = LinearLayoutManager(requireContext())
 		binding.rvCategories.adapter = categoriesAdapter

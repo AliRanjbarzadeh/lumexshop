@@ -70,6 +70,7 @@ ext {
             'complexView'     : '1.1',
             'materialDialog'  : '3.3.0',
             'ucrop'           : '2.2.8',
+            'lottie'          : '5.2.0',
     ]
 
     libs = [
@@ -124,6 +125,7 @@ ext {
             'materialDialog'           : "com.afollestad.material-dialogs:core:${versions.materialDialog}",
             'materialDialogBottomSheet': "com.afollestad.material-dialogs:bottomsheets:${versions.materialDialog}",
             'ucrop'                    : "com.github.yalantis:ucrop:${versions.ucrop}",
+            'lottie'                   : "com.airbnb.android:lottie:${versions.lottie}",
     ]
 
     def plugins = [
@@ -230,6 +232,7 @@ ext {
                     [configuration: "implementation", dependency: libs.materialDialog],
                     [configuration: "implementation", dependency: libs.materialDialogBottomSheet],
                     [configuration: "implementation", dependency: libs.ucrop],
+                    [configuration: "implementation", dependency: libs.lottie],
             ],
 
             'plugins': []

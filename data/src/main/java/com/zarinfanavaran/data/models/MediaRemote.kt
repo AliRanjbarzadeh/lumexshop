@@ -4,22 +4,16 @@ import com.zarinfanavaran.data.base.ResponseObject
 import com.zarinfanavaran.domain.models.Media
 
 data class MediaRemote(
-	val main: Main?,
-	val icon: Icon?
+	val main: MediaChild?,
+	val icon: MediaChild?,
+	val logo: MediaChild?,
 ) : ResponseObject<Media> {
-	data class Main(
+	data class MediaChild(
 		val id: Int,
 		val file: String
-	) : ResponseObject<Media.Main> {
-		override fun toDomain(): Media.Main = Media.Main(id, file)
+	) : ResponseObject<Media.MediaChild> {
+		override fun toDomain(): Media.MediaChild = Media.MediaChild(id, file)
 	}
 
-	data class Icon(
-		val id: Int,
-		val file: String
-	) : ResponseObject<Media.Icon> {
-		override fun toDomain(): Media.Icon = Media.Icon(id, file)
-	}
-
-	override fun toDomain(): Media = Media(main?.toDomain(), icon?.toDomain())
+	override fun toDomain(): Media = Media(main?.toDomain(), icon?.toDomain(), logo?.toDomain())
 }

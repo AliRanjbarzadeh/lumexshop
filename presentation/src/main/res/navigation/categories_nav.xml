@@ -18,5 +18,10 @@
 		android:id="@+id/categoryDetailFragment"
 		android:name="com.zarinfanavaran.presentation.categories.detail.CategoryDetailFragment"
 		android:label="CategoryDetailFragment"
-		tools:layout="@layout/fragment_category_detail" />
+		tools:layout="@layout/fragment_category_detail" >
+		<argument
+			android:name="category_id"
+			app:argType="integer"
+			android:defaultValue="0" />
+	</fragment>
 </navigation>
