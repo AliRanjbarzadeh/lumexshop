@@ -16,6 +16,7 @@ import com.zarinfanavaran.presentation.databinding.FragmentShopcartPaymentBindin
 class ShopCartPaymentFragment : BaseFragment<FragmentShopcartPaymentBinding>(R.layout.fragment_shopcart_payment) {
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+		backgroundResColor = R.color.white
 		baseFragmentCallback?.bottomNavigationVisibility(false)
 		return super.onCreateView(inflater, container, savedInstanceState)
 	}

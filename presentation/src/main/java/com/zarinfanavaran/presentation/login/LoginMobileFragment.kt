@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.zarinfanavaran.domain.BuildConfig.SESSION_LOGIN
 import com.zarinfanavaran.domain.extensions.isMobile
+import com.zarinfanavaran.domain.extensions.loadFromSp
 import com.zarinfanavaran.domain.extensions.spannableString
 import com.zarinfanavaran.presentation.R
 import com.zarinfanavaran.presentation.base.BaseFragment
@@ -52,8 +54,10 @@ class LoginMobileFragment : BaseFragment<FragmentLoginMobileBinding>(R.layout.fr
 			findNavController().navigate(action)
 		}
 
-		binding.etMobile.post {
-			showInputMethod(binding.etMobile)
+		if (!loadFromSp(SESSION_LOGIN, false)) {
+			binding.etMobile.post {
+				showInputMethod(binding.etMobile)
+			}
 		}
 	}
 

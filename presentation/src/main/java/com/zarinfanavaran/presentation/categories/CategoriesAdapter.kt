@@ -60,7 +60,7 @@ class CategoriesAdapter : BaseAdapter<Category>() {
 						glide = this@CategoriesAdapter.glide
 					}
 					category.children?.also {
-						categoryAdapter.mItems = it.toMutableList()
+						categoryAdapter.mItems = it
 					}
 					mAdapters.append(bindingAdapterPosition, categoryAdapter)
 

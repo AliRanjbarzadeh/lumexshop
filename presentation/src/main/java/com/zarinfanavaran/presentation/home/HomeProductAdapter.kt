@@ -53,7 +53,7 @@ class HomeProductAdapter(private val recyclerViewTools: RecyclerViewTools) : Bas
 				binding.item = product
 
 				//load image
-				binding.imgProduct.setImageResource(product.image)
+//				binding.imgProduct.setImageResource(product.image)
 
 				binding.txtRealPrice.paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
 

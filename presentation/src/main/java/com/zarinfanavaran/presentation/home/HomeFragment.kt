@@ -103,29 +103,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 		//product box 1
 		val products = mutableListOf<Any>()
 
-		val mobile = Product(
-			title = "گوشی موبایل S22 ultra حافظه 512 و رم 12 گیگ",
-			price = 65000000,
-			discount = 15000000,
-			image = R.drawable.temp_product1
-		)
-
-		val camera = Product(
-			title = "دوربین کانن فوق حرفه ای عکاسی D800",
-			price = 65000000,
-			discount = 15000000,
-			image = R.drawable.temp_product2
-		)
-
-		if (onlyCamera) {
-			products.add(camera)
-			products.add(camera)
-			products.add(camera)
-		} else {
-			products.add(mobile)
-			products.add(camera)
-			products.add(mobile)
-		}
+//		val mobile = Product(
+//			title = "گوشی موبایل S22 ultra حافظه 512 و رم 12 گیگ",
+//			price = 65000000,
+//			discount = 15000000,
+//			image = R.drawable.temp_product1
+//		)
+//
+//		val camera = Product(
+//			title = "دوربین کانن فوق حرفه ای عکاسی D800",
+//			price = 65000000,
+//			discount = 15000000,
+//			image = R.drawable.temp_product2
+//		)
+//
+//		if (onlyCamera) {
+//			products.add(camera)
+//			products.add(camera)
+//			products.add(camera)
+//		} else {
+//			products.add(mobile)
+//			products.add(camera)
+//			products.add(mobile)
+//		}
 
 		//add more
 //		products.add(

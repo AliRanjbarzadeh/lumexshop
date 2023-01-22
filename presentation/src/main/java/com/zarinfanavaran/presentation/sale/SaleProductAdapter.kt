@@ -33,7 +33,7 @@ class SaleProductAdapter(private val recyclerViewTools: RecyclerViewTools) : Bas
 				binding.item = item
 
 				//load image
-				binding.imgProduct.setImageResource(item.image)
+//				binding.imgProduct.setImageResource(item.image)
 
 				binding.txtRealPrice.paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
 
@@ -44,50 +44,50 @@ class SaleProductAdapter(private val recyclerViewTools: RecyclerViewTools) : Bas
 					timer = timers[bindingAdapterPosition]
 					timer?.start()
 				} else {
-					timer = object : CountDownTimer((item.timerTime * 1000), 1000) {
-						override fun onTick(millisUntilFinished: Long) {
-							val allSeconds = millisUntilFinished / 1000
-							val hour = allSeconds / 3600
-							val min = (allSeconds - hour * 3600) / 60
-							val second = allSeconds - (hour * 3600) - (min * 60)
-
-							val hourString = if (hour > 0) {
-								if (hour < 10) {
-									"0$hour"
-								} else {
-									"$hour"
-								}
-							} else {
-								"00"
-							}
-
-							val minString = if (min > 0) {
-								if (min < 10) {
-									"0$min"
-								} else {
-									"$min"
-								}
-							} else {
-								"00"
-							}
-
-							val secondString = if (second > 0) {
-								if (second < 10) {
-									"0$second"
-								} else {
-									"$second"
-								}
-							} else {
-								"00"
-							}
-
-							binding.txtTimer.text = "$hourString:$minString:$secondString"
-						}
-
-						override fun onFinish() {
-							binding.txtTimer.text = "00:00:00"
-						}
-					}.start()
+//					timer = object : CountDownTimer((item.timerTime * 1000), 1000) {
+//						override fun onTick(millisUntilFinished: Long) {
+//							val allSeconds = millisUntilFinished / 1000
+//							val hour = allSeconds / 3600
+//							val min = (allSeconds - hour * 3600) / 60
+//							val second = allSeconds - (hour * 3600) - (min * 60)
+//
+//							val hourString = if (hour > 0) {
+//								if (hour < 10) {
+//									"0$hour"
+//								} else {
+//									"$hour"
+//								}
+//							} else {
+//								"00"
+//							}
+//
+//							val minString = if (min > 0) {
+//								if (min < 10) {
+//									"0$min"
+//								} else {
+//									"$min"
+//								}
+//							} else {
+//								"00"
+//							}
+//
+//							val secondString = if (second > 0) {
+//								if (second < 10) {
+//									"0$second"
+//								} else {
+//									"$second"
+//								}
+//							} else {
+//								"00"
+//							}
+//
+//							binding.txtTimer.text = "$hourString:$minString:$secondString"
+//						}
+//
+//						override fun onFinish() {
+//							binding.txtTimer.text = "00:00:00"
+//						}
+//					}.start()
 				}
 
 				binding.executePendingBindings()

@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.zarinfanavaran.domain.BR
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
 /**
@@ -18,6 +19,7 @@ data class Receiver(
 	var _personalCode: String,
 ) : BaseObservable(), Parcelable {
 
+	@IgnoredOnParcel
 	var firstName: String = _firstName
 		@Bindable get() = _firstName
 		set(value) {
@@ -27,6 +29,7 @@ data class Receiver(
 			notifyPropertyChanged(BR.fullName)
 		}
 
+	@IgnoredOnParcel
 	var lastName: String = _lastName
 		@Bindable get() = _lastName
 		set(value) {
@@ -39,6 +42,7 @@ data class Receiver(
 	val fullName: String
 		@Bindable get() = "$_firstName $_lastName"
 
+	@IgnoredOnParcel
 	var mobile: String = _mobile
 		@Bindable get() = _mobile
 		set(value) {
@@ -47,6 +51,7 @@ data class Receiver(
 			notifyPropertyChanged(BR.mobile)
 		}
 
+	@IgnoredOnParcel
 	var personalCode: String = _personalCode
 		@Bindable get() = _personalCode
 		set(value) {

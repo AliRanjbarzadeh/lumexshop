@@ -191,12 +191,12 @@ fun String.isMobile(): Boolean = this.matches("09\\d{9}".toRegex())
 
 fun String.toEnglish(): String {
 	val chars = CharArray(length)
-	for (i in 0 until length) {
+	for (i in indices) {
 		var ch: Char = get(i)
-		if (ch.toInt() in 0x0660..0x0669) {
-			ch -= 0x0660.toChar() - '0'.toInt().toChar()
-		} else if (ch.toInt() in 0x06f0..0x06F9) {
-			ch -= 0x06f0.toChar() - '0'.toInt().toChar()
+		if (ch.code in 0x0660..0x0669) {
+			ch -= 0x0660.toChar() - '0'.code.toChar()
+		} else if (ch.code in 0x06f0..0x06F9) {
+			ch -= 0x06f0.toChar() - '0'.code.toChar()
 		}
 		chars[i] = ch
 	}

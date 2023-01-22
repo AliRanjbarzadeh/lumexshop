@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.FrameLayout
+import androidx.annotation.ColorRes
 import androidx.annotation.LayoutRes
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
@@ -28,16 +29,24 @@ import java.io.File
  * Created by Ali Ranjbarzadeh on 9/30/2022 AD.
  */
 abstract class BaseFragment<VDB : ViewDataBinding>(
-	@LayoutRes private val resId: Int
+	@LayoutRes
+	private val resId: Int,
 ) : Fragment(), RecyclerViewTools {
 
 	protected val TAG = this::class.java.simpleName + "Log"
+
+	@ColorRes
+	var backgroundResColor: Int = R.color.colorEF
 
 	lateinit var binding: VDB
 	protected var baseFragmentCallback: BaseFragmentCallback? = null
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 		binding = DataBindingUtil.inflate(inflater, resId, container, false)
+
+		//set background color
+		binding.root.setBackgroundResource(backgroundResColor)
+
 		return binding.root
 	}
 
@@ -45,9 +54,9 @@ abstract class BaseFragment<VDB : ViewDataBinding>(
 		super.onViewCreated(view, savedInstanceState)
 
 		TedKeyboardObserver(requireActivity())
-			.listen { isShow ->
-				keyboardState(isShow)
-			}
+				.listen { isShow ->
+					keyboardState(isShow)
+				}
 	}
 
 	override fun onAttach(context: Context) {

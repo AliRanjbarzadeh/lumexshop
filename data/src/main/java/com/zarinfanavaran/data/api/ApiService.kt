@@ -5,6 +5,7 @@ import com.zarinfanavaran.data.models.CategoryRemote
 import com.zarinfanavaran.data.models.MyResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -12,5 +13,5 @@ interface ApiService {
 	fun fetchCategoriesAsync(): Deferred<MyResponse<List<CategoryRemote>>>
 
 	@GET("category/{category}/info")
-	fun fetchCategoryDetailAsync(): Deferred<MyResponse<CategoryDetailRemote>>
+	fun fetchCategoryDetailAsync(@Path("category") categoryId: Int): Deferred<MyResponse<CategoryDetailRemote>>
 }

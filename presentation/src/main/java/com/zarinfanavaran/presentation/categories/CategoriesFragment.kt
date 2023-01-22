@@ -49,29 +49,30 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>(R.layout.frag
 	fun setupUI() {
 		binding.txtToolbarTitle.text = getToolbarSearchText()
 
-		//get categories
-		viewModel.fetchCategories()
-
-		if (categoriesAdapter.mItems.isNotEmpty())
+		if (categoriesAdapter.mItems.isNotEmpty()) // check if already categories fetched
 			setAdapter()
+		else //get categories
+			viewModel.fetchCategories()
+
 	}
 
 	override fun <T> onItemClick(position: Int, view: View, item: T) {
 		item as Category
 
+		val action = CategoriesFragmentDirections.actionCategoriesFragmentToCategoryDetailFragment(item.id)
+
 		when (view.id) {
 			R.id.btnShowAll -> {
-				Toast.makeText(requireContext(), "Go to show all page", Toast.LENGTH_SHORT).show()
+				findNavController().navigate(action)
 			}
 
 			else -> {
 				when (item.isHasMore) {
 					true -> {
-						Toast.makeText(requireContext(), "Go to show all page", Toast.LENGTH_SHORT).show()
+						findNavController().navigate(action)
 					}
 
 					false -> {
-						val action = CategoriesFragmentDirections.actionCategoriesFragmentToCategoryDetailFragment(item.id)
 						findNavController().navigate(action)
 					}
 				}
@@ -92,8 +93,14 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>(R.layout.frag
 
 	private fun initCategories(result: NetworkResult<List<Category>>) {
 		if (result is NetworkResult.Success) {
-			if (categoriesAdapter.mItems.isEmpty()) {
-				categoriesAdapter.mItems = result.data.toMutableList()
+			if (categoriesAdapter.mItems.isNotEmpty()) {
+				categoriesAdapter.mItems.clear()
+			}
+			categoriesAdapter.mItems = result.data.toMutableList()
+			categoriesAdapter.mItems.forEach { category ->
+				category.children?.add(Category(category.id, category.name, category.level, category.media, null).apply {
+					isHasMore = true
+				})
 			}
 			setAdapter()
 		} else if (result is NetworkResult.Error) {

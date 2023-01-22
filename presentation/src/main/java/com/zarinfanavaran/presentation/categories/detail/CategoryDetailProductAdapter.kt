@@ -4,6 +4,7 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.RequestManager
 import com.zarinfanavaran.domain.models.Category
 import com.zarinfanavaran.domain.models.Product
 import com.zarinfanavaran.domain.util.RecyclerViewTools
@@ -17,7 +18,7 @@ import com.zarinfanavaran.presentation.databinding.TemplateWarningBinding
 /**
  * Created by Ali Ranjbarzadeh on 10/16/2022 AD.
  */
-class CategoryDetailProductAdapter(private val recyclerViewTools: RecyclerViewTools) : BaseAdapter<Any>() {
+class CategoryDetailProductAdapter(private val recyclerViewTools: RecyclerViewTools, private val glide: RequestManager) : BaseAdapter<Any>() {
 
 	override fun getItemViewType(position: Int): Int {
 		return when (mItems[position]) {
@@ -57,7 +58,9 @@ class CategoryDetailProductAdapter(private val recyclerViewTools: RecyclerViewTo
 				binding.item = product
 
 				//load image
-				binding.imgProduct.setImageResource(product.image)
+				product.media?.main?.also {
+					glide.load(it.file).into(binding.imgProduct)
+				}
 
 				binding.txtRealPrice.paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
 

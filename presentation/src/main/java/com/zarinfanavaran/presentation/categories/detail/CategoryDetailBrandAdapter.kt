@@ -1,8 +1,10 @@
 package com.zarinfanavaran.presentation.categories.detail
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.RequestManager
 import com.zarinfanavaran.domain.models.Brand
 import com.zarinfanavaran.domain.models.Category
 import com.zarinfanavaran.domain.util.RecyclerViewTools
@@ -16,19 +18,20 @@ import com.zarinfanavaran.presentation.databinding.TemplateWarningBinding
 /**
  * Created by Ali Ranjbarzadeh on 10/16/2022 AD.
  */
-class CategoryDetailBrandAdapter(private val recyclerViewTools: RecyclerViewTools) : BaseAdapter<Any>() {
+class CategoryDetailBrandAdapter(private val recyclerViewTools: RecyclerViewTools, private val glide: RequestManager) : BaseAdapter<Brand>() {
 
 	override fun getItemViewType(position: Int): Int {
-		return when (mItems[position]) {
-			is Brand -> R.layout.template_brand_item
+		val brand = mItems[position]
+		return when {
+			brand.id > 0 -> R.layout.template_brand_item
 
-			is Category -> R.layout.template_more
+			brand.id == 0 -> R.layout.template_more
 
 			else -> R.layout.template_warning
 		}
 	}
 
-	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<Any> {
+	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<Brand> {
 		val binding = when (viewType) {
 			R.layout.template_brand_item -> TemplateBrandItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
@@ -37,13 +40,13 @@ class CategoryDetailBrandAdapter(private val recyclerViewTools: RecyclerViewTool
 			else -> TemplateWarningBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 		}
 
-		return object : BaseHolder<Any>(binding) {
-			override fun onBindUI(item: Any, position: Int) {
+		return object : BaseHolder<Brand>(binding) {
+			override fun onBindUI(item: Brand, position: Int) {
 
-				when (item) {
-					is Brand -> handleBrand(item, binding as TemplateBrandItemBinding)
+				when {
+					item.id > 0 -> handleBrand(item, binding as TemplateBrandItemBinding)
 
-					is Category -> handleMore(item, binding as TemplateMoreBinding)
+					item.id == 0 -> handleMore(item, binding as TemplateMoreBinding)
 				}
 
 				//set background
@@ -56,15 +59,17 @@ class CategoryDetailBrandAdapter(private val recyclerViewTools: RecyclerViewTool
 				binding.item = brand
 
 				//load image
-				binding.imgBrand.setImageResource(brand.image)
+				brand.media?.main?.also {
+					glide.load(it.file).into(binding.imgBrand)
+				}
 
 				//click brand
 				binding.root.setOnClickListener { recyclerViewTools.onItemClick(bindingAdapterPosition, it, brand) }
 			}
 
-			private fun handleMore(category: Category, binding: TemplateMoreBinding) {
+			private fun handleMore(brand: Brand, binding: TemplateMoreBinding) {
 				//click more
-				binding.root.setOnClickListener { recyclerViewTools.onItemClick(bindingAdapterPosition, it, category) }
+				binding.root.setOnClickListener { recyclerViewTools.onItemClick(bindingAdapterPosition, it, brand) }
 			}
 		}
 	}

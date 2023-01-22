@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.RequestManager
 import com.zarinfanavaran.domain.models.BrandsBox
 import com.zarinfanavaran.domain.models.CategoriesBox
 import com.zarinfanavaran.domain.models.ProductsBox
@@ -22,7 +23,10 @@ import com.zarinfanavaran.presentation.databinding.TemplateWarningBinding
 /**
  * Created by Ali Ranjbarzadeh on 10/16/2022 AD.
  */
-class CategoryDetailAdapter(private val recyclerViewTools: RecyclerViewTools) : BaseAdapter<Any>() {
+class CategoryDetailAdapter : BaseAdapter<Any>() {
+
+	lateinit var recyclerViewTools: RecyclerViewTools
+	lateinit var glide: RequestManager
 
 	private var viewPool: RecyclerView.RecycledViewPool = RecyclerView.RecycledViewPool()
 	private val mAdapters = SparseArray<Any>()
@@ -81,7 +85,7 @@ class CategoryDetailAdapter(private val recyclerViewTools: RecyclerViewTools) : 
 
 			private fun handleCategories(categoriesBox: CategoriesBox, binding: TemplateCategoryDetailCategoriesBinding) {
 				if (mAdapters[bindingAdapterPosition] == null) {
-					val categoryDetailCategoryAdapter = CategoryDetailCategoryAdapter(recyclerViewTools)
+					val categoryDetailCategoryAdapter = CategoryDetailCategoryAdapter(recyclerViewTools, glide)
 					categoryDetailCategoryAdapter.mItems.addAll(categoriesBox.categories)
 					mAdapters.append(bindingAdapterPosition, categoryDetailCategoryAdapter)
 
@@ -103,7 +107,7 @@ class CategoryDetailAdapter(private val recyclerViewTools: RecyclerViewTools) : 
 				binding.imgIcon.setImageResource(brandsBox.icon)
 
 				if (mAdapters[bindingAdapterPosition] == null) {
-					val categoryDetailBrandAdapter = CategoryDetailBrandAdapter(recyclerViewTools)
+					val categoryDetailBrandAdapter = CategoryDetailBrandAdapter(recyclerViewTools, glide)
 					categoryDetailBrandAdapter.mItems.addAll(brandsBox.items)
 					mAdapters.append(bindingAdapterPosition, categoryDetailBrandAdapter)
 
@@ -125,7 +129,7 @@ class CategoryDetailAdapter(private val recyclerViewTools: RecyclerViewTools) : 
 				binding.imgBackground.setImageDrawable(productsBox.image)
 
 				if (mAdapters[bindingAdapterPosition] == null) {
-					val categoryDetailProductAdapter = CategoryDetailProductAdapter(recyclerViewTools)
+					val categoryDetailProductAdapter = CategoryDetailProductAdapter(recyclerViewTools, glide)
 					categoryDetailProductAdapter.mItems.addAll(productsBox.products)
 					mAdapters.append(bindingAdapterPosition, categoryDetailProductAdapter)
 

@@ -10,5 +10,5 @@ data class CategoryRemote(
 	val media: MediaRemote?,
 	val children: List<CategoryRemote>?
 ) : ResponseObject<Category> {
-	override fun toDomain(): Category = Category(id, name, level, media?.toDomain(), children?.map { it.toDomain() })
+	override fun toDomain(): Category = Category(id, name, level, media?.toDomain(), children?.map { it.toDomain() }?.toMutableList())
 }

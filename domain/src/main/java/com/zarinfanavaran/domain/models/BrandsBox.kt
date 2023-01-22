@@ -8,5 +8,5 @@ import androidx.annotation.DrawableRes
 data class BrandsBox(
 	@DrawableRes val icon: Int,
 	val title: String,
-	val items: MutableList<Any>
+	val items: MutableList<Brand>
 )

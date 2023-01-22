@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="fastRequestCurrentProjectConfig">
+    <option name="domain" value="https://zarinkala.com/api/v1" />
+    <option name="enableEnv" value="BASE_URL" />
+    <option name="enableProject" value="LumexShop" />
+    <option name="headerList">
+      <list>
+        <DataMapping>
+          <option name="type" value="Accept" />
+          <option name="value" value="applications/json" />
+        </DataMapping>
+      </list>
+    </option>
+  </component>
+</project>

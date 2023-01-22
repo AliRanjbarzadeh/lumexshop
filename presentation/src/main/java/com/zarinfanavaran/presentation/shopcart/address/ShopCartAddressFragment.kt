@@ -33,6 +33,7 @@ class ShopCartAddressFragment : BaseFragment<FragmentShopcartAddressBinding>(R.l
 	private val shopCartReceiverAdapter = ShopCartReceiverAdapter()
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+		backgroundResColor = R.color.white
 		baseFragmentCallback?.bottomNavigationVisibility(false)
 		return super.onCreateView(inflater, container, savedInstanceState)
 	}
