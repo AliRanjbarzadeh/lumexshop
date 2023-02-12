@@ -5,6 +5,9 @@ buildscript {
         classpath "com.google.dagger:hilt-android-gradle-plugin:${versions.hilt}"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:${versions.navigation}"
     }
+    repositories {
+        mavenCentral()
+    }
 }
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {

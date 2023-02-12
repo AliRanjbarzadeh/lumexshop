@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.zarinfanavaran.domain.models.*
 import com.zarinfanavaran.presentation.R
 import com.zarinfanavaran.presentation.base.BaseFragment
+import com.zarinfanavaran.presentation.base.RetryDialog
 import com.zarinfanavaran.presentation.databinding.FragmentHomeBinding
 import com.zarinfanavaran.presentation.product.ProductActivity
 
@@ -99,7 +100,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 		homeAdapter.mItems.add(sliderBox)
 	}
 
-	private fun productsBox(@DrawableRes icon: Int, title: String, image: Drawable, onlyCamera: Boolean = false) {
+	private fun productsBox(
+		@DrawableRes
+		icon: Int, title: String, image: Drawable, onlyCamera: Boolean = false
+	) {
 		//product box 1
 		val products = mutableListOf<Any>()
 

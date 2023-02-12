@@ -1,6 +1,7 @@
 package com.zarinfanavaran.domain.models
 
 import android.os.Parcelable
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
 /**
@@ -14,4 +15,13 @@ data class Brand(
 	val description: String,
 	val media: Media?,
 	var _selected: Boolean = false
-) : Parcelable
+) : Parcelable {
+
+	@IgnoredOnParcel
+	var isSelected = _selected
+		get() = _selected
+		set(value) {
+			field = value
+			_selected = value
+		}
+}

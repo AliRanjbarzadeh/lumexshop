@@ -54,6 +54,7 @@ data class ProductRemote(
 	@SerializedName("discount_in_amount_prettified")
 	val discountInAmountPrettified: String,
 	val media: MediaRemote?,
+	val items: List<Item>?
 ) : ResponseObject<Product> {
 	override fun toDomain(): Product = Product(
 		id,
@@ -82,6 +83,14 @@ data class ProductRemote(
 		pricePrettified,
 		discountedPrettified,
 		discountInAmountPrettified,
-		media?.toDomain()
+		media?.toDomain(),
+		items?.map { it.toDomain() }
 	)
+
+	data class Item(
+		val id: Int,
+		val color: ColorRemote?
+	) : ResponseObject<Product.Item> {
+		override fun toDomain(): Product.Item = Product.Item(id, color?.toDomain())
+	}
 }

@@ -11,33 +11,40 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Product(
 	val id: Int,
-	val nameFa: String,
-	val nameEn: String,
-	val summary: String,
-	val clubIsActive: Int,
-	val pointAmount: Int,
-	val visitCount: Int,
-	val commentCount: Int,
-	val rateAvg: Float,
-	val wishListable: Int,
-	val commentable: Int,
-	val inStockNotificationable: Int,
-	val isSpecial: Int,
-	val stock: Int,
-	val inStock: Int,
-	val maxCartQty: Int,
-	val hasDiscount: Int,
-	val discountType: String,
-	val price: Int,
-	val discountAmount: Int,
-	val discounted: Int,
-	val discountInPercent: Float,
-	val discountInAmount: Int,
-	val pricePrettified: String,
-	val discountedPrettified: String,
-	val discountInAmountPrettified: String,
-	val media: Media?,
+	val nameFa: String = "",
+	val nameEn: String = "",
+	val summary: String = "",
+	val clubIsActive: Int = 0,
+	val pointAmount: Int = 0,
+	val visitCount: Int = 0,
+	val commentCount: Int = 0,
+	val rateAvg: Float = 0f,
+	val wishListable: Int = 0,
+	val commentable: Int = 0,
+	val inStockNotificationable: Int = 0,
+	val isSpecial: Int = 0,
+	val stock: Int = 0,
+	val inStock: Int = 0,
+	val maxCartQty: Int = 0,
+	val hasDiscount: Int = 0,
+	val discountType: String = "",
+	val price: Int = 0,
+	val discountAmount: Int = 0,
+	val discounted: Int = 0,
+	val discountInPercent: Float = 0f,
+	val discountInAmount: Int = 0,
+	val pricePrettified: String = "",
+	val discountedPrettified: String = "",
+	val discountInAmountPrettified: String = "",
+	val media: Media? = null,
+	val items: List<Item>? = null
 ) : Parcelable {
+
+	@Parcelize
+	data class Item(
+		val id: Int,
+		val color: Color?
+	) : Parcelable
 
 	@IgnoredOnParcel
 	val priceFormat = price.priceFormat()
@@ -47,4 +54,7 @@ data class Product(
 
 	@IgnoredOnParcel
 	val discountPercentString = "$discountInPercent%"
+
+	@IgnoredOnParcel
+	val rate: String = rateAvg.toString()
 }

@@ -3,100 +3,13 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools">
 
-	<androidx.coordinatorlayout.widget.CoordinatorLayout
+	<androidx.fragment.app.FragmentContainerView
+		android:id="@+id/base_nav_host"
+		android:name="androidx.navigation.fragment.NavHostFragment"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layoutDirection="locale"
-		tools:context=".FilterActivity">
-
-		<com.google.android.material.appbar.AppBarLayout
-			android:id="@+id/appbarId"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content">
-
-			<com.google.android.material.appbar.MaterialToolbar
-				android:id="@+id/toolbarId"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content">
-
-				<androidx.constraintlayout.widget.ConstraintLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content">
-
-					<androidx.appcompat.widget.AppCompatImageView
-						android:id="@+id/imgToolbarIcon"
-						style="@style/ToolbarStyle.Image"
-						android:layout_width="wrap_content"
-						android:layout_height="@dimen/_34sdp"
-						android:src="@drawable/ic_arrow_right"
-						app:layout_constraintBottom_toBottomOf="parent"
-						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintTop_toTopOf="parent" />
-
-					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/txtToolbarTitle"
-						style="@style/ToolbarStyle.Text"
-						android:layout_width="0dp"
-						android:layout_height="0dp"
-						android:text="@string/search_in_lumex_shop"
-						app:layout_constraintBottom_toBottomOf="@id/imgToolbarIcon"
-						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintStart_toEndOf="@id/imgToolbarIcon"
-						app:layout_constraintTop_toTopOf="@id/imgToolbarIcon" />
-
-				</androidx.constraintlayout.widget.ConstraintLayout>
-
-			</com.google.android.material.appbar.MaterialToolbar>
-
-		</com.google.android.material.appbar.AppBarLayout>
-
-		<androidx.constraintlayout.widget.ConstraintLayout
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-			<androidx.recyclerview.widget.RecyclerView
-				android:layout_width="0dp"
-				android:layout_height="0dp"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
-
-			<View
-				android:layout_width="0dp"
-				android:layout_height="@dimen/_10sdp"
-				android:background="@drawable/gradient_bottom_white"
-				app:layout_constraintBottom_toTopOf="@id/filters"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent" />
-
-			<FrameLayout
-				android:id="@+id/filters"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:background="@color/white"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent">
-
-				<androidx.constraintlayout.widget.ConstraintLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content">
-
-					<com.google.android.material.button.MaterialButton
-						android:layout_width="wrap_content"
-						android:layout_height="@dimen/_23sdp"
-						android:insetTop="0dp"
-						android:insetBottom="0dp"
-						android:padding="0dp"
-						app:layout_constraintBottom_toBottomOf="parent"
-						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintTop_toTopOf="parent" />
-
-				</androidx.constraintlayout.widget.ConstraintLayout>
-			</FrameLayout>
-
-		</androidx.constraintlayout.widget.ConstraintLayout>
-	</androidx.coordinatorlayout.widget.CoordinatorLayout>
+		app:defaultNavHost="true"
+		app:navGraph="@navigation/filter_nav"
+		tools:context=".filter.FilterActivity" />
 </layout>

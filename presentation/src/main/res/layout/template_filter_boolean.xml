@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<variable
+			name="item"
+			type="com.zarinfanavaran.domain.models.Filter" />
+	</data>
+
+	<androidx.appcompat.widget.LinearLayoutCompat
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/colorEF"
+		android:orientation="vertical">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/_8sdp">
+
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/txtFilterTitle"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:layout_marginEnd="@dimen/_8sdp"
+				android:text="@{item.name, default=`@string/sample_filter_title`}"
+				android:textColor="@color/color18"
+				android:textSize="@dimen/_9ssp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@id/imgFilterArrow"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<androidx.appcompat.widget.SwitchCompat
+				android:id="@+id/imgFilterArrow"
+				android:layout_width="@dimen/_14sdp"
+				android:layout_height="@dimen/_14sdp"
+				android:src="@drawable/ic_filter_arrow_down"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

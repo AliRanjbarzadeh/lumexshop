@@ -40,7 +40,7 @@ class CategoryAdapter(private val recyclerViewTools: RecyclerViewTools) : BaseAd
 		return object : BaseHolder<Category>(binding) {
 			override fun onBindUI(item: Category, position: Int) {
 
-				if (item.isHasMore == false) {
+				if (!item.isHasMore) {
 					handleCategory(item, binding as TemplateCategoryItemBinding)
 				} else {
 					binding.root.setOnClickListener { recyclerViewTools.onItemClick(bindingAdapterPosition, it, item) }

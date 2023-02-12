@@ -8,6 +8,5 @@ import javax.inject.Singleton
 
 @Singleton
 class GetCategoryDetailUseCase @Inject constructor(private val repository: CategoryRepository) {
-	suspend operator fun invoke(categoryId: Int): NetworkResult<CategoryDetail> =
-		repository.getDetail(categoryId)
+	suspend operator fun invoke(categoryId: Int): NetworkResult<CategoryDetail> = repository.getDetail(categoryId)
 }

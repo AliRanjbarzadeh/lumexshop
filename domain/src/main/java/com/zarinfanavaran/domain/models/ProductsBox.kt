@@ -10,5 +10,6 @@ data class ProductsBox(
 	@DrawableRes val icon: Int,
 	val title: String,
 	val image: Drawable,
-	val products: MutableList<Any>
+	val products: MutableList<Any>,
+	var sort: String = "MOST_VISITED"
 )

@@ -27,7 +27,8 @@
 				app:cardBackgroundColor="@color/white"
 				app:cardPreventCornerOverlap="false"
 				app:cardUseCompatPadding="false"
-				app:shapeAppearance="@style/ProfileTopBar">
+				app:shapeAppearance="@style/ProfileTopBar"
+				app:strokeWidth="0dp">
 
 				<androidx.constraintlayout.widget.ConstraintLayout
 					android:layout_width="match_parent"

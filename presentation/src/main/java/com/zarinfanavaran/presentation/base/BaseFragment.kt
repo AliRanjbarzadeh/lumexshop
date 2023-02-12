@@ -2,6 +2,7 @@ package com.zarinfanavaran.presentation.base
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableString
@@ -22,6 +23,7 @@ import androidx.navigation.fragment.findNavController
 import com.zarinfanavaran.domain.extensions.spannableString
 import com.zarinfanavaran.domain.util.RecyclerViewTools
 import com.zarinfanavaran.presentation.R
+import com.zarinfanavaran.presentation.util.IsEndOfRecyclerView
 import gun0912.tedkeyboardobserver.TedKeyboardObserver
 import java.io.File
 
@@ -31,7 +33,7 @@ import java.io.File
 abstract class BaseFragment<VDB : ViewDataBinding>(
 	@LayoutRes
 	private val resId: Int,
-) : Fragment(), RecyclerViewTools {
+) : Fragment(), RecyclerViewTools, IsEndOfRecyclerView, BaseDialogFragmentCallback, RetryCallback {
 
 	protected val TAG = this::class.java.simpleName + "Log"
 
@@ -121,5 +123,12 @@ abstract class BaseFragment<VDB : ViewDataBinding>(
 
 	protected fun getFileUri(file: File): Uri {
 		return FileProvider.getUriForFile(requireContext(), getAuthority(), file)
+	}
+
+	protected fun shareText(shareBody: String, shareTitle: String = " Share With ") {
+		val sharingIntent = Intent(Intent.ACTION_SEND)
+		sharingIntent.type = "text/plain"
+		sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+		startActivity(Intent.createChooser(sharingIntent, shareTitle))
 	}
 }

@@ -5,7 +5,6 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -13,11 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.RequestManager
 import com.zarinfanavaran.domain.models.*
 import com.zarinfanavaran.domain.util.NetworkResult
-import com.zarinfanavaran.presentation.FilterActivity
 import com.zarinfanavaran.presentation.R
 import com.zarinfanavaran.presentation.base.BaseFragment
 import com.zarinfanavaran.presentation.base.MarginItemDecoration
+import com.zarinfanavaran.presentation.base.RetryDialog
 import com.zarinfanavaran.presentation.databinding.FragmentCategoryDetailBinding
+import com.zarinfanavaran.presentation.filter.FilterActivity
 import com.zarinfanavaran.presentation.util.observe
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -58,16 +58,45 @@ class CategoryDetailFragment :
 		setupUI()
 	}
 
+	override fun onRetry() {
+		viewModel.fetchDetail(args.categoryId)
+	}
+
+	override fun onCancel() {
+		back()
+	}
+
 	override fun <T> onItemClick(position: Int, view: View, item: T) {
 		val filterIntent = Intent(requireActivity(), FilterActivity::class.java)
 		filterIntent.putExtra("categoryDetail", categoryDetail)
 		when (item) {
 			is Category -> {
-				if (item.isHasMore) {
-				} else {
+				if (!item.isHasMore) {
 					filterIntent.putExtra("category", item)
-					startActivity(filterIntent)
+				} else {
+					categoryDetail.sortOptions?.find { sortOption -> sortOption.key == item.name }?.also { sortOption ->
+						filterIntent.putExtra("sortOption", sortOption)
+					}
 				}
+				startActivity(filterIntent)
+			}
+
+			is Brand -> {
+				if (item.id > 0) {
+					filterIntent.putExtra("brand", item)
+				}
+				startActivity(filterIntent)
+			}
+
+			is BrandsBox -> {
+				startActivity(filterIntent)
+			}
+
+			is ProductsBox -> {
+				categoryDetail.sortOptions?.find { sortOption -> sortOption.key == item.sort }?.also { sortOption ->
+					filterIntent.putExtra("sortOption", sortOption)
+				}
+				startActivity(filterIntent)
 			}
 		}
 	}
@@ -124,7 +153,7 @@ class CategoryDetailFragment :
 			if (categoryDetail.mostSoldProducts.isNotEmpty()) {
 				val mostSoldProducts = mutableListOf<Any>()
 				mostSoldProducts.addAll(categoryDetail.mostSoldProducts)
-				mostSoldProducts.add(Category(0, "", 0, null, null))
+				mostSoldProducts.add(Category(0, "MOST_SOLD", 0, null, null).apply { isHasMore = true })
 
 				val drawableWhite =
 					ColorDrawable(ContextCompat.getColor(requireContext(), R.color.white))
@@ -134,7 +163,8 @@ class CategoryDetailFragment :
 						icon = R.drawable.temp_icon_chart,
 						title = "پرفروش ترین ها",
 						image = drawableWhite,
-						products = mostSoldProducts
+						products = mostSoldProducts,
+						sort = "MOST_SOLD"
 					)
 				)
 			}
@@ -143,7 +173,7 @@ class CategoryDetailFragment :
 			if (categoryDetail.mostViewedProducts.isNotEmpty()) {
 				val mostViewedProducts = mutableListOf<Any>()
 				mostViewedProducts.addAll(categoryDetail.mostViewedProducts)
-				mostViewedProducts.add(Category(0, "", 0, null, null))
+				mostViewedProducts.add(Category(0, "MOST_VISITED", 0, null, null).apply { isHasMore = true })
 
 				val drawableWhite =
 					ColorDrawable(ContextCompat.getColor(requireContext(), R.color.white))
@@ -161,7 +191,7 @@ class CategoryDetailFragment :
 			setAdapter()
 		} else if (result is NetworkResult.Error) {
 			Log.e(TAG, "initCategoryDetail: ${result.error.message}")
-			Toast.makeText(requireContext(), "${result.error.message}", Toast.LENGTH_SHORT).show()
+			RetryDialog(requireContext(), this).show()
 		}
 	}
 

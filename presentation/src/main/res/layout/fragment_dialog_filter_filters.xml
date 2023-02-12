@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="filterViewModel"
+			type="com.zarinfanavaran.presentation.filter.FilterShareViewModel" />
+	</data>
+
+	<androidx.coordinatorlayout.widget.CoordinatorLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layoutDirection="locale"
+		tools:context=".filter.FilterFiltersDialogFragment">
+
+		<com.google.android.material.appbar.AppBarLayout
+			android:id="@+id/appbarId"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<com.google.android.material.appbar.MaterialToolbar
+				android:id="@+id/toolbarId"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@color/white">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+					<androidx.appcompat.widget.AppCompatImageView
+						android:id="@+id/imgToolbarIcon"
+						android:layout_width="@dimen/_18sdp"
+						android:layout_height="@dimen/_18sdp"
+						android:layout_marginStart="@dimen/_16sdp"
+						android:layout_marginTop="@dimen/_16sdp"
+						android:layout_marginBottom="@dimen/_16sdp"
+						android:background="@color/white"
+						android:scaleType="fitCenter"
+						android:src="@drawable/ic_arrow_right"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent"
+						app:tint="@color/color18" />
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/txtToolbarTitle"
+						style="@style/ToolbarStyle.Text"
+						android:layout_width="0dp"
+						android:layout_height="0dp"
+						android:text="@string/filters"
+						app:layout_constraintBottom_toBottomOf="@id/imgToolbarIcon"
+						app:layout_constraintEnd_toStartOf="@id/btnToolbarAction"
+						app:layout_constraintStart_toEndOf="@id/imgToolbarIcon"
+						app:layout_constraintTop_toTopOf="@id/imgToolbarIcon" />
+
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/btnToolbarAction"
+						style="@style/Widget.MaterialComponents.Button.TextButton"
+						android:layout_width="wrap_content"
+						android:layout_height="0dp"
+						android:layout_marginEnd="@dimen/_16sdp"
+						android:gravity="center"
+						android:insetTop="0dp"
+						android:insetBottom="0dp"
+						android:padding="0dp"
+						android:text="@string/remove_filters"
+						android:textColor="@color/colorA3"
+						android:textSize="@dimen/_9ssp"
+						app:cornerRadius="0dp"
+						app:layout_constraintBottom_toBottomOf="@id/imgToolbarIcon"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintTop_toTopOf="@id/imgToolbarIcon"
+						app:rippleColor="@color/transparent" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+
+			</com.google.android.material.appbar.MaterialToolbar>
+
+		</com.google.android.material.appbar.AppBarLayout>
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/clMain"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+			<androidx.core.widget.NestedScrollView
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:fillViewport="false"
+				app:layout_constraintBottom_toTopOf="@id/gradientBottom"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<androidx.recyclerview.widget.RecyclerView
+					android:id="@+id/rvFilters"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@color/white"
+					android:orientation="vertical"
+					android:padding="@dimen/_16sdp"
+					tools:itemCount="1"
+					tools:listitem="@layout/template_filter_multi_select" />
+
+			</androidx.core.widget.NestedScrollView>
+
+			<View
+				android:id="@+id/gradientBottom"
+				android:layout_width="0dp"
+				android:layout_height="@dimen/_10sdp"
+				android:background="@drawable/gradient_bottom_white"
+				app:layout_constraintBottom_toTopOf="@id/llBottom"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent" />
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/llBottom"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:background="@color/white"
+				android:gravity="center"
+				android:orientation="horizontal"
+				android:paddingTop="@dimen/_16sdp"
+				android:paddingBottom="@dimen/_16sdp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent">
+
+				<com.google.android.material.textview.MaterialTextView
+					android:id="@+id/txtFilterCount"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:text="@{filterViewModel.filterCount, default=`@string/sample_filter_count`}"
+					android:textAppearance="@style/TextAppearance.FontBold"
+					android:textColor="@color/color42"
+					android:textSize="@dimen/_12ssp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toStartOf="@id/txtFilterLabel"
+					app:layout_constraintHorizontal_chainStyle="packed"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<com.google.android.material.textview.MaterialTextView
+					android:id="@+id/txtFilterLabel"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="@dimen/_4sdp"
+					android:gravity="center"
+					android:text="@string/filtered_description"
+					android:textColor="@color/color18"
+					android:textSize="@dimen/_9ssp"
+					app:layout_constraintBottom_toBottomOf="@id/txtFilterCount"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toEndOf="@id/txtFilterCount"
+					app:layout_constraintTop_toTopOf="@id/txtFilterCount" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

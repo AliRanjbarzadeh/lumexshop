@@ -2,7 +2,6 @@ package com.zarinfanavaran.presentation.categories
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +10,7 @@ import com.zarinfanavaran.domain.models.Category
 import com.zarinfanavaran.domain.util.NetworkResult
 import com.zarinfanavaran.presentation.R
 import com.zarinfanavaran.presentation.base.BaseFragment
+import com.zarinfanavaran.presentation.base.RetryDialog
 import com.zarinfanavaran.presentation.databinding.FragmentCategoriesBinding
 import com.zarinfanavaran.presentation.util.observe
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,6 +44,10 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>(R.layout.frag
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		setupUI()
+	}
+
+	override fun onRetry() {
+		viewModel.fetchCategories()
 	}
 
 	fun setupUI() {
@@ -104,8 +108,7 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>(R.layout.frag
 			}
 			setAdapter()
 		} else if (result is NetworkResult.Error) {
-			//TODO: try again
-			Toast.makeText(requireContext(), "${result.error.message}", Toast.LENGTH_SHORT).show()
+			RetryDialog(requireContext(), this, false).show()
 		}
 	}
 

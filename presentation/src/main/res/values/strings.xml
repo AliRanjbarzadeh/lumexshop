@@ -115,4 +115,15 @@
 	<string name="shaba_part5">00</string>
 	<string name="very_important">"خیلی مهم: "</string>
 	<string name="shaba_number_alert">فقط شماره شبایی که به نام خودتان باشد امکان ثبت دارد</string>
+	<string name="filters">فیلترها</string>
+	<string name="filters_with_count">%s فیلتر</string>
+	<string name="most_viewed">پر بازدید ترین</string>
+	<string name="remove_filters">حذف فیلترها</string>
+	<string name="filtered_description">کالا در فیلتر شما انتخاب شده است</string>
+	<string name="try_again">تلاش مجدد</string>
+	<string name="retry_dialog_title">خطای ارتباط</string>
+	<string name="retry_dialog_message">خطایی رخ داده است، لطفا مجددا تلاش کنید.</string>
+	<string name="share_with">اشتراک گذاری با</string>
+	<string name="search_in_brand">جستجو در برند</string>
+	<string name="search_in">جستجو در %s</string>
 </resources>

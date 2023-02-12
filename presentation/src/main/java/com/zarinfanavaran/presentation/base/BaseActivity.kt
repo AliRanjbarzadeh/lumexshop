@@ -6,6 +6,9 @@ import android.os.Build
 import android.os.Bundle
 import android.text.SpannableString
 import android.util.DisplayMetrics
+import android.util.Log
+import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -23,7 +26,8 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper
  * Created by Ali Ranjbarzadeh on 9/30/2022 AD.
  */
 abstract class BaseActivity<VDB : ViewDataBinding>(
-	@LayoutRes private val resId: Int
+	@LayoutRes
+	private val resId: Int
 ) : AppCompatActivity(), BaseFragmentCallback, RecyclerViewTools {
 	protected val TAG = this::class.java.simpleName + "Log"
 
@@ -68,5 +72,15 @@ abstract class BaseActivity<VDB : ViewDataBinding>(
 			secondSize = com.intuit.sdp.R.dimen._14sdp,
 			secondFont = getString(R.string.font_bold)
 		)
+	}
+
+	protected fun setProgressView(viewGroup: ViewGroup, isLoading: Boolean) {
+		if (isLoading) {
+			val progressView = layoutInflater.inflate(R.layout.loading, viewGroup, false)
+			viewGroup.addView(progressView)
+		} else {
+			Log.d(TAG, "setProgressView: ${viewGroup.findViewById<FrameLayout>(R.id.flLoading)}")
+			viewGroup.removeView(viewGroup.findViewById<FrameLayout>(R.id.flLoading))
+		}
 	}
 }

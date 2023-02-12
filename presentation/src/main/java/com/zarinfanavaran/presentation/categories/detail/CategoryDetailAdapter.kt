@@ -120,6 +120,8 @@ class CategoryDetailAdapter : BaseAdapter<Any>() {
 					binding.rvItems.layoutManager?.onRestoreInstanceState(it)
 				}
 				binding.rvItems.adapter = mAdapters[bindingAdapterPosition] as CategoryDetailBrandAdapter
+
+				binding.btnShowAll.setOnClickListener { recyclerViewTools.onItemClick(bindingAdapterPosition, it, brandsBox) }
 			}
 
 			private fun handleProducts(productsBox: ProductsBox, binding: TemplateProductsBinding) {
@@ -142,6 +144,8 @@ class CategoryDetailAdapter : BaseAdapter<Any>() {
 					binding.rvItems.layoutManager?.onRestoreInstanceState(it)
 				}
 				binding.rvItems.adapter = mAdapters[bindingAdapterPosition] as CategoryDetailProductAdapter
+
+				binding.btnShowAll.setOnClickListener { recyclerViewTools.onItemClick(bindingAdapterPosition, it, productsBox) }
 			}
 		}
 	}

@@ -2,12 +2,14 @@ package com.zarinfanavaran.presentation
 
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.fragment.NavHostFragment
+import com.zarinfanavaran.domain.BuildConfig
 import com.zarinfanavaran.domain.BuildConfig.SESSION_LOGIN
 import com.zarinfanavaran.domain.extensions.changeFont
 import com.zarinfanavaran.domain.extensions.loadFromSp
@@ -34,7 +36,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		BlurKit.init(this)
-
 
 		//change bottom menu font
 		val mTypeFace = Typeface.createFromAsset(assets, getString(R.string.font_regular))

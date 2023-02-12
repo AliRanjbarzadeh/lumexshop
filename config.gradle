@@ -2,6 +2,7 @@ ext {
     fields = [
             'BaseUrl'         : '"https://zarinkala.com/api/v1/"',
             'DevUrl'          : '"https://zarinkala.com/api/v1/"',
+            'ShareUrl'        : '"https://zarinkala.com/"',
             'MediaUrl'        : '""',
             'Authorization'   : '"Authorization"',
             'TokenPrefix'     : '"Bearer "',
@@ -71,6 +72,7 @@ ext {
             'materialDialog'  : '3.3.0',
             'ucrop'           : '2.2.8',
             'lottie'          : '5.2.0',
+            'refreshLayout'   : '1.2.0-alpha01',
     ]
 
     libs = [
@@ -126,6 +128,7 @@ ext {
             'materialDialogBottomSheet': "com.afollestad.material-dialogs:bottomsheets:${versions.materialDialog}",
             'ucrop'                    : "com.github.yalantis:ucrop:${versions.ucrop}",
             'lottie'                   : "com.airbnb.android:lottie:${versions.lottie}",
+            'refreshLayout'            : "androidx.swiperefreshlayout:swiperefreshlayout:${versions.refreshLayout}",
     ]
 
     def plugins = [
@@ -233,6 +236,7 @@ ext {
                     [configuration: "implementation", dependency: libs.materialDialogBottomSheet],
                     [configuration: "implementation", dependency: libs.ucrop],
                     [configuration: "implementation", dependency: libs.lottie],
+                    [configuration: "implementation", dependency: libs.refreshLayout],
             ],
 
             'plugins': []

@@ -29,7 +29,10 @@
 	<string name="sample_badge_count">2</string>
 	<string name="sample_order_type">در مسیر شما</string>
 	<string name="sample_email">Pete.Gustave@gmail.com</string>
-	<string name="sample_shaba_number">IR25-0120-0200-0000-9281-9131-29</string>
+	<string name="sample_shaba_number">IR25–0120–0200–0000–9281–9131-29</string>
 	<string name="sample_title_product_detail">بازگشت به مدرسه</string>
 	<string name="sample_ads_timer">22:10:46</string>
+	<string name="sample_product_rate">4.4</string>
+	<string name="sample_filter_count">1,300</string>
+	<string name="sample_filter_title">برند</string>
 </resources>
