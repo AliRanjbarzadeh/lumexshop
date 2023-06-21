@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<variable
+			name="item"
+			type="com.zarinfanavaran.domain.models.Filter.Option" />
+	</data>
+
+	<androidx.appcompat.widget.LinearLayoutCompat
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/_24sdp">
+
+		<com.google.android.material.checkbox.MaterialCheckBox
+			android:id="@+id/cbReceiver"
+			style="@style/Widget.MaterialComponents.Button.TextButton"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:button="@drawable/ic_checkbox2"
+			android:checked="@{item.selected}"
+			android:clickable="false"
+			android:enabled="false"
+			android:gravity="start|center_vertical"
+			android:text="@{item.nameFa, default=`@string/sample_brand_name_fa`}"
+			android:textAlignment="viewStart"
+			android:textColor="@color/color22"
+			android:textSize="@dimen/_9ssp"
+			app:useMaterialThemeColors="false" />
+
+		<com.google.android.material.textview.MaterialTextView
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:gravity="center"
+			android:text="@{item.nameEn, default=`@string/sample_brand_name_en`}"
+			android:textColor="@color/colorA3"
+			android:textSize="@dimen/_9ssp" />
+	</androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

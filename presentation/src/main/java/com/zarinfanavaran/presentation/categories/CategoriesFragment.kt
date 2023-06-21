@@ -60,7 +60,7 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>(R.layout.frag
 
 	}
 
-	override fun <T> onItemClick(position: Int, view: View, item: T) {
+	override fun <T> onItemClick(position: Int, view: View, item: T, parentPosition: Int) {
 		item as Category
 
 		val action = CategoriesFragmentDirections.actionCategoriesFragmentToCategoryDetailFragment(item.id)

@@ -24,6 +24,8 @@ android {
         buildConfigField 'String', 'MEDIA_URL', fields.MediaUrl
         buildConfigField 'String', 'AUTHORIZATION', fields.Authorization
         buildConfigField 'String', 'TOKEN_PREFIX', fields.TokenPrefix
+        buildConfigField 'String', 'CART_TOKEN_NAME', fields.CartTokenName
+        buildConfigField 'String', 'SESSION_CART_TOKEN', fields.SessionCartToken
         buildConfigField 'String', 'DEFAULT_TOKEN', fields.DefaultToken
         buildConfigField 'String', 'SESSION_LOGIN', fields.SessionLogin
         buildConfigField 'String', 'SESSION_TOKEN', fields.SessionToken

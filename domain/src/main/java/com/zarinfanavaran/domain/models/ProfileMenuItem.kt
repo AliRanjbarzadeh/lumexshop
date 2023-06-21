@@ -14,7 +14,7 @@ data class ProfileMenuItem(
 	@DrawableRes val icon: Int,
 	@ColorRes val color: Int,
 	val type: String,
-	var _badgeCount: Int = 2
+	var _badgeCount: Int = 0
 ) : BaseObservable() {
 
 	var badgeCount = _badgeCount

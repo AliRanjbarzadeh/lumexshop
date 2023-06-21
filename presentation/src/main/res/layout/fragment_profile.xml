@@ -5,6 +5,8 @@
 
 	<data>
 
+		<import type="android.view.View" />
+
 		<variable
 			name="user"
 			type="com.zarinfanavaran.domain.models.User" />
@@ -15,318 +17,325 @@
 		android:layout_height="match_parent"
 		android:fillViewport="true">
 
-		<androidx.appcompat.widget.LinearLayoutCompat
+		<FrameLayout
+			android:id="@+id/flMain"
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:orientation="vertical">
+			android:layout_height="match_parent">
 
-			<com.google.android.material.card.MaterialCardView
+			<androidx.appcompat.widget.LinearLayoutCompat
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:padding="0dp"
-				app:cardBackgroundColor="@color/white"
-				app:cardPreventCornerOverlap="false"
-				app:cardUseCompatPadding="false"
-				app:shapeAppearance="@style/ProfileTopBar"
-				app:strokeWidth="0dp">
+				android:layout_height="match_parent"
+				android:orientation="vertical">
+
+				<com.google.android.material.card.MaterialCardView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:padding="0dp"
+					app:cardBackgroundColor="@color/white"
+					app:cardPreventCornerOverlap="false"
+					app:cardUseCompatPadding="false"
+					app:shapeAppearance="@style/ProfileTopBar"
+					app:strokeWidth="0dp">
+
+					<androidx.constraintlayout.widget.ConstraintLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<androidx.constraintlayout.widget.Guideline
+							android:id="@+id/glProfile"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:orientation="vertical"
+							app:guidelineUseRtl="true"
+							app:layout_constraintGuide_percent="0.18" />
+
+						<androidx.constraintlayout.widget.Guideline
+							android:id="@+id/glProfile2"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:orientation="vertical"
+							app:guidelineUseRtl="true"
+							app:layout_constraintGuide_percent="0.82" />
+
+						<androidx.appcompat.widget.AppCompatImageView
+							android:id="@+id/btnNotification"
+							android:layout_width="@dimen/_28sdp"
+							android:layout_height="@dimen/_28sdp"
+							android:layout_marginTop="@dimen/_10sdp"
+							android:layout_marginEnd="@dimen/_10sdp"
+							android:scaleType="centerInside"
+							android:src="@drawable/ic_notification_stroke"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintTop_toTopOf="parent" />
+
+						<com.google.android.material.textview.MaterialTextView
+							android:id="@+id/txtNotificationBadge"
+							android:layout_width="@dimen/_9sdp"
+							android:layout_height="@dimen/_9sdp"
+							android:layout_marginStart="@dimen/_2sdp"
+							android:layout_marginBottom="@dimen/_5sdp"
+							android:background="@drawable/bg_badge_bottom_menu"
+							android:gravity="center"
+							android:padding="0dp"
+							android:text="@string/sample_badge_count"
+							android:textAppearance="@style/TextAppearance.FontSemiBold"
+							android:textColor="@color/colorF1"
+							android:textSize="@dimen/_6ssp"
+							android:visibility="@{user.unreadNotificationsCount > 0 ? View.VISIBLE: View.INVISIBLE}"
+							app:layout_constraintBottom_toBottomOf="@id/btnNotification"
+							app:layout_constraintStart_toStartOf="@id/btnNotification" />
+
+						<androidx.appcompat.widget.AppCompatImageView
+							android:id="@+id/btnSetting"
+							android:layout_width="@dimen/_24sdp"
+							android:layout_height="@dimen/_24sdp"
+							android:layout_marginStart="@dimen/_10sdp"
+							android:layout_marginTop="@dimen/_10sdp"
+							android:scaleType="centerInside"
+							android:src="@drawable/ic_setting_stroke"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toTopOf="parent" />
+
+						<com.google.android.material.imageview.ShapeableImageView
+							android:id="@+id/imgProfile"
+							android:layout_width="@dimen/_62sdp"
+							android:layout_height="@dimen/_62sdp"
+							android:layout_marginTop="@dimen/_10sdp"
+							android:padding="@dimen/_1sdp"
+							android:scaleType="centerCrop"
+							android:src="@drawable/temp_profile"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toTopOf="parent"
+							app:shapeAppearance="@style/ProfileImage"
+							app:strokeColor="@color/color42"
+							app:strokeWidth="@dimen/_2sdp" />
+
+						<com.google.android.material.textview.MaterialTextView
+							android:id="@+id/txtFullName"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/_8sdp"
+							android:ellipsize="end"
+							android:gravity="center"
+							android:maxLines="1"
+							android:text="@{user.fullName, default=`@string/sample_full_name`}"
+							android:textAlignment="gravity"
+							android:textColor="@color/color18"
+							android:textSize="@dimen/_10ssp"
+							app:layout_constraintEnd_toEndOf="@id/glProfile2"
+							app:layout_constraintStart_toStartOf="@id/glProfile"
+							app:layout_constraintTop_toBottomOf="@id/imgProfile" />
+
+						<com.google.android.material.textview.MaterialTextView
+							android:id="@+id/txtMobile"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/_3sdp"
+							android:layout_marginBottom="@dimen/_16sdp"
+							android:ellipsize="end"
+							android:gravity="center"
+							android:maxLines="1"
+							android:text="@{@string/mobile_format(user.mobileNumber), default=`@string/sample_mobile_profile`}"
+							android:textAlignment="gravity"
+							android:textAppearance="@style/TextAppearance.FontLight"
+							android:textColor="@color/colorA3"
+							android:textSize="@dimen/_10ssp"
+							app:layout_constraintBottom_toBottomOf="parent"
+							app:layout_constraintEnd_toEndOf="@id/glProfile2"
+							app:layout_constraintStart_toStartOf="@id/glProfile"
+							app:layout_constraintTop_toBottomOf="@id/txtFullName" />
+
+					</androidx.constraintlayout.widget.ConstraintLayout>
+
+				</com.google.android.material.card.MaterialCardView>
 
 				<androidx.constraintlayout.widget.ConstraintLayout
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content">
-
-					<androidx.constraintlayout.widget.Guideline
-						android:id="@+id/glProfile"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:orientation="vertical"
-						app:guidelineUseRtl="true"
-						app:layout_constraintGuide_percent="0.18" />
-
-					<androidx.constraintlayout.widget.Guideline
-						android:id="@+id/glProfile2"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:orientation="vertical"
-						app:guidelineUseRtl="true"
-						app:layout_constraintGuide_percent="0.82" />
-
-					<androidx.appcompat.widget.AppCompatImageView
-						android:id="@+id/btnNotification"
-						android:layout_width="@dimen/_28sdp"
-						android:layout_height="@dimen/_28sdp"
-						android:layout_marginTop="@dimen/_10sdp"
-						android:layout_marginEnd="@dimen/_10sdp"
-						android:scaleType="centerInside"
-						android:src="@drawable/ic_notification_stroke"
-						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintTop_toTopOf="parent" />
-
-					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/txtNotificationBadge"
-						android:layout_width="@dimen/_9sdp"
-						android:layout_height="@dimen/_9sdp"
-						android:layout_marginStart="@dimen/_2sdp"
-						android:layout_marginBottom="@dimen/_5sdp"
-						android:background="@drawable/bg_badge_bottom_menu"
-						android:gravity="center"
-						android:padding="0dp"
-						android:text="@string/sample_badge_count"
-						android:textAppearance="@style/TextAppearance.FontSemiBold"
-						android:textColor="@color/colorF1"
-						android:textSize="@dimen/_6ssp"
-						app:layout_constraintBottom_toBottomOf="@id/btnNotification"
-						app:layout_constraintStart_toStartOf="@id/btnNotification" />
-
-					<androidx.appcompat.widget.AppCompatImageView
-						android:id="@+id/btnSetting"
-						android:layout_width="@dimen/_24sdp"
-						android:layout_height="@dimen/_24sdp"
-						android:layout_marginStart="@dimen/_10sdp"
-						android:layout_marginTop="@dimen/_10sdp"
-						android:scaleType="centerInside"
-						android:src="@drawable/ic_setting_stroke"
-						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintTop_toTopOf="parent" />
-
-					<com.google.android.material.imageview.ShapeableImageView
-						android:id="@+id/imgProfile"
-						android:layout_width="@dimen/_62sdp"
-						android:layout_height="@dimen/_62sdp"
-						android:layout_marginTop="@dimen/_10sdp"
-						android:padding="@dimen/_1sdp"
-						android:scaleType="centerCrop"
-						android:src="@drawable/temp_profile"
-						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintTop_toTopOf="parent"
-						app:shapeAppearance="@style/ProfileImage"
-						app:strokeColor="@color/color42"
-						app:strokeWidth="@dimen/_2sdp" />
-
-					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/txtFullName"
-						android:layout_width="0dp"
-						android:layout_height="wrap_content"
-						android:layout_marginTop="@dimen/_8sdp"
-						android:ellipsize="end"
-						android:gravity="center"
-						android:maxLines="1"
-						android:text="@{user.fullName, default=`@string/sample_full_name`}"
-						android:textAlignment="gravity"
-						android:textColor="@color/color18"
-						android:textSize="@dimen/_10ssp"
-						app:layout_constraintEnd_toEndOf="@id/glProfile2"
-						app:layout_constraintStart_toStartOf="@id/glProfile"
-						app:layout_constraintTop_toBottomOf="@id/imgProfile" />
-
-					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/txtMobile"
-						android:layout_width="0dp"
-						android:layout_height="wrap_content"
-						android:layout_marginTop="@dimen/_3sdp"
-						android:layout_marginBottom="@dimen/_16sdp"
-						android:ellipsize="end"
-						android:gravity="center"
-						android:maxLines="1"
-						android:text="@{user.mobileFormat, default=`@string/sample_mobile_profile`}"
-						android:textAlignment="gravity"
-						android:textAppearance="@style/TextAppearance.FontLight"
-						android:textColor="@color/colorA3"
-						android:textSize="@dimen/_10ssp"
-						app:layout_constraintBottom_toBottomOf="parent"
-						app:layout_constraintEnd_toEndOf="@id/glProfile2"
-						app:layout_constraintStart_toStartOf="@id/glProfile"
-						app:layout_constraintTop_toBottomOf="@id/txtFullName" />
-
-				</androidx.constraintlayout.widget.ConstraintLayout>
-
-			</com.google.android.material.card.MaterialCardView>
-
-			<androidx.constraintlayout.widget.ConstraintLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginStart="@dimen/_20sdp"
-				android:layout_marginTop="@dimen/_20sdp"
-				android:layout_marginEnd="@dimen/_20sdp">
-
-				<androidx.constraintlayout.widget.ConstraintLayout
-					android:id="@+id/clWallet"
-					android:layout_width="0dp"
 					android:layout_height="wrap_content"
-					android:layout_marginEnd="@dimen/_5sdp"
-					app:layout_constraintBottom_toBottomOf="parent"
-					app:layout_constraintEnd_toStartOf="@id/clPoint"
-					app:layout_constraintHorizontal_chainStyle="spread_inside"
-					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toTopOf="parent">
+					android:layout_marginStart="@dimen/_20sdp"
+					android:layout_marginTop="@dimen/_20sdp"
+					android:layout_marginEnd="@dimen/_20sdp">
 
-					<androidx.appcompat.widget.AppCompatImageView
-						android:id="@+id/imgWallet"
-						android:layout_width="@dimen/_39sdp"
-						android:layout_height="@dimen/_39sdp"
-						android:scaleType="fitCenter"
-						android:src="@drawable/img_wallet"
-						app:layout_constraintBottom_toBottomOf="parent"
-						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintTop_toTopOf="parent" />
-
-					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/txtWalletAmount"
+					<androidx.constraintlayout.widget.ConstraintLayout
+						android:id="@+id/clWallet"
 						android:layout_width="0dp"
 						android:layout_height="wrap_content"
-						android:gravity="center_vertical|end"
-						android:text="@string/sample_price_wallet"
-						android:textAlignment="viewEnd"
-						android:textColor="@color/color18"
-						android:textSize="@dimen/_9ssp"
-						app:layout_constraintBottom_toTopOf="@id/btnWallet"
-						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintStart_toEndOf="@id/imgWallet"
-						app:layout_constraintTop_toTopOf="@id/imgWallet"
-						app:layout_constraintVertical_chainStyle="spread_inside" />
+						android:layout_marginEnd="@dimen/_5sdp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toStartOf="@id/clPoint"
+						app:layout_constraintHorizontal_chainStyle="spread_inside"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent">
 
-					<com.google.android.material.button.MaterialButton
-						android:id="@+id/btnWallet"
-						style="@style/Widget.MaterialComponents.Button.TextButton"
+						<androidx.appcompat.widget.AppCompatImageView
+							android:id="@+id/imgWallet"
+							android:layout_width="@dimen/_39sdp"
+							android:layout_height="@dimen/_39sdp"
+							android:scaleType="fitCenter"
+							android:src="@drawable/img_wallet"
+							app:layout_constraintBottom_toBottomOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toTopOf="parent" />
+
+						<com.google.android.material.textview.MaterialTextView
+							android:id="@+id/txtWalletAmount"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:gravity="center_vertical|end"
+							android:text="@string/sample_price_wallet"
+							android:textAlignment="viewEnd"
+							android:textColor="@color/color18"
+							android:textSize="@dimen/_9ssp"
+							app:layout_constraintBottom_toTopOf="@id/btnWallet"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toEndOf="@id/imgWallet"
+							app:layout_constraintTop_toTopOf="@id/imgWallet"
+							app:layout_constraintVertical_chainStyle="spread_inside" />
+
+						<com.google.android.material.button.MaterialButton
+							android:id="@+id/btnWallet"
+							style="@style/Widget.MaterialComponents.Button.TextButton"
+							android:layout_width="0dp"
+							android:layout_height="@dimen/_17sdp"
+							android:gravity="center_vertical|end"
+							android:insetTop="0dp"
+							android:insetBottom="0dp"
+							android:padding="0dp"
+							android:text="@string/manage_wallet"
+							android:textAlignment="viewEnd"
+							android:textColor="@color/color42"
+							android:textSize="@dimen/_8ssp"
+							app:icon="@drawable/ic_arrow_left_stroke"
+							app:iconGravity="textEnd"
+							app:iconPadding="@dimen/_2sdp"
+							app:layout_constraintBottom_toBottomOf="parent"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toEndOf="@id/imgWallet"
+							app:layout_constraintTop_toBottomOf="@id/txtWalletAmount"
+							tools:ignore="TouchTargetSizeCheck" />
+
+					</androidx.constraintlayout.widget.ConstraintLayout>
+
+					<androidx.constraintlayout.widget.ConstraintLayout
+						android:id="@+id/clPoint"
 						android:layout_width="0dp"
-						android:layout_height="@dimen/_17sdp"
-						android:gravity="center_vertical|end"
-						android:insetTop="0dp"
-						android:insetBottom="0dp"
-						android:padding="0dp"
-						android:text="@string/manage_wallet"
-						android:textAlignment="viewEnd"
-						android:textColor="@color/color42"
-						android:textSize="@dimen/_8ssp"
-						app:icon="@drawable/ic_arrow_left_stroke"
-						app:iconGravity="textEnd"
-						app:iconPadding="@dimen/_2sdp"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="@dimen/_5sdp"
 						app:layout_constraintBottom_toBottomOf="parent"
 						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintStart_toEndOf="@id/imgWallet"
-						app:layout_constraintTop_toBottomOf="@id/txtWalletAmount"
-						tools:ignore="TouchTargetSizeCheck" />
+						app:layout_constraintStart_toEndOf="@id/clWallet"
+						app:layout_constraintTop_toTopOf="parent">
+
+						<androidx.appcompat.widget.AppCompatImageView
+							android:id="@+id/imgBookmarg"
+							android:layout_width="@dimen/_39sdp"
+							android:layout_height="@dimen/_39sdp"
+							android:scaleType="fitCenter"
+							android:src="@drawable/img_bookmark"
+							app:layout_constraintBottom_toBottomOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toTopOf="parent" />
+
+						<com.google.android.material.textview.MaterialTextView
+							android:id="@+id/txtPointAmount"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:gravity="center_vertical|end"
+							android:text="@string/sample_point"
+							android:textAlignment="viewEnd"
+							android:textColor="@color/color18"
+							android:textSize="@dimen/_9ssp"
+							app:layout_constraintBottom_toTopOf="@id/btnPoint"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toEndOf="@id/imgBookmarg"
+							app:layout_constraintTop_toTopOf="@id/imgBookmarg"
+							app:layout_constraintVertical_chainStyle="spread_inside" />
+
+						<com.google.android.material.button.MaterialButton
+							android:id="@+id/btnPoint"
+							style="@style/Widget.MaterialComponents.Button.TextButton"
+							android:layout_width="0dp"
+							android:layout_height="@dimen/_17sdp"
+							android:gravity="center_vertical|end"
+							android:insetTop="0dp"
+							android:insetBottom="0dp"
+							android:padding="0dp"
+							android:text="@string/view_points"
+							android:textAlignment="viewEnd"
+							android:textColor="@color/color42"
+							android:textSize="@dimen/_8ssp"
+							app:icon="@drawable/ic_arrow_left_stroke"
+							app:iconGravity="textEnd"
+							app:iconPadding="@dimen/_2sdp"
+							app:layout_constraintBottom_toBottomOf="parent"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toEndOf="@id/imgBookmarg"
+							app:layout_constraintTop_toBottomOf="@id/txtPointAmount"
+							tools:ignore="TouchTargetSizeCheck" />
+
+					</androidx.constraintlayout.widget.ConstraintLayout>
 
 				</androidx.constraintlayout.widget.ConstraintLayout>
 
-				<androidx.constraintlayout.widget.ConstraintLayout
-					android:id="@+id/clPoint"
-					android:layout_width="0dp"
+				<com.google.android.material.textview.MaterialTextView
+					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginStart="@dimen/_5sdp"
-					app:layout_constraintBottom_toBottomOf="parent"
-					app:layout_constraintEnd_toEndOf="parent"
-					app:layout_constraintStart_toEndOf="@id/clWallet"
-					app:layout_constraintTop_toTopOf="parent">
+					android:layout_marginStart="@dimen/_20sdp"
+					android:layout_marginTop="@dimen/_20sdp"
+					android:layout_marginEnd="@dimen/_20sdp"
+					android:text="@string/my_orders"
+					android:textAppearance="@style/TextAppearance.FontSemiBold"
+					android:textColor="@color/color18"
+					android:textSize="@dimen/_12ssp" />
+
+				<FrameLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/_10sdp">
+
+					<androidx.recyclerview.widget.RecyclerView
+						android:id="@+id/rvOrderTypes"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:clipToPadding="false"
+						android:orientation="horizontal"
+						android:paddingStart="@dimen/_5sdp"
+						android:paddingEnd="@dimen/_5sdp"
+						app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+						tools:itemCount="3"
+						tools:listitem="@layout/template_order_type_item" />
 
 					<androidx.appcompat.widget.AppCompatImageView
-						android:id="@+id/imgBookmarg"
-						android:layout_width="@dimen/_39sdp"
-						android:layout_height="@dimen/_39sdp"
-						android:scaleType="fitCenter"
-						android:src="@drawable/img_bookmark"
-						app:layout_constraintBottom_toBottomOf="parent"
-						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintTop_toTopOf="parent" />
+						android:layout_width="@dimen/_8sdp"
+						android:layout_height="match_parent"
+						android:layout_gravity="end"
+						android:src="@drawable/gradient_white_side" />
 
-					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/txtPointAmount"
-						android:layout_width="0dp"
-						android:layout_height="wrap_content"
-						android:gravity="center_vertical|end"
-						android:text="@string/sample_point"
-						android:textAlignment="viewEnd"
-						android:textColor="@color/color18"
-						android:textSize="@dimen/_9ssp"
-						app:layout_constraintBottom_toTopOf="@id/btnPoint"
-						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintStart_toEndOf="@id/imgBookmarg"
-						app:layout_constraintTop_toTopOf="@id/imgBookmarg"
-						app:layout_constraintVertical_chainStyle="spread_inside" />
+					<androidx.appcompat.widget.AppCompatImageView
+						android:layout_width="@dimen/_8sdp"
+						android:layout_height="match_parent"
+						android:layout_gravity="start"
+						android:rotation="180"
+						android:src="@drawable/gradient_white_side" />
 
-					<com.google.android.material.button.MaterialButton
-						android:id="@+id/btnPoint"
-						style="@style/Widget.MaterialComponents.Button.TextButton"
-						android:layout_width="0dp"
-						android:layout_height="@dimen/_17sdp"
-						android:gravity="center_vertical|end"
-						android:insetTop="0dp"
-						android:insetBottom="0dp"
-						android:padding="0dp"
-						android:text="@string/view_points"
-						android:textAlignment="viewEnd"
-						android:textColor="@color/color42"
-						android:textSize="@dimen/_8ssp"
-						app:icon="@drawable/ic_arrow_left_stroke"
-						app:iconGravity="textEnd"
-						app:iconPadding="@dimen/_2sdp"
-						app:layout_constraintBottom_toBottomOf="parent"
-						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintStart_toEndOf="@id/imgBookmarg"
-						app:layout_constraintTop_toBottomOf="@id/txtPointAmount"
-						tools:ignore="TouchTargetSizeCheck" />
-
-				</androidx.constraintlayout.widget.ConstraintLayout>
-
-			</androidx.constraintlayout.widget.ConstraintLayout>
-
-			<com.google.android.material.textview.MaterialTextView
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginStart="@dimen/_20sdp"
-				android:layout_marginTop="@dimen/_20sdp"
-				android:layout_marginEnd="@dimen/_20sdp"
-				android:text="@string/my_orders"
-				android:textAppearance="@style/TextAppearance.FontSemiBold"
-				android:textColor="@color/color18"
-				android:textSize="@dimen/_12ssp" />
-
-			<FrameLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="@dimen/_10sdp">
+				</FrameLayout>
 
 				<androidx.recyclerview.widget.RecyclerView
-					android:id="@+id/rvOrderTypes"
+					android:id="@+id/rvProfileMenu"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_marginStart="@dimen/_20sdp"
+					android:layout_marginTop="@dimen/_10sdp"
+					android:layout_marginEnd="@dimen/_20sdp"
 					android:clipToPadding="false"
-					android:orientation="horizontal"
-					android:paddingStart="@dimen/_5sdp"
-					android:paddingEnd="@dimen/_5sdp"
+					android:paddingBottom="@dimen/_40sdp"
 					app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-					tools:itemCount="3"
-					tools:listitem="@layout/template_order_type_item" />
+					tools:itemCount="4"
+					tools:listitem="@layout/template_profile_menu_item" />
 
-				<androidx.appcompat.widget.AppCompatImageView
-					android:layout_width="@dimen/_8sdp"
-					android:layout_height="match_parent"
-					android:layout_gravity="end"
-					android:src="@drawable/gradient_white_side" />
-
-				<androidx.appcompat.widget.AppCompatImageView
-					android:layout_width="@dimen/_8sdp"
-					android:layout_height="match_parent"
-					android:layout_gravity="start"
-					android:rotation="180"
-					android:src="@drawable/gradient_white_side" />
-
-			</FrameLayout>
-
-			<androidx.recyclerview.widget.RecyclerView
-				android:id="@+id/rvProfileMenu"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginStart="@dimen/_20sdp"
-				android:layout_marginTop="@dimen/_10sdp"
-				android:layout_marginEnd="@dimen/_20sdp"
-				android:clipToPadding="false"
-				android:paddingBottom="@dimen/_40sdp"
-				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-				tools:itemCount="4"
-				tools:listitem="@layout/template_profile_menu_item" />
-
-		</androidx.appcompat.widget.LinearLayoutCompat>
+			</androidx.appcompat.widget.LinearLayoutCompat>
+		</FrameLayout>
 
 	</androidx.core.widget.NestedScrollView>
 </layout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<androidx.coordinatorlayout.widget.CoordinatorLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<com.google.android.material.appbar.AppBarLayout
+			android:id="@+id/appbarId"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<com.google.android.material.appbar.MaterialToolbar
+				android:id="@+id/toolbarId"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+					<androidx.appcompat.widget.AppCompatImageView
+						android:id="@+id/imgToolbarIcon"
+						style="@style/ToolbarStyle.Image"
+						android:layout_width="wrap_content"
+						android:layout_height="@dimen/_34sdp"
+						android:src="@drawable/ic_arrow_right"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/txtToolbarTitle"
+						style="@style/ToolbarStyle.Text"
+						android:layout_width="0dp"
+						android:layout_height="0dp"
+						android:text="@string/addresses"
+						app:layout_constraintBottom_toBottomOf="@id/imgToolbarIcon"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toEndOf="@id/imgToolbarIcon"
+						app:layout_constraintTop_toTopOf="@id/imgToolbarIcon" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+
+			</com.google.android.material.appbar.MaterialToolbar>
+
+		</com.google.android.material.appbar.AppBarLayout>
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/clMain"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/rvAddresses"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:clipToPadding="false"
+				android:paddingTop="@dimen/_16sdp"
+				android:paddingBottom="@dimen/_34sdp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:itemCount="2"
+				tools:listitem="@layout/template_address" />
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/btnAddAddress"
+				android:layout_width="wrap_content"
+				android:layout_height="@dimen/_34sdp"
+				android:layout_marginBottom="@dimen/_31sdp"
+				android:elevation="0dp"
+				android:insetTop="0dp"
+				android:insetBottom="0dp"
+				android:paddingStart="@dimen/_9sdp"
+				android:paddingEnd="@dimen/_9sdp"
+				android:text="@string/add_address"
+				android:textAppearance="@style/TextAppearance.FontSemiBold"
+				android:textSize="@dimen/_9ssp"
+				app:cornerRadius="0dp"
+				app:elevation="0dp"
+				app:icon="@drawable/ic_add_address_stroke"
+				app:iconPadding="@dimen/_4sdp"
+				app:iconSize="@dimen/_18sdp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -137,7 +137,7 @@
 
 			<com.google.android.material.textview.MaterialTextView
 				android:id="@+id/txtRealPrice"
-				android:layout_width="0dp"
+				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="@dimen/_4sdp"
 				android:layout_marginEnd="@dimen/_8sdp"
@@ -147,9 +147,19 @@
 				android:textAppearance="@style/TextAppearance.FontMedium"
 				android:textColor="@color/colorA3"
 				android:textSize="@dimen/_6ssp"
+				android:visibility="@{item.hasDiscount == 1 ? View.VISIBLE : View.INVISIBLE}"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="@id/txtPrice"
 				app:layout_constraintTop_toBottomOf="@id/txtPrice" />
+
+			<View
+				android:layout_width="0dp"
+				android:layout_height="@dimen/_1sdp"
+				android:background="@color/colorA3"
+				android:visibility="@{item.hasDiscount == 1 ? View.VISIBLE : View.INVISIBLE}"
+				app:layout_constraintBottom_toBottomOf="@id/txtRealPrice"
+				app:layout_constraintEnd_toEndOf="@id/txtRealPrice"
+				app:layout_constraintStart_toStartOf="@id/txtRealPrice"
+				app:layout_constraintTop_toTopOf="@id/txtRealPrice" />
 
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</com.google.android.material.card.MaterialCardView>

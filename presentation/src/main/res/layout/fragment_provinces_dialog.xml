@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<androidx.coordinatorlayout.widget.CoordinatorLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/white"
+		android:layoutDirection="locale"
+		tools:context=".profile.address.ProvincesDialogFragment">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/clMain"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+			<com.google.android.material.textfield.TextInputLayout
+				android:id="@+id/tilInnerSearch"
+				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/_16sdp"
+				android:layout_marginTop="@dimen/_8sdp"
+				android:layout_marginEnd="@dimen/_16sdp"
+				android:textColorHint="@color/color18"
+				app:boxCornerRadiusBottomEnd="0dp"
+				app:boxCornerRadiusBottomStart="0dp"
+				app:boxCornerRadiusTopEnd="0dp"
+				app:boxCornerRadiusTopStart="0dp"
+				app:boxStrokeColor="@color/text_input_layout_stroke_color"
+				app:endIconCheckable="false"
+				app:endIconDrawable="@drawable/ic_close_stroke"
+				app:endIconMode="clear_text"
+				app:endIconTint="@color/color18"
+				app:hintTextAppearance="@style/HintLabel"
+				app:hintTextColor="@color/text_input_layout_stroke_color"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/etInnerSearch"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="start|center_vertical"
+					android:hint="@string/search"
+					android:imeOptions="actionNext"
+					android:inputType="text"
+					android:textAlignment="viewStart"
+					android:textColor="@color/color18"
+					android:textColorHint="@color/colorA3"
+					android:textSize="@dimen/_8ssp" />
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/rvProvinces"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:layout_marginStart="@dimen/_16sdp"
+				android:layout_marginTop="@dimen/_8sdp"
+				android:layout_marginEnd="@dimen/_16sdp"
+				android:background="@color/white"
+				android:clipToPadding="false"
+				android:orientation="vertical"
+				android:paddingBottom="@dimen/_10sdp"
+				app:layout_constraintBottom_toTopOf="@id/flBottom"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHeight_default="wrap"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/tilInnerSearch"
+				tools:itemCount="4"
+				tools:listitem="@layout/template_province" />
+
+			<View
+				android:id="@+id/gradientBottom"
+				android:layout_width="0dp"
+				android:layout_height="@dimen/_8sdp"
+				android:background="@drawable/gradient_bottom_white"
+				app:layout_constraintBottom_toTopOf="@id/flBottom"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent" />
+
+			<FrameLayout
+				android:id="@+id/flBottom"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:background="@color/white"
+				android:gravity="center"
+				android:orientation="horizontal"
+				android:paddingStart="@dimen/_16sdp"
+				android:paddingEnd="@dimen/_16sdp"
+				android:paddingBottom="@dimen/_16sdp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent">
+
+				<com.google.android.material.button.MaterialButton
+					android:id="@+id/btnClose"
+					android:layout_width="match_parent"
+					android:layout_height="@dimen/_36sdp"
+					android:insetTop="0dp"
+					android:insetBottom="0dp"
+					android:text="@string/close"
+					android:textColor="@color/color18"
+					android:textSize="@dimen/_11ssp"
+					app:backgroundTint="@color/colorD9"
+					app:cornerRadius="0dp" />
+
+			</FrameLayout>
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

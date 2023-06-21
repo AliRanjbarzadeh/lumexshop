@@ -70,7 +70,7 @@ class ShopCartFragment : BaseFragment<FragmentShopcartBinding>(R.layout.fragment
 	}
 
 	private val shopCartRecyclerViewTools = object : RecyclerViewTools {
-		override fun <T> onItemClick(position: Int, view: View, item: T) {
+		override fun <T> onItemClick(position: Int, view: View, item: T, parentPosition: Int) {
 			item as ProductShopCart
 			when (view.id) {
 				R.id.btnIncrease -> handleIncrease(position, item)

@@ -5,8 +5,7 @@ package com.zarinfanavaran.presentation.base
  */
 interface BaseFragmentCallback {
 	fun bottomNavigationVisibility(isShow: Boolean) {}
-
 	fun login() {}
-
 	fun logout() {}
+	fun myOnBackPressed() {}
 }

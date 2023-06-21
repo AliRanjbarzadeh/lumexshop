@@ -2,31 +2,43 @@ package com.zarinfanavaran.presentation.home
 
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zarinfanavaran.domain.models.*
 import com.zarinfanavaran.presentation.R
 import com.zarinfanavaran.presentation.base.BaseFragment
-import com.zarinfanavaran.presentation.base.RetryDialog
 import com.zarinfanavaran.presentation.databinding.FragmentHomeBinding
 import com.zarinfanavaran.presentation.product.ProductActivity
+import com.zarinfanavaran.presentation.util.observe
+import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
 
 /**
  * Created by Ali Ranjbarzadeh on 9/30/2022 AD.
  */
+@AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
 	private var homeAdapter = HomeAdapter()
+
+	private val viewModel: HomeViewModel by viewModels()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
 		//set click handlers
 		homeAdapter.recyclerViewTools = this
+
+		setupObservers()
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,12 +54,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 		setAdapter()
 	}
 
-	override fun <T> onItemClick(position: Int, view: View, item: T) {
+	override fun <T> onItemClick(position: Int, view: View, item: T, parentPosition: Int) {
 		when (item) {
 			is Product -> {
 				Log.d(TAG, "onItemClick: $item")
 				startActivity(Intent(requireContext(), ProductActivity::class.java))
 			}
+		}
+	}
+
+	private fun setupObservers() {
+		viewModel.run {
 		}
 	}
 

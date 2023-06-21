@@ -1,22 +1,27 @@
 package com.zarinfanavaran.presentation
 
 import android.graphics.Typeface
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.window.OnBackInvokedCallback
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.fragment.NavHostFragment
-import com.zarinfanavaran.domain.BuildConfig
-import com.zarinfanavaran.domain.BuildConfig.SESSION_LOGIN
+import com.zarinfanavaran.domain.BuildConfig.*
 import com.zarinfanavaran.domain.extensions.changeFont
+import com.zarinfanavaran.domain.extensions.deleteFromSp
 import com.zarinfanavaran.domain.extensions.loadFromSp
 import com.zarinfanavaran.domain.extensions.saveToSp
+import com.zarinfanavaran.domain.models.User
 import com.zarinfanavaran.presentation.base.BaseActivity
+import com.zarinfanavaran.presentation.base.BaseObject
 import com.zarinfanavaran.presentation.databinding.ActivityMainBinding
 import com.zarinfanavaran.presentation.login.LoginMobileFragmentDirections
+import com.zarinfanavaran.presentation.util.SESSION_LOGOUT_KEY
 import com.zarinfanavaran.presentation.util.blur.BlurKit
 import com.zarinfanavaran.presentation.util.getCurrentNavHostByGraphId
 import com.zarinfanavaran.presentation.util.setBadge
@@ -32,6 +37,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 	lateinit var profileNavGraph: NavGraph
 	val shopCartBadge = ObservableInt(2)
 	private lateinit var controller: LiveData<NavController>
+
+
+	private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+		override fun handleOnBackPressed() {
+		}
+	}
+
+	private val onBackInvokedCallback = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+		object : OnBackInvokedCallback {
+			override fun onBackInvoked() {
+			}
+		}
+	} else {
+		null
+	}
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -89,7 +109,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
 		val navigationCallbacks = listOf(null, null, null, null, null)
 
-
 		binding.bottomMenu.setupWithNavigationController(
 			navGraphIds,
 			navigationCallbacks,
@@ -124,5 +143,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 	}
 
 	override fun logout() {
+		deleteFromSp(SESSION_LOGIN)
+		deleteFromSp(SESSION_CART_TOKEN)
+		deleteFromSp(SESSION_TOKEN)
+		deleteFromSp(SESSION_LOGOUT_KEY)
+		deleteFromSp(USER)
+		BaseObject.user = User()
+		binding.bottomMenu.selectedItemId = R.id.home_nav
+		profileNavGraph.setStartDestination(R.id.loginMobileFragment)
+	}
+
+	override fun myOnBackPressed() {
+		binding.bottomMenu.selectedItemId = R.id.home_nav
 	}
 }

@@ -6,6 +6,5 @@ import com.zarinfanavaran.domain.util.NetworkResult
 
 interface CategoryDataSource {
 	suspend fun getCategories(): NetworkResult<List<Category>>
-
 	suspend fun getDetail(categoryId: Int): NetworkResult<CategoryDetail>
 }

@@ -198,4 +198,17 @@
 	<style name="HintLabel" parent="TextAppearance.Design.Hint">
 		<item name="android:textSize">@dimen/_12ssp</item>
 	</style>
+
+	<style name="FullScreenDialog" parent="Theme.Shop">
+		<item name="android:backgroundDimEnabled">false</item>
+		<item name="android:windowIsFloating">false</item>
+		<item name="android:windowCloseOnTouchOutside">false</item>
+	</style>
+
+	<style name="NormalScreenDialog" parent="Theme.MaterialComponents.Light.Dialog.MinWidth">
+<!--		<item name="android:layout_margin">@dimen/_50sdp</item>-->
+<!--		<item name="android:windowIsFloating">true</item>-->
+<!--		<item name="android:windowNoTitle">true</item>-->
+<!--		<item name="android:windowContentOverlay">@null</item>-->
+	</style>
 </resources>

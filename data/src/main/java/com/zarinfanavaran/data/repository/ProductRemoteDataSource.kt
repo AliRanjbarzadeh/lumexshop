@@ -19,7 +19,14 @@ class ProductRemoteDataSource @Inject constructor(
 	override suspend fun getProducts(params: Map<String, Any?>): NetworkResult<MyResponse<List<Product>, Meta>> {
 		return try {
 			val result = apiService.fetchProductsAsync(params).await()
-			NetworkResult.Success(MyResponse(result.data.map { it.toDomain() }, result.meta.toDomain()))
+			NetworkResult.Success(
+				MyResponse(
+					result.status, result.success, result.message,
+					result.data.map { it.toDomain() },
+					result.errors,
+					result.meta.toDomain()
+				)
+			)
 		} catch (e: Exception) {
 			NetworkResult.Error(apiExceptionHandler.traceErrorException(e))
 		}

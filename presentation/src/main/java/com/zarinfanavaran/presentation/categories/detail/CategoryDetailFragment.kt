@@ -66,7 +66,7 @@ class CategoryDetailFragment :
 		back()
 	}
 
-	override fun <T> onItemClick(position: Int, view: View, item: T) {
+	override fun <T> onItemClick(position: Int, view: View, item: T, parentPosition: Int) {
 		val filterIntent = Intent(requireActivity(), FilterActivity::class.java)
 		filterIntent.putExtra("categoryDetail", categoryDetail)
 		when (item) {

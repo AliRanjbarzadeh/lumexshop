@@ -38,5 +38,6 @@
 	<dialog
 		android:id="@+id/filterFiltersDialogFragment"
 		android:name="com.zarinfanavaran.presentation.filter.FilterFiltersDialogFragment"
-		android:label="FilterFiltersDialogFragment" />
+		android:label="FilterFiltersDialogFragment"
+		tools:layout="@layout/fragment_dialog_filter_filters" />
 </navigation>

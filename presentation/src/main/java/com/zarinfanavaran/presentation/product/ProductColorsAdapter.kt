@@ -1,4 +1,4 @@
-package com.zarinfanavaran.presentation.filter
+package com.zarinfanavaran.presentation.product
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,7 +11,7 @@ import com.zarinfanavaran.presentation.databinding.TemplateColorBinding
 /**
  * Created by Ali Ranjbarzadeh on 2023/01/29.
  */
-class FilterProductColorsAdapter : BaseAdapter<Color>() {
+class ProductColorsAdapter : BaseAdapter<Color>() {
 
 	lateinit var glide: RequestManager
 

@@ -1,88 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto">
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
 
 	<data>
+
+		<import type="android.view.View" />
 
 		<variable
 			name="item"
 			type="com.zarinfanavaran.domain.models.Filter" />
 	</data>
 
-	<androidx.appcompat.widget.LinearLayoutCompat
+	<com.google.android.material.card.MaterialCardView
+		android:id="@+id/cvExpandable"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:background="@color/colorEF"
-		android:orientation="vertical">
-
-		<androidx.constraintlayout.widget.ConstraintLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:padding="@dimen/_8sdp">
-
-			<com.google.android.material.textview.MaterialTextView
-				android:id="@+id/txtFilterTitle"
-				android:layout_width="0dp"
-				android:layout_height="0dp"
-				android:layout_marginEnd="@dimen/_8sdp"
-				android:text="@{item.name, default=`@string/sample_filter_title`}"
-				android:textColor="@color/color18"
-				android:textSize="@dimen/_9ssp"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toStartOf="@id/imgFilterArrow"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
-
-			<androidx.appcompat.widget.AppCompatImageView
-				android:id="@+id/imgFilterArrow"
-				android:layout_width="@dimen/_14sdp"
-				android:layout_height="@dimen/_14sdp"
-				android:src="@drawable/ic_filter_arrow_down"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
-
-		</androidx.constraintlayout.widget.ConstraintLayout>
+		android:elevation="0dp"
+		app:cardBackgroundColor="@color/colorEF"
+		app:cardCornerRadius="0dp"
+		app:cardElevation="0dp"
+		app:cardUseCompatPadding="false"
+		app:rippleColor="@color/transparent"
+		app:strokeColor="@color/color18">
 
 		<androidx.appcompat.widget.LinearLayoutCompat
-			android:id="@+id/llExpandable"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="vertical"
-			android:padding="@dimen/_8sdp">
+			android:orientation="vertical">
 
-			<com.google.android.material.textfield.TextInputLayout
-				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/clFilterTitle"
 				android:layout_width="match_parent"
-				android:layout_height="@dimen/_27sdp"
-				app:boxBackgroundColor="@color/white"
-				app:boxCornerRadiusBottomEnd="0dp"
-				app:boxCornerRadiusBottomStart="0dp"
-				app:boxCornerRadiusTopEnd="0dp"
-				app:boxCornerRadiusTopStart="0dp"
-				app:boxStrokeColor="@color/colorA3"
-				app:boxStrokeWidth="@dimen/_1sdp"
-				app:hintEnabled="false"
-				app:startIconDrawable="@drawable/ic_search_status"
-				app:startIconTint="@color/color18">
+				android:layout_height="wrap_content"
+				android:padding="@dimen/_8sdp">
 
-				<com.google.android.material.textfield.TextInputEditText
-					android:id="@+id/etInnerSearch"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:hint="@{@string/search_in(item.name)}"
+				<com.google.android.material.textview.MaterialTextView
+					android:id="@+id/txtFilterTitle"
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:layout_marginEnd="@dimen/_8sdp"
+					android:text="@{item.name, default=`@string/sample_filter_title`}"
 					android:textColor="@color/color18"
-					android:textColorHint="@color/color18A5"
-					android:textSize="@dimen/_9ssp" />
-			</com.google.android.material.textfield.TextInputLayout>
+					android:textSize="@dimen/_9ssp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toStartOf="@id/imgFilterArrow"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
 
+				<androidx.appcompat.widget.AppCompatImageView
+					android:id="@+id/imgFilterArrow"
+					android:layout_width="@dimen/_14sdp"
+					android:layout_height="@dimen/_14sdp"
+					android:rotation="@{item.selected ? 180f : 0f}"
+					android:src="@drawable/ic_filter_arrow_down"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
 
-			<androidx.recyclerview.widget.RecyclerView
-				android:id="@+id/rvOptions"
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/clExpandable"
 				android:layout_width="match_parent"
-				android:layout_height="@dimen/_134sdp"
-				android:layout_marginTop="@dimen/_8sdp" />
+				android:layout_height="0dp"
+				android:orientation="vertical"
+				android:padding="@dimen/_8sdp">
+
+				<com.google.android.material.textfield.TextInputLayout
+					android:id="@+id/tilInnerSearch"
+					style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+					android:layout_width="0dp"
+					android:layout_height="@dimen/_27sdp"
+					android:padding="0dp"
+					app:boxBackgroundColor="@color/white"
+					app:boxCornerRadiusBottomEnd="0dp"
+					app:boxCornerRadiusBottomStart="0dp"
+					app:boxCornerRadiusTopEnd="0dp"
+					app:boxCornerRadiusTopStart="0dp"
+					app:boxStrokeColor="@color/colorA3"
+					app:boxStrokeWidth="@dimen/_1sdp"
+					app:hintEnabled="false"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					app:startIconDrawable="@drawable/ic_search_status"
+					app:startIconTint="@color/color18">
+
+					<com.google.android.material.textfield.TextInputEditText
+						android:id="@+id/etInnerSearch"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:gravity="start|center_vertical"
+						android:hint="@{@string/search_in(item.name)}"
+						android:padding="0dp"
+						android:textAlignment="viewStart"
+						android:textColor="@color/color18"
+						android:textColorHint="@color/color18A5"
+						android:textSize="@dimen/_9ssp" />
+				</com.google.android.material.textfield.TextInputLayout>
+
+				<androidx.recyclerview.widget.RecyclerView
+					android:id="@+id/rvOptions"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/_8sdp"
+					app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@id/tilInnerSearch"
+					tools:itemCount="2"
+					tools:listitem="@layout/template_filter_option" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
 		</androidx.appcompat.widget.LinearLayoutCompat>
 
-	</androidx.appcompat.widget.LinearLayoutCompat>
+	</com.google.android.material.card.MaterialCardView>
 </layout>

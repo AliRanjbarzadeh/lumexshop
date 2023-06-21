@@ -151,7 +151,7 @@
 					android:inputType="number"
 					android:maxLength="10"
 					android:maxLines="1"
-					android:text="@{user.personalCode}"
+					android:text="@{user.nationalCode}"
 					android:textAlignment="viewStart"
 					android:textColor="@color/color18"
 					android:textColorHint="@color/colorA3"

@@ -89,6 +89,7 @@
 			app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
 			<androidx.core.widget.NestedScrollView
+				android:id="@+id/nsvFilters"
 				android:layout_width="0dp"
 				android:layout_height="0dp"
 				android:fillViewport="false"

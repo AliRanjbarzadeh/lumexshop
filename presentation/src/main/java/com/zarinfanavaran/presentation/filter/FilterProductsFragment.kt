@@ -119,13 +119,12 @@ class FilterProductsFragment : BaseFragment<FragmentFilterProductsBinding>(R.lay
 		filterShareViewModel.filterCount.set("0")
 	}
 
-	override fun <T> onItemClick(position: Int, view: View, item: T) {
+	override fun <T> onItemClick(position: Int, view: View, item: T, parentPosition: Int) {
 		when (item) {
 			//handle sorting
 			is SortOption -> {
 				args.categoryDetail?.sortOptions?.forEach { it.isSelected = false }
 				item.isSelected = true
-				Log.d(TAG, "onItemClick: $item")
 				mSortOption = item
 				sortDialog?.dismiss()
 				params.put("page", 1)
@@ -153,8 +152,31 @@ class FilterProductsFragment : BaseFragment<FragmentFilterProductsBinding>(R.lay
 	}
 
 	override fun onFiltersChanged() {
+
+		// clear all filters first
+		val filterKeys = params.keys.filter { mapKey -> mapKey.startsWith("filter_") }
+		filterKeys.forEach { mapKey -> params.remove(mapKey) }
+
+		// filter from filters if available
+		var index = 0
+		filterShareViewModel.filters.filter { filter ->
+			(filter.type == "BOOLEAN" && filter.isSelected) or (filter.type != "BOOLEAN" && filter.options?.find { option -> option.isSelected } != null)
+		}.forEach { filter ->
+			if (filter.type == "BOOLEAN") {
+				params.put("filter_ids[$index][${filter.id}]", "HAS")
+				index += 1
+			} else {
+				filter.options?.filter { option -> option.isSelected }?.forEach { option ->
+					params.put("filter_ids[$index][${filter.id}]", option.id)
+					index += 1
+				}
+			}
+		}
+
 		params.put("page", 1)
 		viewModel.fetchProducts(params)
+
+		updateFilterText()
 	}
 
 	override fun onRetry() {
@@ -232,8 +254,11 @@ class FilterProductsFragment : BaseFragment<FragmentFilterProductsBinding>(R.lay
 
 		//set brand ids to params
 		if (brandIds.isNotEmpty()) {
-			filtersCount += 1
 			brandIds.forEachIndexed { brandIndex, brandId -> params.put("brand_ids[$brandIndex]", brandId) }
+		}
+
+		filtersCount = filterShareViewModel.filters.count { filter ->
+			(filter.type == "BOOLEAN" && filter.isSelected) or (filter.type != "BOOLEAN" && filter.options?.find { option -> option.isSelected } != null)
 		}
 
 		val btnFilterText = if (filtersCount > 0) {

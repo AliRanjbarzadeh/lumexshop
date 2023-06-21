@@ -11,9 +11,11 @@ import android.widget.EditText
 import android.widget.FrameLayout
 import androidx.annotation.ColorRes
 import androidx.annotation.LayoutRes
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import com.zarinfanavaran.domain.util.RecyclerViewTools
 import com.zarinfanavaran.presentation.R
 import gun0912.tedkeyboardobserver.TedKeyboardObserver
@@ -24,7 +26,7 @@ import gun0912.tedkeyboardobserver.TedKeyboardObserver
 abstract class BaseDialogFragment<VDB : ViewDataBinding>(
 	@LayoutRes
 	private val resId: Int,
-) : DialogFragment(), RecyclerViewTools {
+) : DialogFragment(), RecyclerViewTools, RetryCallback {
 	protected val TAG = this::class.java.simpleName + "Log"
 
 	@ColorRes
@@ -66,6 +68,10 @@ abstract class BaseDialogFragment<VDB : ViewDataBinding>(
 		baseDialogFragmentCallback = null
 	}
 
+	fun back() {
+		findNavController().popBackStack()
+	}
+
 	protected open fun keyboardState(isShow: Boolean) {}
 
 	fun hideKeyboard() {
@@ -81,9 +87,32 @@ abstract class BaseDialogFragment<VDB : ViewDataBinding>(
 		inputMethodManager.showSoftInput(v, InputMethodManager.SHOW_IMPLICIT)
 	}
 
-	protected fun setProgressView(viewGroup: ViewGroup, isLoading: Boolean) {
+	protected fun setProgressView(
+		viewGroup: ViewGroup, isLoading: Boolean, isSmall: Boolean = false,
+		@ColorRes
+		backgroundColor: Int = R.color.colorEF
+	) {
 		if (isLoading) {
-			val progressView = layoutInflater.inflate(R.layout.loading, viewGroup, false)
+			val progressView =
+				if (isSmall)
+					layoutInflater.inflate(R.layout.loading_small, viewGroup, false)
+				else
+					layoutInflater.inflate(R.layout.loading, viewGroup, false)
+
+			progressView.findViewById<FrameLayout>(R.id.flLoading).setBackgroundResource(backgroundColor)
+			if (viewGroup is ConstraintLayout) {
+				val layoutParams = ConstraintLayout.LayoutParams(
+					ConstraintLayout.LayoutParams.MATCH_CONSTRAINT,
+					ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
+				)
+
+				layoutParams.topToTop = ConstraintLayout.LayoutParams.PARENT_ID
+				layoutParams.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
+				layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
+				layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
+
+				progressView.layoutParams = layoutParams
+			}
 			viewGroup.addView(progressView)
 		} else {
 			viewGroup.removeView(viewGroup.findViewById<FrameLayout>(R.id.flLoading))

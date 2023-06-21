@@ -15,7 +15,7 @@
 	<string name="sample_price_wallet">150,000 تومان</string>
 	<string name="sample_discount_shopcart">900,000 تومان تخفیف</string>
 	<string name="sample_delivery_price">30,000 تومان</string>
-	<string name="sample_address">خ. ملاصدرا، کوچه ۹ ، ساختمان پویا ، طبقه ۳ ، واحد ۴</string>
+	<string name="sample_address">خ. ملاصدرا، کوچه 9 ، ساختمان پویا ، طبقه 3 ، واحد 4</string>
 	<string name="sample_city">شیراز</string>
 	<string name="sample_postal">7134636621</string>
 	<string name="sample_first_name">شرلوک</string>
@@ -35,4 +35,7 @@
 	<string name="sample_product_rate">4.4</string>
 	<string name="sample_filter_count">1,300</string>
 	<string name="sample_filter_title">برند</string>
+	<string name="sample_brand_name_fa">شیائومی</string>
+	<string name="sample_brand_name_en">Xiaomi</string>
+	<string name="sample_province">فارس</string>
 </resources>

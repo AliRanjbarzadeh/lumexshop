@@ -11,7 +11,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Product(
 	val id: Int,
-	val nameFa: String = "",
+	var nameFa: String = "",
 	val nameEn: String = "",
 	val summary: String = "",
 	val clubIsActive: Int = 0,
@@ -28,7 +28,7 @@ data class Product(
 	val maxCartQty: Int = 0,
 	val hasDiscount: Int = 0,
 	val discountType: String = "",
-	val price: Int = 0,
+	var price: Int = 0,
 	val discountAmount: Int = 0,
 	val discounted: Int = 0,
 	val discountInPercent: Float = 0f,

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<variable
+			name="item"
+			type="com.zarinfanavaran.domain.models.Address" />
+	</data>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="@dimen/_16sdp"
+		android:layout_marginEnd="@dimen/_16sdp"
+		android:background="@color/white"
+		android:padding="@dimen/_8sdp">
+
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/imgMore"
+			android:layout_width="@dimen/_18sdp"
+			android:layout_height="@dimen/_18sdp"
+			android:scaleType="fitCenter"
+			android:src="@drawable/ic_view_more_stroke"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<com.google.android.material.textview.MaterialTextView
+			android:id="@+id/txtAddress"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="@dimen/_16sdp"
+			android:ellipsize="end"
+			android:gravity="top|start"
+			android:maxLines="2"
+			android:minLines="2"
+			android:text="@{item.address, default=`@string/sample_address`}"
+			android:textAlignment="viewStart"
+			android:textAppearance="@style/TextAppearance.FontMedium"
+			android:textColor="@color/color18"
+			android:textSize="@dimen/_9ssp"
+			app:layout_constraintEnd_toStartOf="@id/imgMore"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<androidx.appcompat.widget.LinearLayoutCompat
+			android:id="@+id/llDetail"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/_16sdp"
+			android:layout_marginEnd="@dimen/_12sdp"
+			android:orientation="vertical"
+			app:layout_constraintEnd_toStartOf="@id/imgMap"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/txtAddress">
+
+			<com.google.android.material.textview.MaterialTextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/ic_address"
+				android:drawablePadding="@dimen/_4sdp"
+				android:gravity="center_vertical"
+				android:text="@{item.province + `, ` + item.city, default=`@string/sample_city`}"
+				android:textColor="@color/colorA3"
+				android:textSize="@dimen/_9ssp"
+				app:drawableTint="@color/colorA3" />
+
+			<com.google.android.material.textview.MaterialTextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/_8sdp"
+				android:drawableStart="@drawable/ic_postal_stroke_left"
+				android:drawablePadding="@dimen/_4sdp"
+				android:gravity="center_vertical"
+				android:text="@{item.postalCode, default=`@string/sample_postal`}"
+				android:textColor="@color/colorA3"
+				android:textSize="@dimen/_9ssp"
+				app:drawableTint="@color/colorA3" />
+
+			<com.google.android.material.textview.MaterialTextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/_8sdp"
+				android:drawableStart="@drawable/ic_phone_stroke"
+				android:drawablePadding="@dimen/_4sdp"
+				android:gravity="center_vertical"
+				android:text="@{item.mobile, default=`@string/sample_mobile`}"
+				android:textColor="@color/colorA3"
+				android:textSize="@dimen/_9ssp"
+				app:drawableTint="@color/colorA3" />
+
+		</androidx.appcompat.widget.LinearLayoutCompat>
+
+		<com.google.android.material.imageview.ShapeableImageView
+			android:id="@+id/imgMap"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:scaleType="centerCrop"
+			android:src="@drawable/sample_address_map"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintDimensionRatio="38:23"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="@id/llDetail"
+			app:strokeColor="@color/colorEF"
+			app:strokeWidth="@dimen/_4sdp" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

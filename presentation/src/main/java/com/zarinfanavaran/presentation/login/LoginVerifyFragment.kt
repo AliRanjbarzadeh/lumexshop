@@ -4,21 +4,38 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.Toast
-import androidx.core.widget.doAfterTextChanged
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.github.razir.progressbutton.DrawableButton
+import com.github.razir.progressbutton.bindProgressButton
+import com.github.razir.progressbutton.hideProgress
+import com.github.razir.progressbutton.showProgress
+import com.zarinfanavaran.domain.BuildConfig
+import com.zarinfanavaran.domain.BuildConfig.SESSION_TOKEN
 import com.zarinfanavaran.domain.BuildConfig.USER
 import com.zarinfanavaran.domain.extensions.saveToSp
 import com.zarinfanavaran.domain.extensions.spannableString
+import com.zarinfanavaran.domain.models.LoginMobile
 import com.zarinfanavaran.domain.models.User
+import com.zarinfanavaran.domain.util.NetworkResult
 import com.zarinfanavaran.presentation.R
 import com.zarinfanavaran.presentation.base.BaseFragment
+import com.zarinfanavaran.presentation.base.BaseObject
 import com.zarinfanavaran.presentation.databinding.FragmentLoginVerifyBinding
+import com.zarinfanavaran.presentation.util.getRandomString
+import com.zarinfanavaran.presentation.util.observe
+import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 
 /**
  * Created by Ali Ranjbarzadeh on 9/30/2022 AD.
  */
+@AndroidEntryPoint
 class LoginVerifyFragment : BaseFragment<FragmentLoginVerifyBinding>(R.layout.fragment_login_verify) {
+
+	private val viewModel: LoginVerifyViewModel by viewModels()
 
 	private val args: LoginVerifyFragmentArgs by navArgs()
 
@@ -50,9 +67,38 @@ class LoginVerifyFragment : BaseFragment<FragmentLoginVerifyBinding>(R.layout.fr
 
 	}
 
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+
+		setupObservers()
+	}
+
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
+		setupUI()
+	}
+
+	override fun onDestroy() {
+		mTimer.cancel()
+		super.onDestroy()
+	}
+
+	override fun keyboardState(isShow: Boolean) {
+		if (!isShow) {
+			binding.etVerifyCode.clearFocus()
+		}
+	}
+
+	private fun setupObservers() {
+		viewModel.run {
+			observe(isLoading(), ::initLoading)
+			observe(getVerify(), ::initVerify)
+			observe(getResend(), ::initResend)
+		}
+	}
+
+	private fun setupUI() {
 		binding.txtLaw.text = spannableString(
 			mContext = requireContext(),
 
@@ -82,8 +128,10 @@ class LoginVerifyFragment : BaseFragment<FragmentLoginVerifyBinding>(R.layout.fr
 				return@setOnClickListener
 			}
 
-			isTimerFinished = false
-			mTimer.start()
+			val jsonObject = JSONObject()
+			jsonObject.put("mobile_number", args.mobile)
+			val resendBody = jsonObject.toString().toRequestBody(BaseObject.jsonMediaType)
+			viewModel.resend(resendBody)
 		}
 
 		//edit mobile
@@ -93,49 +141,70 @@ class LoginVerifyFragment : BaseFragment<FragmentLoginVerifyBinding>(R.layout.fr
 		binding.btnNext.setOnClickListener {
 			val verifyCode = binding.etVerifyCode.text.toString()
 			if (verifyCode.isEmpty()) {
-				Toast.makeText(requireContext(), getString(R.string.please_enter_verify_code), Toast.LENGTH_SHORT).show()
+				Toast.makeText(requireContext(), getString(R.string.login_to_shop), Toast.LENGTH_SHORT).show()
 				return@setOnClickListener
 			}
 
-			if (verifyCode.length < 5) {
-				Toast.makeText(requireContext(), getString(R.string.wrong_verify_code), Toast.LENGTH_SHORT).show()
-				return@setOnClickListener
-			}
-
-			val user = User(
-				_mobile = args.mobile
-			)
-			saveToSp(USER, user)
 			hideKeyboard()
 
-			//change requirements when user login
-			baseFragmentCallback?.login()
+			val cartToken = getRandomString(100)
+			saveToSp(BuildConfig.SESSION_CART_TOKEN, cartToken)
 
+			val jsonObject = JSONObject()
+			jsonObject.put("mobile_number", args.mobile)
+			jsonObject.put("otp", verifyCode)
+			val verifyBody = jsonObject.toString().toRequestBody(BaseObject.jsonMediaType)
+//			viewModel.verify(verifyBody)
+
+			saveToSp(BuildConfig.SESSION_LOGIN, true)
 			val action = LoginVerifyFragmentDirections.verifyToProfile()
 			findNavController().navigate(action)
 		}
 
-		binding.etVerifyCode.doAfterTextChanged {
-			it?.also {
-				if (it.toString().length == 5) {
-					binding.btnNext.callOnClick()
-				}
-			}
-		}
+		//set button progress lifecycle
+		bindProgressButton(binding.btnNext)
 
 		binding.etVerifyCode.post {
 			showInputMethod(binding.etVerifyCode)
 		}
 	}
 
-	override fun onDestroy() {
-		mTimer.cancel()
-		super.onDestroy()
+	private fun initLoading(isLoading: Boolean) {
+		if (isLoading) {
+			binding.btnNext.showProgress {
+				progressColorRes = R.color.white
+				gravity = DrawableButton.GRAVITY_CENTER
+			}
+		} else {
+			binding.btnNext.hideProgress(R.string.login_to_shop)
+		}
 	}
 
-	override fun keyboardState(isShow: Boolean) {
-		if (!isShow) {
-			binding.etVerifyCode.clearFocus()
+	private fun initVerify(result: NetworkResult<User>) {
+		if (result is NetworkResult.Success) {
+			//change requirements when user login
+			baseFragmentCallback?.login()
+
+			BaseObject.user = result.data
+			BaseObject.user.notifyChange()
+			saveToSp(USER, result.data)
+			saveToSp(SESSION_TOKEN, result.data.accessToken)
+
+			val action = LoginVerifyFragmentDirections.verifyToProfile()
+			findNavController().navigate(action)
+		} else if (result is NetworkResult.Error) {
+			Toast.makeText(requireContext(), result.error.message, Toast.LENGTH_SHORT).show()
+		}
+	}
+
+	private fun initResend(result: NetworkResult<LoginMobile>) {
+		if (result is NetworkResult.Success) {
+			Toast.makeText(requireContext(), getString(R.string.resend_verify_code, result.data.mobileNumber), Toast.LENGTH_SHORT).show()
+			isTimerFinished = false
+			mTimer.start()
+		} else if (result is NetworkResult.Error) {
+			isTimerFinished = true
+			Toast.makeText(requireContext(), result.error.message, Toast.LENGTH_SHORT).show()
 		}
 	}
 }

@@ -36,15 +36,15 @@ data class BankAccount(
 
 	val shabaFormat: String
 		@Bindable get() {
-			val stringBuilder = StringBuilder(_shabaNumber)
-				.insert(2, "-")
-				.insert(7, "-")
-				.insert(12, "-")
-				.insert(17, "-")
-				.insert(22, "-")
-				.insert(27, "-")
+//			val stringBuilder = StringBuilder(_shabaNumber)
+//				.insert(2, "-")
+//				.insert(7, "-")
+//				.insert(12, "-")
+//				.insert(17, "-")
+//				.insert(22, "-")
+//				.insert(27, "-")
 
-			return "IR" + stringBuilder.toString()
+			return "IR" + _shabaNumber
 		}
 
 	val shabaParted: Array<String> = shabaFormat.replace("IR", "").split("-").toTypedArray()

@@ -11,7 +11,7 @@ import com.zarinfanavaran.domain.BR
 data class OrderType(
 	val title: String,
 	@DrawableRes val image: Int,
-	var _badgeCount: Int = 2
+	var _badgeCount: Int = 0
 ) : BaseObservable() {
 
 	var badgeCount = _badgeCount

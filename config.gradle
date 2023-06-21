@@ -6,7 +6,9 @@ ext {
             'MediaUrl'        : '""',
             'Authorization'   : '"Authorization"',
             'TokenPrefix'     : '"Bearer "',
-            'DefaultToken'    : '"Ov9ugfPxDb9rRY2S1qY4Cs4PpcIkBlj4"',
+            'CartTokenName'   : '"user_cart_token"',
+            'SessionCartToken': '"cart.token"',
+            'DefaultToken'    : '""',
             'SessionLogin'    : '"is.login"',
             'SessionToken'    : '"dynamic.token"',
             'RegisterToken'   : '"register.token"',
@@ -41,6 +43,7 @@ ext {
             //Google
             'material'        : '1.6.1',
             'hilt'            : '2.44',
+            'map'             : '18.1.0',
 
             //Navigation
             'navigation'      : '2.5.2',
@@ -73,6 +76,7 @@ ext {
             'ucrop'           : '2.2.8',
             'lottie'          : '5.2.0',
             'refreshLayout'   : '1.2.0-alpha01',
+            'progressbutton'  : '2.1.0',
     ]
 
     libs = [
@@ -90,6 +94,7 @@ ext {
             'material'                 : "com.google.android.material:material:${versions.material}",
             'hilt'                     : "com.google.dagger:hilt-android:${versions.hilt}",
             'hiltCompiler'             : "com.google.dagger:hilt-compiler:${versions.hilt}",
+            'map'                      : "com.google.android.gms:play-services-maps:${versions.map}",
 
             //Navigation
             'navigationFragmentKtx'    : "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
@@ -129,6 +134,7 @@ ext {
             'ucrop'                    : "com.github.yalantis:ucrop:${versions.ucrop}",
             'lottie'                   : "com.airbnb.android:lottie:${versions.lottie}",
             'refreshLayout'            : "androidx.swiperefreshlayout:swiperefreshlayout:${versions.refreshLayout}",
+            'progressbutton'           : "com.github.razir.progressbutton:progressbutton:${versions.progressbutton}",
     ]
 
     def plugins = [
@@ -224,6 +230,7 @@ ext {
                     //Google
                     [configuration: "implementation", dependency: libs.hilt],
                     [configuration: "kapt", dependency: libs.hiltCompiler],
+                    [configuration: "implementation", dependency: libs.map],
 
                     //Database
                     [configuration: "kapt", dependency: libs.roomCompiler],
@@ -237,6 +244,7 @@ ext {
                     [configuration: "implementation", dependency: libs.ucrop],
                     [configuration: "implementation", dependency: libs.lottie],
                     [configuration: "implementation", dependency: libs.refreshLayout],
+                    [configuration: "implementation", dependency: libs.progressbutton],
             ],
 
             'plugins': []

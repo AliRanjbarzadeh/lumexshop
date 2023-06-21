@@ -16,6 +16,7 @@
 		android:orientation="vertical">
 
 		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/clFilterTitle"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:padding="@dimen/_8sdp">
@@ -29,18 +30,35 @@
 				android:textColor="@color/color18"
 				android:textSize="@dimen/_9ssp"
 				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toStartOf="@id/imgFilterArrow"
+				app:layout_constraintEnd_toStartOf="@id/flSwitch"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent" />
 
-			<androidx.appcompat.widget.SwitchCompat
-				android:id="@+id/imgFilterArrow"
-				android:layout_width="@dimen/_14sdp"
-				android:layout_height="@dimen/_14sdp"
-				android:src="@drawable/ic_filter_arrow_down"
+			<FrameLayout
+				android:id="@+id/flSwitch"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
+				app:layout_constraintTop_toTopOf="parent">
+
+				<com.google.android.material.switchmaterial.SwitchMaterial
+					android:id="@+id/btnSwitch"
+					android:layout_width="@dimen/_24sdp"
+					android:layout_height="@dimen/_12sdp"
+					android:background="@null"
+					android:checked="@{item.selected}"
+					android:clickable="false"
+					android:enabled="false"
+					android:layoutDirection="ltr"
+					android:thumb="@drawable/ic_switch_thumb"
+					app:showText="false"
+					app:switchMinWidth="@dimen/_24sdp"
+					app:switchPadding="0dp"
+					app:thumbTextPadding="0dp"
+					app:track="@drawable/ic_switch"
+					app:useMaterialThemeColors="false" />
+			</FrameLayout>
 
 		</androidx.constraintlayout.widget.ConstraintLayout>
 

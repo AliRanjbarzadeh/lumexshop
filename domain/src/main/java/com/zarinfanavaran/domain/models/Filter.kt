@@ -45,6 +45,6 @@ data class Filter(
 	}
 
 	override fun toString(): String {
-		return "Filter(id=$id, name='$name')"
+		return "Filter(id=$id, name='$name', isSelected=$isSelected)"
 	}
 }

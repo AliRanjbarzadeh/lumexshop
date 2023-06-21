@@ -20,6 +20,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.afollestad.materialdialogs.MaterialDialog
 import com.zarinfanavaran.domain.extensions.spannableString
 import com.zarinfanavaran.domain.util.RecyclerViewTools
 import com.zarinfanavaran.presentation.R
@@ -42,6 +43,7 @@ abstract class BaseFragment<VDB : ViewDataBinding>(
 
 	lateinit var binding: VDB
 	protected var baseFragmentCallback: BaseFragmentCallback? = null
+	protected var mDialog: MaterialDialog? = null
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 		binding = DataBindingUtil.inflate(inflater, resId, container, false)

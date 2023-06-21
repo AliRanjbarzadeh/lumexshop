@@ -104,6 +104,7 @@
 					android:textSize="@dimen/_9ssp" />
 
 			</androidx.appcompat.widget.LinearLayoutCompat>
+
 		</FrameLayout>
 	</androidx.core.widget.NestedScrollView>
 </layout>

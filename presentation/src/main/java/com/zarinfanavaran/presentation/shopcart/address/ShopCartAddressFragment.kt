@@ -79,11 +79,11 @@ class ShopCartAddressFragment : BaseFragment<FragmentShopcartAddressBinding>(R.l
 		binding.btnNext.setOnClickListener { findNavController().navigate(R.id.shopCartPaymentFragment) }
 	}
 
-	override fun <T> onItemClick(position: Int, view: View, item: T) {
+	override fun <T> onItemClick(position: Int, view: View, item: T, parentPosition: Int) {
 		hideKeyboard()
 	}
 
-	override fun <T> onDeleteClick(position: Int, view: View, item: T) {
+	override fun <T> onDeleteClick(position: Int, view: View, item: T, parentPosition: Int) {
 		hideKeyboard()
 		MaterialDialog(requireContext()).show {
 			cornerRadius(0f)

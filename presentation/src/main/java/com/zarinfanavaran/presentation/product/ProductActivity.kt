@@ -28,7 +28,7 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
 		setColorAdapter()
 	}
 
-	override fun <T> onItemClick(position: Int, view: View, item: T) {
+	override fun <T> onItemClick(position: Int, view: View, item: T, parentPosition: Int) {
 		when (item) {
 			is ProductTool -> {
 				when (item.type) {

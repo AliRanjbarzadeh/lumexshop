@@ -41,12 +41,88 @@
 		android:id="@+id/profileFragment"
 		android:name="com.zarinfanavaran.presentation.profile.ProfileFragment"
 		android:label="ProfileFragment"
-		tools:layout="@layout/fragment_profile" />
+		tools:layout="@layout/fragment_profile">
+		<action
+			android:id="@+id/action_profileFragment_to_loginMobileFragment"
+			app:destination="@id/loginMobileFragment"
+			app:popUpTo="@id/loginMobileFragment" />
+		<action
+			android:id="@+id/profile_to_editInfo"
+			app:destination="@id/editInfoFragment" />
+		<action
+			android:id="@+id/profile_to_addresses"
+			app:destination="@id/addressesFragment" />
+		<action
+			android:id="@+id/action_profileFragment_to_wishListsFragment"
+			app:destination="@id/wishListsFragment" />
+	</fragment>
 
 	<fragment
 		android:id="@+id/editInfoFragment"
 		android:name="com.zarinfanavaran.presentation.profile.info.EditInfoFragment"
 		android:label="EditInfoFragment"
 		tools:layout="@layout/fragment_edit_info" />
+	<fragment
+		android:id="@+id/addressesFragment"
+		android:name="com.zarinfanavaran.presentation.profile.address.AddressesFragment"
+		android:label="AddressesFragment"
+		tools:layout="@layout/fragment_addresses">
+		<action
+			android:id="@+id/action_addressesFragment_to_addressMapFragment"
+			app:destination="@id/addressMapFragment" />
+		<argument
+			android:name="address"
+			android:defaultValue="@null"
+			app:argType="com.zarinfanavaran.domain.models.Address"
+			app:nullable="true" />
+	</fragment>
+	<fragment
+		android:id="@+id/addressMapFragment"
+		android:name="com.zarinfanavaran.presentation.profile.address.AddressMapFragment"
+		android:label="AddressMapFragment"
+		tools:layout="@layout/fragment_address_map">
+		<argument
+			android:name="address"
+			app:argType="com.zarinfanavaran.domain.models.Address"
+			/>
+		<action
+			android:id="@+id/action_addressMapFragment_to_addressDetailFragment"
+			app:destination="@id/addressDetailFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/addressDetailFragment"
+		android:name="com.zarinfanavaran.presentation.profile.address.AddressDetailFragment"
+		android:label="AddressDetailFragment"
+		tools:layout="@layout/fragment_address_detail">
+		<argument
+			android:name="address"
+			app:argType="com.zarinfanavaran.domain.models.Address" />
+		<action
+			android:id="@+id/action_addressDetailFragment_to_provincesDialogFragment"
+			app:destination="@id/provincesDialogFragment" />
+		<action
+			android:id="@+id/action_addressDetailFragment_to_citiesDialogFragment"
+			app:destination="@id/citiesDialogFragment" />
+	</fragment>
+	<dialog
+		android:id="@+id/provincesDialogFragment"
+		android:name="com.zarinfanavaran.presentation.profile.address.ProvincesDialogFragment"
+		android:label="ProvincesDialogFragment"
+		tools:layout="@layout/fragment_provinces_dialog" />
+	<dialog
+		android:id="@+id/citiesDialogFragment"
+		android:name="com.zarinfanavaran.presentation.profile.address.CitiesDialogFragment"
+		android:label="CitiesDialogFragment"
+		tools:layout="@layout/fragment_cities_dialog">
+		<argument
+			android:name="provinceId"
+			android:defaultValue="0"
+			app:argType="integer" />
+	</dialog>
+	<fragment
+		android:id="@+id/wishListsFragment"
+		android:name="com.zarinfanavaran.presentation.profile.wishlist.WishListsFragment"
+		android:label="WishListsFragment"
+		tools:layout="@layout/fragment_wishlists" />
 
 </navigation>

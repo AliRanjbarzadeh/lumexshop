@@ -5,7 +5,7 @@
 
 		<variable
 			name="item"
-			type="com.zarinfanavaran.domain.models.BankAccount" />
+			type="com.zarinfanavaran.domain.models.CreditCard" />
 	</data>
 
 	<androidx.appcompat.widget.LinearLayoutCompat

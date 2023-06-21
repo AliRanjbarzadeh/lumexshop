@@ -1,10 +1,8 @@
 package com.zarinfanavaran.presentation.filter
 
-import android.graphics.Paint
 import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
@@ -16,6 +14,7 @@ import com.zarinfanavaran.presentation.base.BaseHolder
 import com.zarinfanavaran.presentation.base.MarginItemDecoration
 import com.zarinfanavaran.presentation.databinding.LoadmoreVerticalBinding
 import com.zarinfanavaran.presentation.databinding.TemplateFilterProductItemBinding
+import com.zarinfanavaran.presentation.product.ProductColorsAdapter
 
 /**
  * Created by Ali Ranjbarzadeh on 2023/01/29.
@@ -26,7 +25,7 @@ class FilterProductsAdapter : BaseAdapter<Product>() {
 	lateinit var glide: RequestManager
 	private var viewPool: RecyclerView.RecycledViewPool = RecyclerView.RecycledViewPool()
 
-	private val mColorAdapters = SparseArray<FilterProductColorsAdapter>()
+	private val mColorAdapters = SparseArray<ProductColorsAdapter>()
 
 	override fun getItemViewType(position: Int): Int {
 		val item = mItems[position]
@@ -62,10 +61,8 @@ class FilterProductsAdapter : BaseAdapter<Product>() {
 
 				binding.root.setOnClickListener { recyclerViewTools.onItemClick(bindingAdapterPosition, it, item) }
 
-				binding.txtRealPrice.paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
-
 				if (mColorAdapters[bindingAdapterPosition] == null) {
-					val colorsAdapter = FilterProductColorsAdapter().apply {
+					val colorsAdapter = ProductColorsAdapter().apply {
 						glide = this@FilterProductsAdapter.glide
 					}
 
@@ -84,10 +81,12 @@ class FilterProductsAdapter : BaseAdapter<Product>() {
 					binding.rvColors.removeItemDecorationAt(0)
 				} catch (_: Exception) {
 				} finally {
-					binding.rvColors.addItemDecoration(MarginItemDecoration(
-						binding.root.context.resources.getDimension(com.intuit.sdp.R.dimen._2sdp).toInt(),
-						MarginItemDecoration.RIGHT
-					))
+					binding.rvColors.addItemDecoration(
+						MarginItemDecoration(
+							binding.root.context.resources.getDimension(com.intuit.sdp.R.dimen._2sdp).toInt(),
+							MarginItemDecoration.RIGHT
+						)
+					)
 				}
 
 				binding.rvColors.adapter = mColorAdapters[bindingAdapterPosition]
